@@ -117,14 +117,17 @@ function copyAddress() {
     showToast('地址已复制');
 }
 
-// Live balance update
+// Live balance update with jump animation
 setInterval(() => {
     const balance = document.querySelector('.balance-value');
     const homePage = document.getElementById('page-home');
     if (balance && homePage?.classList.contains('active')) {
         const current = parseFloat(balance.textContent.replace(/[$,]/g, ''));
-        const change = (Math.random() - 0.3) * 5;
+        const change = (Math.random() * 2 + 1);
         const newVal = (current + change).toFixed(2);
         balance.textContent = '$' + newVal.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+        // Flash orange on increase
+        balance.style.color = '#fc5b23';
+        setTimeout(() => { balance.style.color = ''; }, 400);
     }
-}, 5000);
+}, 3000);
