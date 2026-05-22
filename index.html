@@ -33,7 +33,7 @@
             <div id="page-home" class="page active space-y-4">
                 <!-- Balance Card -->
                 <div class="card bg-gradient-to-br from-[#1a1a24] to-[#22222e] rounded-2xl p-5 border border-white/5">
-                    <div class="text-[#a0a0b0] text-sm mb-1">总质押价值</div>
+                    <div class="text-[#707080] text-sm mb-1">总质押价值</div>
                     <div class="text-3xl font-bold text-white mb-2">$24,847.32</div>
                     <div class="flex items-center gap-1 text-emerald-400 text-sm mb-4">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
@@ -41,7 +41,7 @@
                     </div>
                     <div class="flex gap-3">
                         <button class="btn-primary flex-1" onclick="switchTab('mining')">质押挖矿</button>
-                        <button class="flex-1 py-3 px-4 rounded-xl bg-[#252530] border border-white/5 font-semibold" onclick="switchTab('trade')">交易</button>
+                        <button class="flex-1 py-3 px-4 rounded-xl bg-[#252530] border border-white/5 font-semibold text-[#fc5b23]" onclick="switchTab('trade')">交易</button>
                     </div>
                 </div>
 
@@ -52,7 +52,7 @@
                         <h3 class="font-semibold">📊 系统健康程度</h3>
                     </div>
                     <div class="bg-[#252530] rounded-xl p-4 mb-3">
-                        <div class="text-[#a0a0b0] text-sm mb-1">LP深度 (USDT)</div>
+                        <div class="text-[#707080] text-sm mb-1">LP深度 (USDT)</div>
                         <div class="text-[28px] font-bold text-[#fc5b23]">7,056,418</div>
                     </div>
                     <div class="grid grid-cols-3 gap-2 text-center">
@@ -96,21 +96,21 @@
                     <h3 class="font-semibold mb-3">⚙️ 挖矿配置</h3>
                     <div class="flex gap-2 mb-4">
                         <button id="miningModeU" class="mode-btn active flex-1 py-2 rounded-lg bg-[#fc5b23] text-white text-sm font-medium" onclick="setMiningMode('u')">💵 只用U</button>
-                        <button id="miningModeHalf" class="mode-btn flex-1 py-2 rounded-lg bg-[#252530] text-[#a0a0b0] text-sm font-medium" onclick="setMiningMode('half')">⚖️ U+币各半</button>
+                        <button id="miningModeHalf" class="mode-btn flex-1 py-2 rounded-lg bg-[#252530] text-[#707080] text-sm font-medium" onclick="setMiningMode('half')">⚖️ U+币各半</button>
                     </div>
                     <div class="space-y-3">
                         <div>
-                            <label class="text-[#a0a0b0] text-sm mb-1 block">投入金额 (USDT)</label>
+                            <label class="text-[#707080] text-sm mb-1 block">投入金额 (USDT)</label>
                             <input type="number" id="miningAmount" class="w-full bg-[#252530] border border-white/10 rounded-xl px-4 py-3 text-white" placeholder="0.00" oninput="calcMining()">
                         </div>
                         <div id="miningHalfInput" class="hidden">
-                            <label class="text-[#a0a0b0] text-sm mb-1 block">FXH 代币数量</label>
+                            <label class="text-[#707080] text-sm mb-1 block">FXH 代币数量</label>
                             <input type="number" class="w-full bg-[#252530] border border-white/10 rounded-xl px-4 py-3 text-white" placeholder="0.00">
                         </div>
                     </div>
                     <div class="mt-4 p-3 bg-[#252530] rounded-xl space-y-2">
-                        <div class="flex justify-between text-sm"><span class="text-[#a0a0b0]">50% 买入 FXH</span><span id="buyAmount" class="text-[#fc5b23] font-semibold">$0.00</span></div>
-                        <div class="flex justify-between text-sm"><span class="text-[#a0a0b0]">50% 添加 LP</span><span id="lpAmount" class="text-[#fc5b23] font-semibold">$0.00</span></div>
+                        <div class="flex justify-between text-sm"><span class="text-[#707080]">50% 买入 FXH</span><span id="buyAmount" class="text-[#fc5b23] font-semibold">$0.00</span></div>
+                        <div class="flex justify-between text-sm"><span class="text-[#707080]">50% 添加 LP</span><span id="lpAmount" class="text-[#fc5b23] font-semibold">$0.00</span></div>
                     </div>
                     <button class="btn-primary w-full mt-4" onclick="createMiningOrder()">创建订单</button>
                 </div>
@@ -124,13 +124,13 @@
                             <span class="px-2 py-1 rounded-full bg-emerald-500/20 text-emerald-400 text-xs">运行中</span>
                         </div>
                         <div class="grid grid-cols-2 gap-2 text-sm">
-                            <div class="text-[#a0a0b0]">投入: <span class="text-white">$5,000</span></div>
-                            <div class="text-[#a0a0b0]">模式: <span class="text-white">💵 U单币</span></div>
-                            <div class="text-[#a0a0b0]">锁仓: <span class="text-white">28天</span></div>
-                            <div class="text-[#a0a0b0]">收益: <span class="text-[#fc5b23]">+$210.50</span></div>
+                            <div class="text-[#707080]">投入: <span class="text-white">$5,000</span></div>
+                            <div class="text-[#707080]">模式: <span class="text-white">💵 U单币</span></div>
+                            <div class="text-[#707080]">锁仓: <span class="text-white">28天</span></div>
+                            <div class="text-[#707080]">收益: <span class="text-[#fc5b23]">+$210.50</span></div>
                         </div>
                         <div class="mt-2">
-                            <div class="flex justify-between text-xs text-[#a0a0b0] mb-1"><span>12 / 28 天</span><span>42%</span></div>
+                            <div class="flex justify-between text-xs text-[#707080] mb-1"><span>12 / 28 天</span><span>42%</span></div>
                             <div class="h-2 bg-[#1a1a24] rounded-full overflow-hidden"><div class="h-full bg-gradient-to-r from-[#fc5b23] to-[#ff8c42] rounded-full" style="width: 42%"></div></div>
                         </div>
                     </div>
@@ -149,21 +149,21 @@
                 <div class="card rounded-2xl p-4 border border-white/5">
                     <div class="flex gap-2 mb-4">
                         <button id="btnSell" class="trade-toggle-btn active flex-1 py-2 rounded-lg bg-gradient-to-r from-[#fc5b23] to-[#ff8c42] text-white font-medium" onclick="setTradeMode('sell')">卖出</button>
-                        <button id="btnBuy" class="trade-toggle-btn flex-1 py-2 rounded-lg bg-[#252530] text-[#a0a0b0] font-medium" onclick="setTradeMode('buy')">买入</button>
+                        <button id="btnBuy" class="trade-toggle-btn flex-1 py-2 rounded-lg bg-[#252530] text-[#fc5b23] font-medium" onclick="setTradeMode('buy')">买入</button>
                     </div>
                     <div class="mb-4">
-                        <label class="text-[#a0a0b0] text-sm mb-1 block">输入金额 (FXH)</label>
+                        <label class="text-[#707080] text-sm mb-1 block">输入金额 (FXH)</label>
                         <div class="flex items-center bg-[#252530] border border-white/10 rounded-xl px-4 py-3">
                             <input type="number" class="bg-transparent flex-1 text-white text-lg" placeholder="0.00">
                             <span class="text-[#fc5b23] ml-2">🚀</span>
                         </div>
                     </div>
                     <div class="space-y-2 text-sm">
-                        <div class="flex justify-between"><span class="text-[#a0a0b0]">余额</span><span>0 FXH</span></div>
-                        <div class="flex justify-between"><span class="text-[#a0a0b0]">本金</span><span>0 USDT</span></div>
-                        <div class="flex justify-between"><span class="text-[#a0a0b0]">预估到手 (USDT)</span><span class="text-[#fc5b23] font-semibold">0</span></div>
-                        <div class="flex justify-between"><span class="text-[#a0a0b0]">最低接收 (USDT)</span><span>0</span></div>
-                        <div class="flex justify-between"><span class="text-[#a0a0b0]">滑点 (Slippage)</span><span class="text-[#fc5b23] font-semibold">4%</span></div>
+                        <div class="flex justify-between"><span class="text-[#707080]">余额</span><span>0 FXH</span></div>
+                        <div class="flex justify-between"><span class="text-[#707080]">本金</span><span>0 USDT</span></div>
+                        <div class="flex justify-between"><span class="text-[#707080]">预估到手 (USDT)</span><span class="text-[#fc5b23] font-semibold">0</span></div>
+                        <div class="flex justify-between"><span class="text-[#707080]">最低接收 (USDT)</span><span>0</span></div>
+                        <div class="flex justify-between"><span class="text-[#707080]">滑点 (Slippage)</span><span class="text-[#fc5b23] font-semibold">4%</span></div>
                     </div>
                     <button class="btn-primary w-full mt-4">确认交易</button>
                 </div>
@@ -196,12 +196,12 @@
                 <!-- Rewards -->
                 <div class="grid grid-cols-2 gap-3">
                     <div class="card rounded-2xl p-4 border border-white/5">
-                        <div class="text-[#a0a0b0] text-sm mb-1">🥇 分红收益</div>
+                        <div class="text-[#707080] text-sm mb-1">🥇 分红收益</div>
                         <div class="text-xl font-bold text-[#fc5b23] mb-2">234.18 USDT</div>
                         <button class="btn-primary w-full text-sm py-2">领取</button>
                     </div>
                     <div class="card rounded-2xl p-4 border border-white/5">
-                        <div class="text-[#a0a0b0] text-sm mb-1">📊 静态收益</div>
+                        <div class="text-[#707080] text-sm mb-1">📊 静态收益</div>
                         <div class="text-xl font-bold text-[#fc5b23] mb-2">98.64 USDT</div>
                         <button class="w-full py-2 rounded-xl bg-[#252530] text-[#707080] text-sm cursor-not-allowed">领取</button>
                     </div>
@@ -211,11 +211,11 @@
                 <div class="card rounded-2xl p-4 border border-white/5">
                     <div class="grid grid-cols-2 gap-3">
                         <div class="text-center">
-                            <div class="text-[#a0a0b0] text-sm">个人持有</div>
+                            <div class="text-[#707080] text-sm">个人持有</div>
                             <div class="text-lg font-bold text-[#fc5b23]">5,000 USDT</div>
                         </div>
                         <div class="text-center">
-                            <div class="text-[#a0a0b0] text-sm">旗下节点</div>
+                            <div class="text-[#707080] text-sm">旗下节点</div>
                             <div class="text-lg font-bold text-[#fc5b23]">128 人</div>
                         </div>
                     </div>
@@ -312,19 +312,19 @@
                 <div class="card rounded-2xl p-4 border border-white/5 space-y-1">
                     <div class="flex items-center justify-between py-3 border-b border-white/5" onclick="switchTab('mining')">
                         <span>📋 我的订单</span>
-                        <svg class="w-5 h-5 text-[#a0a0b0]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                        <svg class="w-5 h-5 text-[#707080]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
                     </div>
                     <div class="flex items-center justify-between py-3 border-b border-white/5">
                         <span>👥 我的团队</span>
-                        <svg class="w-5 h-5 text-[#a0a0b0]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                        <svg class="w-5 h-5 text-[#707080]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
                     </div>
                     <div class="flex items-center justify-between py-3 border-b border-white/5">
                         <span>💰 收益记录</span>
-                        <svg class="w-5 h-5 text-[#a0a0b0]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                        <svg class="w-5 h-5 text-[#707080]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
                     </div>
                     <div class="flex items-center justify-between py-3">
                         <span>⚙️ 设置</span>
-                        <svg class="w-5 h-5 text-[#a0a0b0]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                        <svg class="w-5 h-5 text-[#707080]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
                     </div>
                 </div>
             </div>
