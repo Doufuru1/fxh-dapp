@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-bg text-text font-sans;
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-bg-card rounded-2xl border border-white/5 p-4;
+  }
+  .btn-primary {
+    @apply bg-gradient-to-r from-accent to-accent-light text-white font-semibold py-3 px-6 rounded-xl;
+  }
+  .tab-active {
+    @apply text-accent;
+  }
+}
