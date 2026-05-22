@@ -27,12 +27,12 @@ function switchTab(page, el) {
     
     // Update tab styles
     document.querySelectorAll('.tab-item').forEach(t => {
-        t.classList.remove('active', 'text-[#6366f1]');
+        t.classList.remove('active', 'text-[#fc5b23]');
         t.classList.add('text-[#707080]');
     });
     
     if (el) {
-        el.classList.add('active', 'text-[#6366f1]');
+        el.classList.add('active', 'text-[#fc5b23]');
         el.classList.remove('text-[#707080]');
     }
 }
@@ -44,15 +44,15 @@ function setMiningMode(mode) {
     const halfInput = document.getElementById('miningHalfInput');
     
     if (mode === 'u') {
-        btnU?.classList.add('bg-[#6366f1]', 'text-white');
+        btnU?.classList.add('bg-[#fc5b23]', 'text-white');
         btnU?.classList.remove('bg-[#252530]', 'text-[#a0a0b0]');
-        btnHalf?.classList.remove('bg-[#6366f1]', 'text-white');
+        btnHalf?.classList.remove('bg-[#fc5b23]', 'text-white');
         btnHalf?.classList.add('bg-[#252530]', 'text-[#a0a0b0]');
         halfInput?.classList.add('hidden');
     } else {
-        btnHalf?.classList.add('bg-[#6366f1]', 'text-white');
+        btnHalf?.classList.add('bg-[#fc5b23]', 'text-white');
         btnHalf?.classList.remove('bg-[#252530]', 'text-[#a0a0b0]');
-        btnU?.classList.remove('bg-[#6366f1]', 'text-white');
+        btnU?.classList.remove('bg-[#fc5b23]', 'text-white');
         btnU?.classList.add('bg-[#252530]', 'text-[#a0a0b0]');
         halfInput?.classList.remove('hidden');
     }
@@ -72,7 +72,7 @@ function calcMining() {
 // Create mining order
 function createMiningOrder() {
     const amount = document.getElementById('miningAmount')?.value;
-    const isU = document.getElementById('miningModeU')?.classList.contains('bg-[#6366f1]');
+    const isU = document.getElementById('miningModeU')?.classList.contains('bg-[#fc5b23]');
     const mode = isU ? '💵 只用U' : '⚖️ U+币各半';
     showToast(`🚀 订单创建成功！${amount} USDT ${mode}`);
 }
@@ -83,14 +83,14 @@ function setTradeMode(mode) {
     const btnBuy = document.getElementById('btnBuy');
     
     if (mode === 'sell') {
-        btnSell?.classList.add('bg-gradient-to-r', 'from-[#6366f1]', 'to-[#818cf8]', 'text-white');
+        btnSell?.classList.add('bg-gradient-to-r', 'from-[#fc5b23]', 'to-[#ff8c42]', 'text-white');
         btnSell?.classList.remove('bg-[#252530]', 'text-[#a0a0b0]');
-        btnBuy?.classList.remove('bg-gradient-to-r', 'from-[#6366f1]', 'to-[#818cf8]', 'text-white');
+        btnBuy?.classList.remove('bg-gradient-to-r', 'from-[#fc5b23]', 'to-[#ff8c42]', 'text-white');
         btnBuy?.classList.add('bg-[#252530]', 'text-[#a0a0b0]');
     } else {
-        btnBuy?.classList.add('bg-gradient-to-r', 'from-[#6366f1]', 'to-[#818cf8]', 'text-white');
+        btnBuy?.classList.add('bg-gradient-to-r', 'from-[#fc5b23]', 'to-[#ff8c42]', 'text-white');
         btnBuy?.classList.remove('bg-[#252530]', 'text-[#a0a0b0]');
-        btnSell?.classList.remove('bg-gradient-to-r', 'from-[#6366f1]', 'to-[#818cf8]', 'text-white');
+        btnSell?.classList.remove('bg-gradient-to-r', 'from-[#fc5b23]', 'to-[#ff8c42]', 'text-white');
         btnSell?.classList.add('bg-[#252530]', 'text-[#a0a0b0]');
     }
     showToast(mode === 'sell' ? '切换到卖出模式' : '切换到买入模式');

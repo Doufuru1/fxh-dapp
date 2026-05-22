@@ -14,7 +14,7 @@
         <!-- Header -->
         <header class="sticky top-0 z-50 bg-[#12121a]/95 backdrop-blur-lg border-b border-white/5 px-4 py-3 flex items-center justify-between">
             <div class="flex items-center gap-2">
-                <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-[#6366f1] to-[#818cf8] flex items-center justify-center text-white font-bold text-sm">FX</div>
+                <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-[#fc5b23] to-[#ff8c42] flex items-center justify-center text-white font-bold text-sm">FX</div>
                 <span class="font-bold text-lg">FXH</span>
             </div>
             <div class="flex items-center gap-2">
@@ -48,24 +48,24 @@
                 <!-- System Health -->
                 <div class="card rounded-2xl p-4 border border-white/5">
                     <div class="flex items-center gap-2 mb-3">
-                        <span class="w-2 h-2 rounded-full bg-[#6366f1]"></span>
+                        <span class="w-2 h-2 rounded-full bg-[#fc5b23]"></span>
                         <h3 class="font-semibold">📊 系统健康程度</h3>
                     </div>
                     <div class="bg-[#252530] rounded-xl p-4 mb-3">
                         <div class="text-[#a0a0b0] text-sm mb-1">LP深度 (USDT)</div>
-                        <div class="text-[28px] font-bold text-[#6366f1]">7,056,418</div>
+                        <div class="text-[28px] font-bold text-[#fc5b23]">7,056,418</div>
                     </div>
                     <div class="grid grid-cols-3 gap-2 text-center">
                         <div class="bg-[#252530] rounded-lg p-2">
-                            <div class="text-[#6366f1] font-bold">12,847</div>
+                            <div class="text-[#fc5b23] font-bold">12,847</div>
                             <div class="text-[#707080] text-xs">矿工</div>
                         </div>
                         <div class="bg-[#252530] rounded-lg p-2">
-                            <div class="text-[#6366f1] font-bold">$3.2K</div>
+                            <div class="text-[#fc5b23] font-bold">$3.2K</div>
                             <div class="text-[#707080] text-xs">累计分红</div>
                         </div>
                         <div class="bg-[#252530] rounded-lg p-2">
-                            <div class="text-[#6366f1] font-bold">98.5%</div>
+                            <div class="text-[#fc5b23] font-bold">98.5%</div>
                             <div class="text-[#707080] text-xs">健康度</div>
                         </div>
                     </div>
@@ -74,17 +74,17 @@
                 <!-- Core Engines -->
                 <div class="card rounded-2xl p-4 border border-white/5">
                     <div class="flex items-center gap-2 mb-3">
-                        <span class="w-2 h-2 rounded-full bg-[#6366f1]"></span>
+                        <span class="w-2 h-2 rounded-full bg-[#fc5b23]"></span>
                         <h3 class="font-semibold">⚙️ 核心机制 Core Engines</h3>
                     </div>
                     <div class="space-y-2">
                         <div class="flex items-center justify-between bg-[#252530] rounded-xl p-3">
                             <span class="text-sm">LP深度驱动收益</span>
-                            <span class="text-[#6366f1] text-sm font-semibold">APR 28-156%</span>
+                            <span class="text-[#fc5b23] text-sm font-semibold">APR 28-156%</span>
                         </div>
                         <div class="flex items-center justify-between bg-[#252530] rounded-xl p-3">
                             <span class="text-sm">SRT 智能赎回节流</span>
-                            <span class="text-[#6366f1] text-sm font-semibold">7天阶梯释放</span>
+                            <span class="text-[#fc5b23] text-sm font-semibold">7天阶梯释放</span>
                         </div>
                     </div>
                 </div>
@@ -95,7 +95,7 @@
                 <div class="card rounded-2xl p-4 border border-white/5">
                     <h3 class="font-semibold mb-3">⚙️ 挖矿配置</h3>
                     <div class="flex gap-2 mb-4">
-                        <button id="miningModeU" class="mode-btn active flex-1 py-2 rounded-lg bg-[#6366f1] text-white text-sm font-medium" onclick="setMiningMode('u')">💵 只用U</button>
+                        <button id="miningModeU" class="mode-btn active flex-1 py-2 rounded-lg bg-[#fc5b23] text-white text-sm font-medium" onclick="setMiningMode('u')">💵 只用U</button>
                         <button id="miningModeHalf" class="mode-btn flex-1 py-2 rounded-lg bg-[#252530] text-[#a0a0b0] text-sm font-medium" onclick="setMiningMode('half')">⚖️ U+币各半</button>
                     </div>
                     <div class="space-y-3">
@@ -109,8 +109,8 @@
                         </div>
                     </div>
                     <div class="mt-4 p-3 bg-[#252530] rounded-xl space-y-2">
-                        <div class="flex justify-between text-sm"><span class="text-[#a0a0b0]">50% 买入 FXH</span><span id="buyAmount" class="text-[#6366f1] font-semibold">$0.00</span></div>
-                        <div class="flex justify-between text-sm"><span class="text-[#a0a0b0]">50% 添加 LP</span><span id="lpAmount" class="text-[#6366f1] font-semibold">$0.00</span></div>
+                        <div class="flex justify-between text-sm"><span class="text-[#a0a0b0]">50% 买入 FXH</span><span id="buyAmount" class="text-[#fc5b23] font-semibold">$0.00</span></div>
+                        <div class="flex justify-between text-sm"><span class="text-[#a0a0b0]">50% 添加 LP</span><span id="lpAmount" class="text-[#fc5b23] font-semibold">$0.00</span></div>
                     </div>
                     <button class="btn-primary w-full mt-4" onclick="createMiningOrder()">创建订单</button>
                 </div>
@@ -127,11 +127,11 @@
                             <div class="text-[#a0a0b0]">投入: <span class="text-white">$5,000</span></div>
                             <div class="text-[#a0a0b0]">模式: <span class="text-white">💵 U单币</span></div>
                             <div class="text-[#a0a0b0]">锁仓: <span class="text-white">28天</span></div>
-                            <div class="text-[#a0a0b0]">收益: <span class="text-[#6366f1]">+$210.50</span></div>
+                            <div class="text-[#a0a0b0]">收益: <span class="text-[#fc5b23]">+$210.50</span></div>
                         </div>
                         <div class="mt-2">
                             <div class="flex justify-between text-xs text-[#a0a0b0] mb-1"><span>12 / 28 天</span><span>42%</span></div>
-                            <div class="h-2 bg-[#1a1a24] rounded-full overflow-hidden"><div class="h-full bg-gradient-to-r from-[#6366f1] to-[#818cf8] rounded-full" style="width: 42%"></div></div>
+                            <div class="h-2 bg-[#1a1a24] rounded-full overflow-hidden"><div class="h-full bg-gradient-to-r from-[#fc5b23] to-[#ff8c42] rounded-full" style="width: 42%"></div></div>
                         </div>
                     </div>
                 </div>
@@ -140,7 +140,7 @@
             <!-- Trade Page -->
             <div id="page-trade" class="page hidden space-y-4">
                 <!-- Price Card -->
-                <div class="bg-gradient-to-br from-[#6366f1] to-[#818cf8] rounded-2xl p-5 text-center">
+                <div class="bg-gradient-to-br from-[#fc5b23] to-[#ff8c42] rounded-2xl p-5 text-center">
                     <div class="text-white/80 text-sm mb-1">当前价格</div>
                     <div class="text-3xl font-bold text-white">0.0237 <span class="text-lg font-normal">USDT</span></div>
                 </div>
@@ -148,22 +148,22 @@
                 <!-- Trade Panel -->
                 <div class="card rounded-2xl p-4 border border-white/5">
                     <div class="flex gap-2 mb-4">
-                        <button id="btnSell" class="trade-toggle-btn active flex-1 py-2 rounded-lg bg-gradient-to-r from-[#6366f1] to-[#818cf8] text-white font-medium" onclick="setTradeMode('sell')">卖出</button>
+                        <button id="btnSell" class="trade-toggle-btn active flex-1 py-2 rounded-lg bg-gradient-to-r from-[#fc5b23] to-[#ff8c42] text-white font-medium" onclick="setTradeMode('sell')">卖出</button>
                         <button id="btnBuy" class="trade-toggle-btn flex-1 py-2 rounded-lg bg-[#252530] text-[#a0a0b0] font-medium" onclick="setTradeMode('buy')">买入</button>
                     </div>
                     <div class="mb-4">
                         <label class="text-[#a0a0b0] text-sm mb-1 block">输入金额 (FXH)</label>
                         <div class="flex items-center bg-[#252530] border border-white/10 rounded-xl px-4 py-3">
                             <input type="number" class="bg-transparent flex-1 text-white text-lg" placeholder="0.00">
-                            <span class="text-[#6366f1] ml-2">🚀</span>
+                            <span class="text-[#fc5b23] ml-2">🚀</span>
                         </div>
                     </div>
                     <div class="space-y-2 text-sm">
                         <div class="flex justify-between"><span class="text-[#a0a0b0]">余额</span><span>0 FXH</span></div>
                         <div class="flex justify-between"><span class="text-[#a0a0b0]">本金</span><span>0 USDT</span></div>
-                        <div class="flex justify-between"><span class="text-[#a0a0b0]">预估到手 (USDT)</span><span class="text-[#6366f1] font-semibold">0</span></div>
+                        <div class="flex justify-between"><span class="text-[#a0a0b0]">预估到手 (USDT)</span><span class="text-[#fc5b23] font-semibold">0</span></div>
                         <div class="flex justify-between"><span class="text-[#a0a0b0]">最低接收 (USDT)</span><span>0</span></div>
-                        <div class="flex justify-between"><span class="text-[#a0a0b0]">滑点 (Slippage)</span><span class="text-[#6366f1] font-semibold">4%</span></div>
+                        <div class="flex justify-between"><span class="text-[#a0a0b0]">滑点 (Slippage)</span><span class="text-[#fc5b23] font-semibold">4%</span></div>
                     </div>
                     <button class="btn-primary w-full mt-4">确认交易</button>
                 </div>
@@ -175,19 +175,19 @@
                 <div class="card rounded-2xl p-4 border border-white/5">
                     <div class="flex items-center justify-between mb-3">
                         <h3 class="font-semibold">👑 节点权益</h3>
-                        <span class="px-2 py-1 rounded-full bg-[#6366f1]/20 text-[#6366f1] text-xs">创世节点</span>
+                        <span class="px-2 py-1 rounded-full bg-[#fc5b23]/20 text-[#fc5b23] text-xs">创世节点</span>
                     </div>
                     <div class="grid grid-cols-3 gap-2 text-center">
                         <div class="bg-[#252530] rounded-lg p-2">
-                            <div class="text-[#6366f1] font-bold">0.4-1%</div>
+                            <div class="text-[#fc5b23] font-bold">0.4-1%</div>
                             <div class="text-[#707080] text-xs">每日静态</div>
                         </div>
                         <div class="bg-[#252530] rounded-lg p-2">
-                            <div class="text-[#6366f1] font-bold">1%</div>
+                            <div class="text-[#fc5b23] font-bold">1%</div>
                             <div class="text-[#707080] text-xs">手续费</div>
                         </div>
                         <div class="bg-[#252530] rounded-lg p-2">
-                            <div class="text-[#6366f1] font-bold">10%</div>
+                            <div class="text-[#fc5b23] font-bold">10%</div>
                             <div class="text-[#707080] text-xs">盈利税</div>
                         </div>
                     </div>
@@ -197,12 +197,12 @@
                 <div class="grid grid-cols-2 gap-3">
                     <div class="card rounded-2xl p-4 border border-white/5">
                         <div class="text-[#a0a0b0] text-sm mb-1">🥇 分红收益</div>
-                        <div class="text-xl font-bold text-[#6366f1] mb-2">234.18 USDT</div>
+                        <div class="text-xl font-bold text-[#fc5b23] mb-2">234.18 USDT</div>
                         <button class="btn-primary w-full text-sm py-2">领取</button>
                     </div>
                     <div class="card rounded-2xl p-4 border border-white/5">
                         <div class="text-[#a0a0b0] text-sm mb-1">📊 静态收益</div>
-                        <div class="text-xl font-bold text-[#6366f1] mb-2">98.64 USDT</div>
+                        <div class="text-xl font-bold text-[#fc5b23] mb-2">98.64 USDT</div>
                         <button class="w-full py-2 rounded-xl bg-[#252530] text-[#707080] text-sm cursor-not-allowed">领取</button>
                     </div>
                 </div>
@@ -212,11 +212,11 @@
                     <div class="grid grid-cols-2 gap-3">
                         <div class="text-center">
                             <div class="text-[#a0a0b0] text-sm">个人持有</div>
-                            <div class="text-lg font-bold text-[#6366f1]">5,000 USDT</div>
+                            <div class="text-lg font-bold text-[#fc5b23]">5,000 USDT</div>
                         </div>
                         <div class="text-center">
                             <div class="text-[#a0a0b0] text-sm">旗下节点</div>
-                            <div class="text-lg font-bold text-[#6366f1]">128 人</div>
+                            <div class="text-lg font-bold text-[#fc5b23]">128 人</div>
                         </div>
                     </div>
                 </div>
@@ -225,7 +225,7 @@
             <!-- Profile Page -->
             <div id="page-profile" class="page hidden space-y-4">
                 <!-- User Header -->
-                <div class="bg-gradient-to-br from-[#1e3a8a] to-[#312e81] rounded-2xl p-5 border border-white/10">
+                <div class="bg-gradient-to-br from-[#7c2d12] to-[#9a3412] rounded-2xl p-5 border border-white/10">
                     <div class="flex items-center justify-between mb-4">
                         <div class="flex items-center gap-2">
                             <div class="w-8 h-8 rounded-lg bg-white/20 flex items-center justify-center">
@@ -257,15 +257,15 @@
                             <svg viewBox="0 0 100 100" class="w-full h-full">
                                 <defs>
                                     <linearGradient id="giftGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                        <stop offset="0%" style="stop-color:#6366f1"/>
-                                        <stop offset="100%" style="stop-color:#818cf8"/>
+                                        <stop offset="0%" style="stop-color:#fc5b23"/>
+                                        <stop offset="100%" style="stop-color:#ff8c42"/>
                                     </linearGradient>
                                 </defs>
                                 <rect x="20" y="30" width="60" height="50" rx="5" fill="url(#giftGrad)" opacity="0.8"/>
                                 <rect x="45" y="30" width="10" height="50" fill="rgba(255,255,255,0.3)"/>
                                 <rect x="20" y="45" width="60" height="8" fill="rgba(255,255,255,0.3)"/>
-                                <path d="M35 30 Q50 10 65 30" stroke="#818cf8" stroke-width="3" fill="none"/>
-                                <circle cx="50" cy="18" r="5" fill="#6366f1"/>
+                                <path d="M35 30 Q50 10 65 30" stroke="#ff8c42" stroke-width="3" fill="none"/>
+                                <circle cx="50" cy="18" r="5" fill="#fc5b23"/>
                             </svg>
                         </div>
                     </div>
@@ -273,13 +273,13 @@
 
                 <!-- Action Buttons -->
                 <div class="grid grid-cols-2 gap-3">
-                    <button class="py-3 px-4 rounded-xl bg-gradient-to-r from-[#6366f1] to-[#818cf8] text-white font-semibold" onclick="showToast('领取成功')">领取</button>
+                    <button class="py-3 px-4 rounded-xl bg-gradient-to-r from-[#fc5b23] to-[#ff8c42] text-white font-semibold" onclick="showToast('领取成功')">领取</button>
                     <button class="py-3 px-4 rounded-xl bg-[#252530] border border-white/10 text-white font-semibold" onclick="showToast('复投功能开发中')">复投</button>
                 </div>
 
                 <!-- Feature Cards -->
                 <div class="grid grid-cols-2 gap-3">
-                    <div class="bg-gradient-to-br from-[#1e40af] to-[#1e3a8a] rounded-2xl p-4 border border-white/10" onclick="switchTab('mining')">
+                    <div class="bg-gradient-to-br from-[#c2410c] to-[#ea580c] rounded-2xl p-4 border border-white/10" onclick="switchTab('mining')">
                         <div class="font-semibold text-white mb-1">我的质押订单</div>
                         <div class="text-white/70 text-xs mb-3">查看订单 / 自动续投 / 赎回</div>
                         <button class="px-3 py-1.5 rounded-lg bg-white/20 text-white text-xs font-medium">Stake</button>
@@ -287,7 +287,7 @@
                             <svg class="w-12 h-12 text-white/30" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                         </div>
                     </div>
-                    <div class="bg-gradient-to-br from-[#059669] to-[#047857] rounded-2xl p-4 border border-white/10" onclick="switchTab('trade')">
+                    <div class="bg-gradient-to-br from-[#15803d] to-[#166534] rounded-2xl p-4 border border-white/10" onclick="switchTab('trade')">
                         <div class="font-semibold text-white mb-1">交易 FXH</div>
                         <div class="text-white/70 text-xs mb-3">DAPP快速兑换</div>
                         <button class="px-3 py-1.5 rounded-lg bg-white/20 text-white text-xs font-medium">Trade</button>
@@ -301,10 +301,10 @@
                 <div class="card rounded-2xl p-4 border border-white/5">
                     <div class="flex items-center justify-between mb-3">
                         <span class="font-semibold">邀请好友</span>
-                        <button class="px-4 py-1.5 rounded-full bg-[#6366f1]/20 text-[#6366f1] text-sm font-medium" onclick="showToast('邀请链接已复制')">Invite</button>
+                        <button class="px-4 py-1.5 rounded-full bg-[#fc5b23]/20 text-[#fc5b23] text-sm font-medium" onclick="showToast('邀请链接已复制')">Invite</button>
                     </div>
                     <div class="bg-gradient-to-br from-[#1a1a24] to-[#252530] rounded-xl p-4 flex items-center justify-center">
-                        <svg class="w-20 h-20 text-[#6366f1]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+                        <svg class="w-20 h-20 text-[#fc5b23]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
                     </div>
                 </div>
 
@@ -333,7 +333,7 @@
         <!-- Tab Bar -->
         <nav class="fixed bottom-0 left-0 right-0 bg-[#12121a]/95 backdrop-blur-lg border-t border-white/5 px-2 py-2 z-50">
             <div class="max-w-md mx-auto flex justify-around">
-                <button class="tab-item active flex flex-col items-center gap-1 py-1 px-3 rounded-xl text-[#6366f1]" onclick="switchTab('home', this)">
+                <button class="tab-item active flex flex-col items-center gap-1 py-1 px-3 rounded-xl text-[#fc5b23]" onclick="switchTab('home', this)">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
                     <span class="text-xs">首页</span>
                 </button>
@@ -357,7 +357,7 @@
         </nav>
 
         <!-- Toast -->
-        <div id="toast" class="fixed top-20 left-1/2 -translate-x-1/2 bg-[#1a1a24] border border-[#6366f1]/30 text-white px-4 py-3 rounded-xl shadow-lg opacity-0 pointer-events-none transition-opacity duration-300 z-50">
+        <div id="toast" class="fixed top-20 left-1/2 -translate-x-1/2 bg-[#1a1a24] border border-[#fc5b23]/30 text-white px-4 py-3 rounded-xl shadow-lg opacity-0 pointer-events-none transition-opacity duration-300 z-50">
             <span id="toastMsg"></span>
         </div>
     </div>
