@@ -143,11 +143,11 @@
                         <button id="miningModeHalf" class="mode-btn flex-1 py-2 rounded-lg bg-[#252530] text-[#707080] text-sm font-medium" onclick="setMiningMode('half')">⚖️ FXH+USDT</button>
                     </div>
                     <div class="space-y-3">
-                        <div id="miningUSDTInput">
+                        <div id="miningUSDTInput" class="hidden">
                             <label class="text-[#707080] text-sm mb-1 block">投入金额 (USDT)</label>
                             <input type="number" id="miningAmount" class="w-full bg-[#252530] border border-white/10 rounded-xl px-4 py-3 text-white" placeholder="0.00" oninput="calcMining()">
                         </div>
-                        <div id="miningHalfInput" class="hidden space-y-3">
+                        <div id="miningHalfInput" class="space-y-3">
                             <div>
                                 <label class="text-[#707080] text-sm mb-1 block">投入 FXH</label>
                                 <input type="number" id="amountHalfFXH" class="w-full bg-[#252530] border border-white/10 rounded-xl px-4 py-3 text-white" placeholder="0.00" oninput="calcHalf()">
@@ -157,10 +157,6 @@
                                 <div class="flex justify-between text-sm mt-1"><span class="text-[#707080]">需要配对 USDT</span><span id="needUSDT" class="text-white font-semibold">$0.00</span></div>
                             </div>
                         </div>
-                    </div>
-                    <div class="mt-4 p-3 bg-[#252530] rounded-xl space-y-2">
-                        <div class="flex justify-between text-sm"><span class="text-[#707080]">50% 买入 FXH</span><span id="buyAmount" class="text-[#fc5b23] font-semibold">$0.00</span></div>
-                        <div class="flex justify-between text-sm"><span class="text-[#707080]">50% 添加 LP</span><span id="lpAmount" class="text-[#fc5b23] font-semibold">$0.00</span></div>
                     </div>
                     <button class="btn-primary w-full mt-4" onclick="createMiningOrder()">创建订单</button>
                 </div>
