@@ -144,7 +144,10 @@
                     </div>
                     <div class="space-y-3">
                         <div id="miningUSDTInput" class="hidden">
-                            <label class="text-[#707080] text-sm mb-1 block">投入金额 (USDT)</label>
+                            <div class="flex justify-between items-center mb-1">
+                                <label class="text-[#707080] text-sm">投入金额 (USDT)</label>
+                                <span class="text-[#707080] text-xs">余额: <span class="text-white">5,240.50 USDT</span></span>
+                            </div>
                             <input type="number" id="miningAmount" class="w-full bg-[#252530] border border-white/10 rounded-xl px-4 py-3 text-white" placeholder="0.00" oninput="calcMining()">
                         </div>
                         <div id="miningHalfInput" class="space-y-3">
