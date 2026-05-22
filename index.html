@@ -31,60 +31,78 @@
             
             <!-- Home Page -->
             <div id="page-home" class="page active space-y-4">
-                <!-- Balance Card -->
-                <div class="card bg-gradient-to-br from-[#1a1a24] to-[#22222e] rounded-2xl p-5 border border-white/5">
-                    <div class="text-[#707080] text-sm mb-1">总质押价值</div>
-                    <div class="text-3xl font-bold text-white mb-2">$24,847.32</div>
-                    <div class="flex items-center gap-1 text-emerald-400 text-sm mb-4">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
-                        +$1,247.50 (5.3%)
-                    </div>
-                    <div class="flex gap-3">
-                        <button class="btn-primary flex-1" onclick="switchTab('mining')">质押挖矿</button>
-                        <button class="flex-1 py-3 px-4 rounded-xl bg-[#252530] border border-white/5 font-semibold text-[#fc5b23]" onclick="switchTab('trade')">交易</button>
-                    </div>
-                </div>
-
                 <!-- System Health -->
                 <div class="card rounded-2xl p-4 border border-white/5">
-                    <div class="flex items-center gap-2 mb-3">
+                    <div class="flex items-center gap-2 mb-4">
                         <span class="w-2 h-2 rounded-full bg-[#fc5b23]"></span>
                         <h3 class="font-semibold">📊 系统健康程度</h3>
                     </div>
-                    <div class="bg-[#252530] rounded-xl p-4 mb-3">
-                        <div class="text-[#707080] text-sm mb-1">LP深度 (USDT)</div>
-                        <div class="text-[28px] font-bold text-[#fc5b23]">7,056,418</div>
-                    </div>
-                    <div class="grid grid-cols-3 gap-2 text-center">
-                        <div class="bg-[#252530] rounded-lg p-2">
-                            <div class="text-[#fc5b23] font-bold">12,847</div>
-                            <div class="text-[#707080] text-xs">矿工</div>
+                    <div class="grid grid-cols-2 gap-3">
+                        <div class="bg-[#252530] rounded-xl p-3">
+                            <div class="text-[#707080] text-xs mb-1">LP深度 (USDT)</div>
+                            <div class="text-lg font-bold text-[#fc5b23]">7,186,373</div>
+                            <div class="text-[#707080] text-xs mt-1">承载基准：决定运转节奏</div>
                         </div>
-                        <div class="bg-[#252530] rounded-lg p-2">
-                            <div class="text-[#fc5b23] font-bold">$3.2K</div>
-                            <div class="text-[#707080] text-xs">累计分红</div>
+                        <div class="bg-[#252530] rounded-xl p-3">
+                            <div class="text-[#707080] text-xs mb-1">RPR (24h赎回/LP)</div>
+                            <div class="text-lg font-bold text-[#fc5b23]">0.72%</div>
+                            <div class="text-[#707080] text-xs mt-1">压力指标：驱动SRT档位</div>
                         </div>
-                        <div class="bg-[#252530] rounded-lg p-2">
-                            <div class="text-[#fc5b23] font-bold">98.5%</div>
-                            <div class="text-[#707080] text-xs">健康度</div>
+                        <div class="bg-[#252530] rounded-xl p-3">
+                            <div class="text-[#707080] text-xs mb-1">SRT 档位</div>
+                            <div class="text-lg font-bold text-emerald-400">极安全</div>
+                            <div class="text-[#707080] text-xs mt-1">到账比例随档位变化</div>
+                        </div>
+                        <div class="bg-[#252530] rounded-xl p-3">
+                            <div class="text-[#707080] text-xs mb-1">当前静态日化</div>
+                            <div class="text-lg font-bold text-[#fc5b23]">0.6%</div>
+                            <div class="text-[#707080] text-xs mt-1">LP档位表自动匹配</div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Core Engines -->
+                <!-- Core Modules -->
                 <div class="card rounded-2xl p-4 border border-white/5">
-                    <div class="flex items-center gap-2 mb-3">
+                    <div class="flex items-center gap-2 mb-4">
                         <span class="w-2 h-2 rounded-full bg-[#fc5b23]"></span>
-                        <h3 class="font-semibold">⚙️ 核心机制 Core Engines</h3>
+                        <h3 class="font-semibold">⚙️ 核心模块</h3>
                     </div>
-                    <div class="space-y-2">
-                        <div class="flex items-center justify-between bg-[#252530] rounded-xl p-3">
-                            <span class="text-sm">LP深度驱动收益</span>
-                            <span class="text-[#fc5b23] text-sm font-semibold">APR 28-156%</span>
+                    <div class="space-y-3">
+                        <div class="bg-[#252530] rounded-xl p-4">
+                            <div class="flex items-center gap-2 mb-2">
+                                <div class="w-8 h-8 rounded-lg bg-[#fc5b23]/20 flex items-center justify-center">
+                                    <svg class="w-4 h-4 text-[#fc5b23]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+                                </div>
+                                <span class="font-semibold">深度定标</span>
+                            </div>
+                            <div class="text-[#707080] text-sm">以LP深度为承载指数，承载越强则开放节奏越舒展，承载趋弱则自动收敛</div>
                         </div>
-                        <div class="flex items-center justify-between bg-[#252530] rounded-xl p-3">
-                            <span class="text-sm">SRT 智能赎回节流</span>
-                            <span class="text-[#fc5b23] text-sm font-semibold">7天阶梯释放</span>
+                        <div class="bg-[#252530] rounded-xl p-4">
+                            <div class="flex items-center gap-2 mb-2">
+                                <div class="w-8 h-8 rounded-lg bg-[#fc5b23]/20 flex items-center justify-center">
+                                    <svg class="w-4 h-4 text-[#fc5b23]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+                                </div>
+                                <span class="font-semibold">回流飞轮</span>
+                            </div>
+                            <div class="text-[#707080] text-sm">增长先回流强化结构，再释放更多空间；把增长变成"结构资产"</div>
+                        </div>
+                        <div class="bg-[#252530] rounded-xl p-4">
+                            <div class="flex items-center gap-2 mb-2">
+                                <div class="w-8 h-8 rounded-lg bg-[#fc5b23]/20 flex items-center justify-center">
+                                    <svg class="w-4 h-4 text-[#fc5b23]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                </div>
+                                <span class="font-semibold">压力缓冲</span>
+                            </div>
+                            <div class="text-[#707080] text-sm">赎回压力上升时自动进入档位，降低单位时间净流出冲击；稳定优先</div>
+                        </div>
+                        <div class="bg-[#252530] rounded-xl p-4">
+                            <div class="flex items-center gap-2 mb-2">
+                                <div class="w-8 h-8 rounded-lg bg-[#fc5b23]/20 flex items-center justify-center">
+                                    <svg class="w-4 h-4 text-[#fc5b23]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                </div>
+                                <span class="font-semibold">长期底座</span>
+                            </div>
+                            <div class="text-[#707080] text-sm">20%动态收益沉淀为ECV贡献值，形成长期生态权益参考；金库做长期可持续性</div>
                         </div>
                     </div>
                 </div>
