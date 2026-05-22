@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>FXH 核心引擎蓝图</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="dist/style.css">
+</head>
+<body class="bg-[#12121a] text-[#f0f0f5] font-sans antialiased">
+    <div id="app" class="max-w-md mx-auto min-h-screen pb-20">
+        
+        <!-- Header -->
+        <header class="sticky top-0 z-50 bg-[#12121a]/95 backdrop-blur-lg border-b border-white/5 px-4 py-3 flex items-center justify-between">
+            <button onclick="history.back()" class="flex items-center gap-2 text-[#fc5b23]">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+                <span>返回</span>
+            </button>
+            <span class="font-bold">FXH 核心引擎蓝图</span>
+            <div class="w-8"></div>
+        </header>
+
+        <main class="px-4 pt-4 space-y-6">
+            <!-- Hero -->
+            <div class="bg-gradient-to-br from-[#7c2d12] to-[#9a3412] rounded-2xl p-5 border border-white/10">
+                <div class="text-center mb-3">
+                    <div class="text-white/80 text-sm mb-1">FXH 核心引擎蓝图</div>
+                    <div class="text-white font-bold text-lg">Depth Engine · Growth Loop · Stability Buffer</div>
+                </div>
+                <div class="flex justify-center gap-2 text-xs text-white/70">
+                    <span>On-chain</span>
+                    <span>·</span>
+                    <span>Verifiable</span>
+                    <span>·</span>
+                    <span>Sustainable</span>
+                </div>
+                <div class="text-center text-white/60 text-xs mt-2">Depth-driven, Stability-first</div>
+            </div>
+
+            <!-- Tags -->
+            <div class="flex justify-center gap-2 text-xs text-[#707080]">
+                <span>FXH</span>
+                <span>|</span>
+                <span>透明可查</span>
+                <span>|</span>
+                <span>规则公开</span>
+                <span>|</span>
+                <span>长期可持续</span>
+            </div>
+
+            <!-- 01 Core Engines -->
+            <div class="card rounded-2xl p-4 border border-white/5">
+                <div class="flex items-center gap-2 mb-4">
+                    <span class="text-[#fc5b23] font-bold">01</span>
+                    <h3 class="font-semibold">核心机制 Core Engines</h3>
+                </div>
+                <div class="space-y-4">
+                    <div class="bg-[#252530] rounded-xl p-4">
+                        <div class="font-semibold mb-2">Depth Index Engine（深度定标引擎）</div>
+                        <div class="text-[#707080] text-sm">把 LP 深度变成系统的"承载指数"：深度越稳，运行越从容；深度波动，节奏自动收敛，让增长始终服从真实承载力。</div>
+                    </div>
+                    <div class="bg-[#252530] rounded-xl p-4">
+                        <div class="font-semibold mb-2">Compounding Flywheel（复利飞轮）</div>
+                        <div class="text-[#707080] text-sm">把增长做成闭环：收益优先回流，持续强化深度与韧性，让系统不是靠情绪拉动，而是靠结构自我增强。</div>
+                    </div>
+                    <div class="bg-[#252530] rounded-xl p-4">
+                        <div class="font-semibold mb-2">Redemption Firewall（赎回防火墙）</div>
+                        <div class="text-[#707080] text-sm">压力上升自动限流，降低单位时间净流出冲击；极端场景进入防御态，优先守住稳定与连续运行。</div>
+                    </div>
+                    <div class="bg-[#252530] rounded-xl p-4">
+                        <div class="font-semibold mb-2">Value Sink & Burn（价值回收与销毁）</div>
+                        <div class="text-[#707080] text-sm">盈利环节完成价值回收与固定比例销毁：使用越真实、回收越持续，长期强化供需结构与稀缺性。</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 02 Tokenomics -->
+            <div class="card rounded-2xl p-4 border border-white/5">
+                <div class="flex items-center gap-2 mb-4">
+                    <span class="text-[#fc5b23] font-bold">02</span>
+                    <h3 class="font-semibold">代币经济模型 Tokenomics</h3>
+                </div>
+                <div class="bg-[#252530] rounded-xl p-4">
+                    <div class="font-semibold mb-3">2.1 基础参数</div>
+                    <div class="space-y-2 text-sm">
+                        <div class="flex justify-between"><span class="text-[#707080]">代币名称</span><span>FXH Token</span></div>
+                        <div class="flex justify-between"><span class="text-[#707080]">总发行量</span><span>1.25亿（固定）</span></div>
+                        <div class="flex justify-between"><span class="text-[#707080]">空投奖励</span><span>500万</span></div>
+                        <div class="flex justify-between"><span class="text-[#707080]">市值管理</span><span>1500万</span></div>
+                        <div class="flex justify-between"><span class="text-[#707080]">国库储备</span><span>3000万</span></div>
+                        <div class="flex justify-between"><span class="text-[#707080]">初始LP代币</span><span>2000万</span></div>
+                        <div class="flex justify-between"><span class="text-[#707080]">储备LP池</span><span>5500万</span></div>
+                    </div>
+                    <div class="mt-3 p-3 bg-[#1a1a24] rounded-lg text-sm text-[#707080]">
+                        二级买入触发：LP 底池突破 500万 USDT 后，触发二级可买入。LP 深度与 TWAP 以链上数据为准。
+                    </div>
+                </div>
+            </div>
+
+            <!-- 03 Mining -->
+            <div class="card rounded-2xl p-4 border border-white/5">
+                <div class="flex items-center gap-2 mb-4">
+                    <span class="text-[#fc5b23] font-bold">03</span>
+                    <h3 class="font-semibold">算力挖矿 Mining with computing power</h3>
+                </div>
+                <div class="space-y-4">
+                    <div class="bg-[#252530] rounded-xl p-4">
+                        <div class="font-semibold mb-3">3.1 基础规则</div>
+                        <div class="space-y-2 text-sm">
+                            <div class="flex justify-between"><span class="text-[#707080]">起投门槛</span><span>100U（USDT）</span></div>
+                            <div class="flex justify-between"><span class="text-[#707080]">单笔范围</span><span>100-10000 USDT</span></div>
+                            <div class="flex justify-between"><span class="text-[#707080]">有效用户</span><span>>100U</span></div>
+                            <div class="flex justify-between"><span class="text-[#707080]">质押结构</span><span>50% 买入 + 50% 加 LP</span></div>
+                            <div class="flex justify-between"><span class="text-[#707080]">质押期</span><span>28天</span></div>
+                        </div>
+                    </div>
+                    <div class="bg-[#252530] rounded-xl p-4">
+                        <div class="font-semibold mb-3">3.2 LP 深度驱动收益 & TurboBoost 参数表</div>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-sm">
+                                <thead>
+                                    <tr class="text-[#707080] border-b border-white/10">
+                                        <th class="text-left py-2">LP 深度</th>
+                                        <th class="text-right py-2">日化</th>
+                                        <th class="text-right py-2">复投</th>
+                                        <th class="text-right py-2">赎回</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="text-sm">
+                                    <tr class="border-b border-white/5"><td class="py-2">0-500万</td><td class="text-right">0.40%</td><td class="text-right">70%</td><td class="text-right">30%</td></tr>
+                                    <tr class="border-b border-white/5"><td class="py-2">500-1000万</td><td class="text-right">0.60%</td><td class="text-right">65%</td><td class="text-right">35%</td></tr>
+                                    <tr class="border-b border-white/5"><td class="py-2">1000-1500万</td><td class="text-right">0.70%</td><td class="text-right">60%</td><td class="text-right">40%</td></tr>
+                                    <tr class="border-b border-white/5"><td class="py-2">1500-2000万</td><td class="text-right">0.80%</td><td class="text-right">55%</td><td class="text-right">45%</td></tr>
+                                    <tr class="border-b border-white/5"><td class="py-2">2000-2500万</td><td class="text-right">0.90%</td><td class="text-right">45%</td><td class="text-right">55%</td></tr>
+                                    <tr class="border-b border-white/5"><td class="py-2">2500-3000万</td><td class="text-right">0.95%</td><td class="text-right">40%</td><td class="text-right">60%</td></tr>
+                                    <tr><td class="py-2">>3000万</td><td class="text-right">1.00%</td><td class="text-right">30%</td><td class="text-right">70%</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 04 SRT -->
+            <div class="card rounded-2xl p-4 border border-white/5">
+                <div class="flex items-center gap-2 mb-4">
+                    <span class="text-[#fc5b23] font-bold">04</span>
+                    <h3 class="font-semibold">SRT 智能赎回节流 Smart Redemption Throttle</h3>
+                </div>
+                <div class="space-y-4">
+                    <div class="bg-[#252530] rounded-xl p-4">
+                        <div class="font-semibold mb-2">4.1 指标定义（RPR）</div>
+                        <div class="text-[#707080] text-sm">RPR = 过去 24 小时实际赎回金额 ÷ LP 底池（TWAP）</div>
+                    </div>
+                    <div class="bg-[#252530] rounded-xl p-4">
+                        <div class="font-semibold mb-3">4.2 SRT 参数表（可领取到账比例）</div>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-sm">
+                                <thead>
+                                    <tr class="text-[#707080] border-b border-white/10">
+                                        <th class="text-left py-2">24h 赎回/LP</th>
+                                        <th class="text-center py-2">状态</th>
+                                        <th class="text-right py-2">到账比例</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="text-sm">
+                                    <tr class="border-b border-white/5"><td class="py-2">&lt;2%</td><td class="text-center text-emerald-400">极安全</td><td class="text-right">100%</td></tr>
+                                    <tr class="border-b border-white/5"><td class="py-2">2%-4%</td><td class="text-center text-yellow-400">轻微波动</td><td class="text-right">90%</td></tr>
+                                    <tr class="border-b border-white/5"><td class="py-2">4%-6%</td><td class="text-center text-orange-400">预警</td><td class="text-right">80%</td></tr>
+                                    <tr class="border-b border-white/5"><td class="py-2">6%-8%</td><td class="text-center text-orange-500">压力上升</td><td class="text-right">70%</td></tr>
+                                    <tr class="border-b border-white/5"><td class="py-2">8%-10%</td><td class="text-center text-red-400">保护区</td><td class="text-right">50%</td></tr>
+                                    <tr><td class="py-2">&gt;10%</td><td class="text-center text-red-500">极端防御</td><td class="text-right">30%（封底）</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="mt-3 text-[#707080] text-xs">SRT 在赎回压力上升时自动节流净流出。稳定优先：先保护系统运行，再逐步恢复流动。</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 05 Team Reward -->
+            <div class="card rounded-2xl p-4 border border-white/5">
+                <div class="flex items-center gap-2 mb-4">
+                    <span class="text-[#fc5b23] font-bold">05</span>
+                    <h3 class="font-semibold">团队奖励 Team Reward</h3>
+                </div>
+                <div class="bg-[#252530] rounded-xl p-4 space-y-3">
+                    <div class="text-sm text-[#707080]">有效用户定义：投资 >100U 方计入有效。</div>
+                    <div class="space-y-2 text-sm">
+                        <div class="flex justify-between"><span class="text-[#707080]">普通会员</span><span>一代推荐算力收益的 10%</span></div>
+                        <div class="flex justify-between"><span class="text-[#707080]">工作室</span><span>团队算力收益的 5%</span></div>
+                        <div class="flex justify-between"><span class="text-[#707080]">排头兵</span><span>团队算力收益的 2%</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 06 Fees -->
+            <div class="card rounded-2xl p-4 border border-white/5">
+                <div class="flex items-center gap-2 mb-4">
+                    <span class="text-[#fc5b23] font-bold">06</span>
+                    <h3 class="font-semibold">手续费与盈利税 Transaction Fees and Capital Gains Tax</h3>
+                </div>
+                <div class="space-y-4">
+                    <div class="bg-[#252530] rounded-xl p-4">
+                        <div class="font-semibold mb-2">6.1 二级买卖税 3.5%</div>
+                        <div class="space-y-1 text-sm">
+                            <div class="flex justify-between"><span class="text-[#707080]">运营</span><span>1%</span></div>
+                            <div class="flex justify-between"><span class="text-[#707080]">节点</span><span>1%</span></div>
+                            <div class="flex justify-between"><span class="text-[#707080]">社区</span><span>1.5%</span></div>
+                        </div>
+                    </div>
+                    <div class="bg-[#252530] rounded-xl p-4">
+                        <div class="font-semibold mb-2">6.2 盈利税 25%</div>
+                        <div class="space-y-1 text-sm">
+                            <div class="flex justify-between"><span class="text-[#707080]">运营</span><span>5%</span></div>
+                            <div class="flex justify-between"><span class="text-[#707080]">节点</span><span>10%</span></div>
+                            <div class="flex justify-between"><span class="text-[#707080]">LP 回流</span><span>10%</span></div>
+                        </div>
+                    </div>
+                    <div class="bg-[#252530] rounded-xl p-4">
+                        <div class="font-semibold mb-2">6.3 提币手续费 3%</div>
+                        <div class="space-y-1 text-sm">
+                            <div class="flex justify-between"><span class="text-[#707080]">运营</span><span>1.5%</span></div>
+                            <div class="flex justify-between"><span class="text-[#707080]">社区</span><span>1.5%</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 07 Genesis Node -->
+            <div class="card rounded-2xl p-4 border border-white/5">
+                <div class="flex items-center gap-2 mb-4">
+                    <span class="text-[#fc5b23] font-bold">07</span>
+                    <h3 class="font-semibold">创世节点 Genesis Node</h3>
+                </div>
+                <div class="space-y-4">
+                    <div class="bg-[#252530] rounded-xl p-4">
+                        <div class="font-semibold mb-3">7.1 基础参数</div>
+                        <div class="space-y-2 text-sm">
+                            <div class="flex justify-between"><span class="text-[#707080]">节点总量</span><span>4000个</span></div>
+                            <div class="flex justify-between"><span class="text-[#707080]">NFT卡牌质押（20）</span><span>1000个</span></div>
+                            <div class="flex justify-between"><span class="text-[#707080]">ENG合成（2000）</span><span>3000个</span></div>
+                            <div class="flex justify-between"><span class="text-[#707080]">单地址</span><span>上限1个</span></div>
+                        </div>
+                    </div>
+                    <div class="bg-[#252530] rounded-xl p-4">
+                        <div class="font-semibold mb-2">7.2 节点收益来源</div>
+                        <div class="space-y-2 text-sm">
+                            <div class="flex justify-between"><span class="text-[#707080]">投资理财头寸订单</span></div>
+                            <div class="flex justify-between"><span class="text-[#707080]">盈利税分配</span><span>10%</span></div>
+                            <div class="flex justify-between"><span class="text-[#707080]">二级买卖手续费</span><span>1%</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
