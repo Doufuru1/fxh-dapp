@@ -224,32 +224,93 @@
 
             <!-- Profile Page -->
             <div id="page-profile" class="page hidden space-y-4">
-                <div class="card rounded-2xl p-4 border border-white/5">
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="w-14 h-14 rounded-full bg-gradient-to-br from-[#6366f1] to-[#818cf8] flex items-center justify-center text-white font-bold text-xl">U</div>
-                        <div>
-                            <div class="font-semibold">User_8847</div>
-                            <div class="text-[#a0a0b0] text-sm">创世节点</div>
+                <!-- User Header -->
+                <div class="bg-gradient-to-br from-[#1e3a8a] to-[#312e81] rounded-2xl p-5 border border-white/10">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center gap-2">
+                            <div class="w-8 h-8 rounded-lg bg-white/20 flex items-center justify-center">
+                                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                            </div>
+                            <span class="font-bold text-white text-lg">FXH</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <div class="px-3 py-1.5 rounded-lg bg-white/10 text-white text-sm font-mono">0x7905...4bf95</div>
+                            <button class="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center" onclick="copyAddress()">
+                                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                            </button>
                         </div>
                     </div>
-                    <div class="grid grid-cols-3 gap-2 text-center">
-                        <div class="bg-[#252530] rounded-lg p-2">
-                            <div class="text-[#6366f1] font-bold">$24.8K</div>
-                            <div class="text-[#707080] text-xs">总质押</div>
+                    
+                    <!-- Rewards -->
+                    <div class="flex items-center justify-between">
+                        <div class="space-y-2">
+                            <div>
+                                <div class="text-white/70 text-sm">推荐奖</div>
+                                <div class="text-2xl font-bold text-white">0</div>
+                            </div>
+                            <div>
+                                <div class="text-white/70 text-sm">社区奖</div>
+                                <div class="text-2xl font-bold text-white">0</div>
+                            </div>
                         </div>
-                        <div class="bg-[#252530] rounded-lg p-2">
-                            <div class="text-[#6366f1] font-bold">12</div>
-                            <div class="text-[#707080] text-xs">矿工</div>
-                        </div>
-                        <div class="bg-[#252530] rounded-lg p-2">
-                            <div class="text-[#6366f1] font-bold">$3.2K</div>
-                            <div class="text-[#707080] text-xs">分红</div>
+                        <div class="w-24 h-24">
+                            <svg viewBox="0 0 100 100" class="w-full h-full">
+                                <defs>
+                                    <linearGradient id="giftGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" style="stop-color:#6366f1"/>
+                                        <stop offset="100%" style="stop-color:#818cf8"/>
+                                    </linearGradient>
+                                </defs>
+                                <rect x="20" y="30" width="60" height="50" rx="5" fill="url(#giftGrad)" opacity="0.8"/>
+                                <rect x="45" y="30" width="10" height="50" fill="rgba(255,255,255,0.3)"/>
+                                <rect x="20" y="45" width="60" height="8" fill="rgba(255,255,255,0.3)"/>
+                                <path d="M35 30 Q50 10 65 30" stroke="#818cf8" stroke-width="3" fill="none"/>
+                                <circle cx="50" cy="18" r="5" fill="#6366f1"/>
+                            </svg>
                         </div>
                     </div>
                 </div>
 
+                <!-- Action Buttons -->
+                <div class="grid grid-cols-2 gap-3">
+                    <button class="py-3 px-4 rounded-xl bg-gradient-to-r from-[#6366f1] to-[#818cf8] text-white font-semibold" onclick="showToast('领取成功')">领取</button>
+                    <button class="py-3 px-4 rounded-xl bg-[#252530] border border-white/10 text-white font-semibold" onclick="showToast('复投功能开发中')">复投</button>
+                </div>
+
+                <!-- Feature Cards -->
+                <div class="grid grid-cols-2 gap-3">
+                    <div class="bg-gradient-to-br from-[#1e40af] to-[#1e3a8a] rounded-2xl p-4 border border-white/10" onclick="switchTab('mining')">
+                        <div class="font-semibold text-white mb-1">我的质押订单</div>
+                        <div class="text-white/70 text-xs mb-3">查看订单 / 自动续投 / 赎回</div>
+                        <button class="px-3 py-1.5 rounded-lg bg-white/20 text-white text-xs font-medium">Stake</button>
+                        <div class="mt-2 flex justify-end">
+                            <svg class="w-12 h-12 text-white/30" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        </div>
+                    </div>
+                    <div class="bg-gradient-to-br from-[#059669] to-[#047857] rounded-2xl p-4 border border-white/10" onclick="switchTab('trade')">
+                        <div class="font-semibold text-white mb-1">交易 FXH</div>
+                        <div class="text-white/70 text-xs mb-3">DAPP快速兑换</div>
+                        <button class="px-3 py-1.5 rounded-lg bg-white/20 text-white text-xs font-medium">Trade</button>
+                        <div class="mt-2 flex justify-end">
+                            <svg class="w-12 h-12 text-white/30" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/></svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Invite Friends -->
+                <div class="card rounded-2xl p-4 border border-white/5">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="font-semibold">邀请好友</span>
+                        <button class="px-4 py-1.5 rounded-full bg-[#6366f1]/20 text-[#6366f1] text-sm font-medium" onclick="showToast('邀请链接已复制')">Invite</button>
+                    </div>
+                    <div class="bg-gradient-to-br from-[#1a1a24] to-[#252530] rounded-xl p-4 flex items-center justify-center">
+                        <svg class="w-20 h-20 text-[#6366f1]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+                    </div>
+                </div>
+
+                <!-- Menu Items -->
                 <div class="card rounded-2xl p-4 border border-white/5 space-y-1">
-                    <div class="flex items-center justify-between py-3 border-b border-white/5">
+                    <div class="flex items-center justify-between py-3 border-b border-white/5" onclick="switchTab('mining')">
                         <span>📋 我的订单</span>
                         <svg class="w-5 h-5 text-[#a0a0b0]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
                     </div>

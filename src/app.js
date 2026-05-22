@@ -112,8 +112,9 @@ function showToast(msg) {
 }
 
 // Language toggle
-function toggleLang() {
-    showToast('语言切换功能开发中');
+function copyAddress() {
+    navigator.clipboard.writeText('0x79054...4bf95');
+    showToast('地址已复制');
 }
 
 // Live balance update
