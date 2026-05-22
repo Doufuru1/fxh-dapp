@@ -220,14 +220,14 @@
                         <div class="mt-2">
                             <div class="flex justify-between text-xs text-[#707080] mb-1"><span>12 / 28 天</span><span>42%</span></div>
                             <div class="h-2 bg-[#1a1a24] rounded-full overflow-hidden"><div class="h-full bg-gradient-to-r from-[#fc5b23] to-[#ff8c42] rounded-full" style="width: 42%"></div></div>
-                            <!-- 到期操作按钮 -->
-                            <div class="grid grid-cols-2 gap-2 mt-2">
+                            <!-- 到期操作按钮（仅已完成订单显示） -->
+                            <div class="grid grid-cols-2 gap-2 mt-2 hidden" id="orderActions">
                                 <button class="py-2 rounded-lg bg-[#fc5b23] text-white text-sm font-medium" onclick="showToast('复投成功')">复投</button>
                                 <button class="py-2 rounded-lg bg-[#252530] border border-white/10 text-white text-sm font-medium" onclick="showToast('赎回申请已提交')">赎回</button>
                             </div>
                         </div>
-                            <!-- 到期操作按钮 -->
-                            <div class="grid grid-cols-2 gap-2 mt-2">
+                            <!-- 到期操作按钮（仅已完成订单显示） -->
+                            <div class="grid grid-cols-2 gap-2 mt-2 hidden" id="orderActions">
                                 <button class="py-2 rounded-lg bg-[#fc5b23] text-white text-sm font-medium" onclick="showToast('复投成功')">复投</button>
                                 <button class="py-2 rounded-lg bg-[#252530] border border-white/10 text-white text-sm font-medium" onclick="showToast('赎回申请已提交')">赎回</button>
                             </div>
