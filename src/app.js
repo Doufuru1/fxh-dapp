@@ -118,16 +118,39 @@ function copyAddress() {
 }
 
 // Live balance update with jump animation
-setInterval(() => {
+let balanceTarget = 24847.32;
+let balanceCurrent = 0;
+let balanceAnimated = false;
+
+function animateBalance() {
     const balance = document.querySelector('.balance-value');
-    const homePage = document.getElementById('page-home');
-    if (balance && homePage?.classList.contains('active')) {
-        const current = parseFloat(balance.textContent.replace(/[$,]/g, ''));
+    if (!balance) return;
+    
+    if (!balanceAnimated) {
+        // First load: animate from 0 to target
+        const step = balanceTarget / 40; // 40 steps to reach target
+        balanceCurrent = Math.min(balanceCurrent + step, balanceTarget);
+        balance.textContent = '$' + balanceCurrent.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+        
+        if (balanceCurrent >= balanceTarget) {
+            balanceAnimated = true;
+        }
+    } else {
+        // After animation: small random increases
         const change = (Math.random() * 2 + 1);
-        const newVal = (current + change).toFixed(2);
-        balance.textContent = '$' + newVal.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+        balanceTarget += change;
+        balanceCurrent = balanceTarget;
+        balance.textContent = '$' + balanceCurrent.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
         // Flash orange on increase
         balance.style.color = '#fc5b23';
         setTimeout(() => { balance.style.color = ''; }, 400);
     }
-}, 3000);
+}
+
+// Run animation every 50ms for fast counting effect
+setInterval(() => {
+    const homePage = document.getElementById('page-home');
+    if (homePage?.classList.contains('active')) {
+        animateBalance();
+    }
+}, 50);
