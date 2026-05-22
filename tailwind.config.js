@@ -11,9 +11,9 @@ module.exports = {
           surface: '#252530'
         },
         accent: {
-          DEFAULT: '#6366f1',
-          light: '#818cf8',
-          glow: 'rgba(99,102,241,0.2)'
+          DEFAULT: '#fc5b23',
+          light: '#ff8c42',
+          glow: 'rgba(252,91,35,0.2)'
         },
         text: {
           DEFAULT: '#f0f0f5',
