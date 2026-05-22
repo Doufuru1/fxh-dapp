@@ -31,6 +31,20 @@
             
             <!-- Home Page -->
             <div id="page-home" class="page active space-y-4">
+                <!-- Balance Card -->
+                <div class="card bg-gradient-to-br from-[#1a1a24] to-[#22222e] rounded-2xl p-5 border border-white/5">
+                    <div class="text-[#707080] text-sm mb-1">总质押价值</div>
+                    <div class="text-3xl font-bold text-white mb-2">$24,847.32</div>
+                    <div class="flex items-center gap-1 text-emerald-400 text-sm mb-4">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+                        +$1,247.50 (5.3%)
+                    </div>
+                    <div class="flex gap-3">
+                        <button class="btn-primary flex-1" onclick="switchTab('mining')">质押挖矿</button>
+                        <button class="flex-1 py-3 px-4 rounded-xl bg-[#252530] border border-white/5 font-semibold text-[#fc5b23]" onclick="switchTab('trade')">交易</button>
+                    </div>
+                </div>
+
                 <!-- System Health -->
                 <div class="card rounded-2xl p-4 border border-white/5">
                     <div class="flex items-center gap-2 mb-4">
