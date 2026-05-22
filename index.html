@@ -390,6 +390,71 @@
                     <button class="py-3 px-4 rounded-xl bg-[#252530] border border-white/10 text-white font-semibold" onclick="showToast('复投功能开发中')">复投</button>
                 </div>
 
+                <!-- 账户数据面板 -->
+                <div class="card rounded-2xl p-4 border border-white/5">
+                    <h3 class="font-semibold mb-3">📊 账户数据面板</h3>
+                    <div class="space-y-3">
+                        <!-- 直推数据 -->
+                        <div class="bg-[#252530] rounded-xl p-3">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="font-semibold text-sm">👥 直推数据</span>
+                                <span class="text-[#fc5b23] text-sm font-bold">12 人</span>
+                            </div>
+                            <div class="flex justify-between text-sm">
+                                <span class="text-[#707080]">直推业绩</span>
+                                <span class="text-white">$58,420.00</span>
+                            </div>
+                            <div class="flex justify-between text-sm mt-1">
+                                <span class="text-[#707080]">一代推荐算力收益</span>
+                                <span class="text-[#fc5b23]">10%</span>
+                            </div>
+                        </div>
+                        <!-- 团队数据（仅工作室/排头兵显示） -->
+                        <div class="bg-[#252530] rounded-xl p-3">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="font-semibold text-sm">🏢 工作室</span>
+                                <span class="px-2 py-0.5 rounded-full bg-[#fc5b23]/20 text-[#fc5b23] text-xs">已激活</span>
+                            </div>
+                            <div class="flex justify-between text-sm">
+                                <span class="text-[#707080]">团队业绩</span>
+                                <span class="text-white">$128,560.00</span>
+                            </div>
+                            <div class="flex justify-between text-sm mt-1">
+                                <span class="text-[#707080]">团队算力收益</span>
+                                <span class="text-[#fc5b23]">5%</span>
+                            </div>
+                            <div class="mt-2 pt-2 border-t border-white/5">
+                                <div class="flex justify-between items-center">
+                                    <span class="text-[#707080] text-sm">可领取奖励</span>
+                                    <span class="text-[#fc5b23] font-bold">+6,428.00 USDT</span>
+                                </div>
+                                <button class="w-full mt-2 py-2 rounded-full bg-[#1a1a2e] border border-[#fc5b23]/30 text-[#fc5b23] text-sm font-medium hover:bg-[#fc5b23]/10 transition-colors" onclick="showToast('领取成功 +6,428.00 USDT')">领取工作室奖励</button>
+                            </div>
+                        </div>
+                        <div class="bg-[#252530] rounded-xl p-3">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="font-semibold text-sm">🎖️ 排头兵</span>
+                                <span class="px-2 py-0.5 rounded-full bg-[#fc5b23]/20 text-[#fc5b23] text-xs">已激活</span>
+                            </div>
+                            <div class="flex justify-between text-sm">
+                                <span class="text-[#707080]">团队业绩</span>
+                                <span class="text-white">$256,800.00</span>
+                            </div>
+                            <div class="flex justify-between text-sm mt-1">
+                                <span class="text-[#707080]">团队算力收益</span>
+                                <span class="text-[#fc5b23]">2%</span>
+                            </div>
+                            <div class="mt-2 pt-2 border-t border-white/5">
+                                <div class="flex justify-between items-center">
+                                    <span class="text-[#707080] text-sm">可领取奖励</span>
+                                    <span class="text-[#fc5b23] font-bold">+5,136.00 USDT</span>
+                                </div>
+                                <button class="w-full mt-2 py-2 rounded-full bg-[#1a1a2e] border border-[#fc5b23]/30 text-[#fc5b23] text-sm font-medium hover:bg-[#fc5b23]/10 transition-colors" onclick="showToast('领取成功 +5,136.00 USDT')">领取排头兵奖励</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Feature Cards -->
                 <div class="grid grid-cols-2 gap-3">
                     <div class="bg-gradient-to-br from-[#c2410c] to-[#ea580c] rounded-2xl p-4 border border-white/10" onclick="switchTab('mining')">
