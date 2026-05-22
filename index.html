@@ -148,11 +148,13 @@
                             <input type="number" id="miningAmount" class="w-full bg-[#252530] border border-white/10 rounded-xl px-4 py-3 text-white" placeholder="0.00" oninput="calcMining()">
                         </div>
                         <div id="miningHalfInput" class="hidden space-y-3">
-                            <label class="text-[#707080] text-sm mb-1 block">FXH 代币数量</label>
-                            <input type="number" id="amountHalfFXH" class="w-full bg-[#252530] border border-white/10 rounded-xl px-4 py-3 text-white" placeholder="0.00" oninput="calcHalf()">
+                            <div>
+                                <label class="text-[#707080] text-sm mb-1 block">投入 FXH</label>
+                                <input type="number" id="amountHalfFXH" class="w-full bg-[#252530] border border-white/10 rounded-xl px-4 py-3 text-white" placeholder="0.00" oninput="calcHalf()">
+                            </div>
                             <div class="p-3 bg-[#1a1a24] rounded-xl">
-                                <div class="flex justify-between text-sm"><span class="text-[#707080]">代币价格</span><span class="text-[#fc5b23]">0.0237 USDT</span></div>
-                                <div class="flex justify-between text-sm mt-1"><span class="text-[#707080]">需要 USDT</span><span id="needUSDT" class="text-white font-semibold">$0.00</span></div>
+                                <div class="flex justify-between text-sm"><span class="text-[#707080]">当前币价</span><span class="text-[#fc5b23]">0.0237 USDT</span></div>
+                                <div class="flex justify-between text-sm mt-1"><span class="text-[#707080]">需要配对 USDT</span><span id="needUSDT" class="text-white font-semibold">$0.00</span></div>
                             </div>
                         </div>
                     </div>
