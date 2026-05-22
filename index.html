@@ -292,16 +292,31 @@
                 </div>
 
                 <!-- Rewards -->
-                <div class="grid grid-cols-2 gap-3">
+                <div class="space-y-3">
+                    <!-- 分红收益 -->
                     <div class="card rounded-2xl p-4 border border-white/5">
-                        <div class="text-[#707080] text-sm mb-1">🥇 分红收益</div>
-                        <div class="text-xl font-bold text-[#fc5b23] mb-2">234.18 USDT</div>
-                        <button class="w-full py-2 rounded-full bg-[#1a1a2e] border border-[#fc5b23]/30 text-[#fc5b23] text-sm font-medium hover:bg-[#fc5b23]/10 transition-colors" onclick="showToast('领取成功 +234.18 USDT')">领取</button>
+                        <div class="flex items-center justify-between mb-2">
+                            <div>
+                                <div class="text-[#707080] text-sm mb-1">🥇 分红收益</div>
+                                <div class="text-xl font-bold text-[#fc5b23]">234.18 USDT</div>
+                            </div>
+                            <button class="px-6 py-2 rounded-full bg-[#1a1a2e] border border-[#fc5b23]/30 text-[#fc5b23] text-sm font-medium hover:bg-[#fc5b23]/10 transition-colors" onclick="showToast('领取成功 +234.18 USDT')">领取</button>
+                        </div>
                     </div>
+                    <!-- 静态收益 -->
                     <div class="card rounded-2xl p-4 border border-white/5">
-                        <div class="text-[#707080] text-sm mb-1">📊 静态收益</div>
-                        <div class="text-xl font-bold text-[#fc5b23] mb-2">98.64 USDT</div>
-                        <button class="w-full py-2 rounded-full bg-[#1a1a2e] border border-white/10 text-[#707080]/60 text-sm cursor-not-allowed">领取</button>
+                        <div class="flex items-center justify-between mb-2">
+                            <div>
+                                <div class="text-[#707080] text-sm mb-1">📊 静态收益</div>
+                                <div class="text-xl font-bold text-[#fc5b23]">98.64 USDT</div>
+                            </div>
+                            <button class="px-6 py-2 rounded-full bg-[#1a1a2e] border border-white/10 text-[#707080]/60 text-sm cursor-not-allowed">领取</button>
+                        </div>
+                        <!-- 进度条 -->
+                        <div class="mt-2">
+                            <div class="flex justify-between text-xs text-[#707080] mb-1"><span>0 / 7 天</span><span>0%</span></div>
+                            <div class="h-2 bg-[#1a1a24] rounded-full overflow-hidden"><div class="h-full bg-gradient-to-r from-[#fc5b23] to-[#ff8c42] rounded-full" style="width: 0%"></div></div>
+                        </div>
                     </div>
                 </div>
 
