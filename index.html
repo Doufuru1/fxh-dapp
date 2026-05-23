@@ -50,15 +50,18 @@
             background: linear-gradient(90deg, #00ffd5, #00d4ff);
         }
         .lang-en {
-            display: none;
-        }
-        body.english .lang-zh {
-            display: none;
-        }
-        body.english .lang-en {
             display: block;
         }
-        body.english .lang-en-inline {
+        .lang-zh {
+            display: none;
+        }
+        body.chinese .lang-en {
+            display: none;
+        }
+        body.chinese .lang-zh {
+            display: block;
+        }
+        body.chinese .lang-zh-inline {
             display: inline;
         }
     </style>
@@ -66,13 +69,6 @@
     <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script>
 </head>
 <body class="bg-[#0a0a0f] text-white font-['Inter'] antialiased">
-    <!-- Language Switcher -->
-    <div class="fixed top-16 right-4 z-50">
-        <button id="langSwitch" onclick="toggleLanguage()" class="px-3 py-1.5 rounded-lg bg-[#1a1a24] border border-[#00ffd5]/20 text-[#00ffd5] text-xs font-semibold hover:bg-[#00ffd5]/10 transition-colors">
-            EN
-        </button>
-    </div>
-
     <div id="app" class="max-w-md mx-auto min-h-screen pb-8">
         
         <!-- Header -->
@@ -102,7 +98,11 @@
                     </div>
                     <span class="font-bold text-xl gradient-text">Heart</span>
                 </div>
-                <button id="connectBtn" onclick="connectWallet()" class="px-4 py-2 rounded-xl bg-[#1a1a24] border border-[#00ffd5]/30 text-[#00ffd5] text-xs font-semibold hover:bg-[#00ffd5]/10 transition-colors">
+                <div class="flex items-center gap-2">
+                    <button id="langSwitch" onclick="toggleLanguage()" class="px-3 py-1.5 rounded-lg bg-[#1a1a24] border border-[#00ffd5]/20 text-[#00ffd5] text-xs font-semibold hover:bg-[#00ffd5]/10 transition-colors">
+                        中
+                    </button>
+                    <button id="connectBtn" onclick="connectWallet()" class="px-4 py-2 rounded-xl bg-[#1a1a24] border border-[#00ffd5]/30 text-[#00ffd5] text-xs font-semibold hover:bg-[#00ffd5]/10 transition-colors">
                     <span class="lang-zh">连接钱包</span>
                     <span class="lang-en">Connect</span>
                 </button>
@@ -479,11 +479,11 @@
 
     <script>
         // Language toggle
-        let currentLang = 'zh';
+        let currentLang = 'en';
         function toggleLanguage() {
-            currentLang = currentLang === 'zh' ? 'en' : 'zh';
-            document.body.classList.toggle('english', currentLang === 'en');
-            document.getElementById('langSwitch').textContent = currentLang === 'zh' ? 'EN' : '中';
+            currentLang = currentLang === 'en' ? 'zh' : 'en';
+            document.body.classList.toggle('chinese', currentLang === 'zh');
+            document.getElementById('langSwitch').textContent = currentLang === 'en' ? '中' : 'EN';
         }
 
         // Contract configuration - UPDATE THESE VALUES
