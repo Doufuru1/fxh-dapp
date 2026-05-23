@@ -1,0 +1,11 @@
+{
+  "name": "heart-dapp",
+  "version": "1.0.0",
+  "description": "Heart - 基于 ALT FUN 的升级版公平 Mint MEME",
+  "scripts": {
+    "build": "tailwindcss -i ./src/input.css -o ./dist/style.css --minify"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.0"
+  }
+}
