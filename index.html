@@ -50,19 +50,40 @@
             background: linear-gradient(90deg, #00ffd5, #00d4ff);
         }
     </style>
+    <!-- Ethers.js for Web3 -->
+    <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script>
 </head>
 <body class="bg-[#0a0a0f] text-white font-['Inter'] antialiased">
     <div id="app" class="max-w-md mx-auto min-h-screen pb-8">
         
         <!-- Header -->
         <header class="sticky top-0 z-50 bg-[#0a0a0f]/95 backdrop-blur-lg border-b border-white/5 px-4 py-3">
-            <div class="flex items-center justify-center gap-2">
-                <span class="text-2xl">💚</span>
-                <span class="font-bold text-xl gradient-text">Heart</span>
+            <div class="flex items-center justify-between">
+                <div class="flex items-center justify-center gap-2">
+                    <span class="text-2xl">💚</span>
+                    <span class="font-bold text-xl gradient-text">Heart</span>
+                </div>
+                <button id="connectBtn" onclick="connectWallet()" class="px-4 py-2 rounded-xl bg-[#1a1a24] border border-[#00ffd5]/30 text-[#00ffd5] text-xs font-semibold hover:bg-[#00ffd5]/10 transition-colors">
+                    连接钱包
+                </button>
             </div>
         </header>
 
         <main class="px-4 pt-6 space-y-6">
+            
+            <!-- Wallet Info -->
+            <div id="walletInfo" class="hidden gradient-border">
+                <div class="p-3 flex items-center justify-between">
+                    <div class="text-sm">
+                        <div class="text-[#707080] text-xs">已连接</div>
+                        <div id="walletAddress" class="font-mono text-xs mt-1"></div>
+                    </div>
+                    <div class="text-right">
+                        <div class="text-[#707080] text-xs">HYPE 余额</div>
+                        <div id="hypeBalance" class="text-[#00ffd5] font-bold text-sm">--</div>
+                    </div>
+                </div>
+            </div>
             
             <!-- Hero Section -->
             <div class="text-center space-y-4">
@@ -125,28 +146,65 @@
                     <span class="text-xl">⛏️</span>
                     <h2 class="font-bold text-lg">公平 Mint</h2>
                 </div>
-                <div class="space-y-2 text-sm">
-                    <div class="flex justify-between">
-                        <span class="text-[#707080]">最低</span>
-                        <span class="font-semibold">0.1 HYPE</span>
-                    </div>
-                    <div class="flex justify-between">
-                        <span class="text-[#707080]">最高</span>
-                        <span class="font-semibold">5 HYPE</span>
-                    </div>
-                    <div class="flex justify-between">
-                        <span class="text-[#707080]">份数限制</span>
-                        <span class="font-semibold text-[#00ffd5]">无限制</span>
+                
+                <!-- Mint Progress -->
+                <div class="gradient-border">
+                    <div class="p-4 space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm font-semibold">Mint 进度</span>
+                            <span class="text-xs text-[#707080]">目标: 1000 HYPE</span>
+                        </div>
+                        <div class="w-full h-3 bg-[#1a1a24] rounded-full overflow-hidden">
+                            <div id="mintProgressBar" class="progress-bar h-full rounded-full transition-all duration-500" style="width: 0%"></div>
+                        </div>
+                        <div class="flex justify-between text-sm">
+                            <span id="mintedAmount" class="text-[#00ffd5] font-bold">-- HYPE</span>
+                            <span id="mintPercent" class="text-[#707080]">--%</span>
+                        </div>
+                        <div class="text-center text-xs text-[#707080]">
+                            还差 <span id="mintRemaining" class="text-[#00ffd5] font-semibold">-- HYPE</span> 自动发射
+                        </div>
                     </div>
                 </div>
+
+                <!-- Mint Input -->
+                <div id="mintSection" class="space-y-3">
+                    <div>
+                        <div class="flex justify-between items-center mb-1">
+                            <label class="text-[#707080] text-sm">投入 HYPE</label>
+                            <span class="text-xs text-[#707080]">余额: <span id="userHypeBalance" class="text-white">--</span></span>
+                        </div>
+                        <input type="number" id="mintInput" class="w-full bg-[#1a1a24] border border-[#00ffd5]/20 rounded-xl px-4 py-3 text-white text-lg font-semibold focus:outline-none focus:border-[#00ffd5] transition-colors" placeholder="0.00" min="0.1" max="5" step="0.1" oninput="calculateMint()">
+                        <div class="flex gap-2 mt-2">
+                            <button onclick="setMintAmount(0.1)" class="flex-1 py-1.5 rounded-lg bg-[#1a1a24] text-xs text-[#707080] hover:text-[#00ffd5] hover:border-[#00ffd5]/30 border border-transparent transition-colors">0.1</button>
+                            <button onclick="setMintAmount(1)" class="flex-1 py-1.5 rounded-lg bg-[#1a1a24] text-xs text-[#707080] hover:text-[#00ffd5] hover:border-[#00ffd5]/30 border border-transparent transition-colors">1</button>
+                            <button onclick="setMintAmount(2.5)" class="flex-1 py-1.5 rounded-lg bg-[#1a1a24] text-xs text-[#707080] hover:text-[#00ffd5] hover:border-[#00ffd5]/30 border border-transparent transition-colors">2.5</button>
+                            <button onclick="setMintAmount(5)" class="flex-1 py-1.5 rounded-lg bg-[#1a1a24] text-xs text-[#707080] hover:text-[#00ffd5] hover:border-[#00ffd5]/30 border border-transparent transition-colors">5 (Max)</button>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-[#1a1a24] rounded-xl p-3 space-y-2">
+                        <div class="flex justify-between text-sm">
+                            <span class="text-[#707080]">预计获得 Heart</span>
+                            <span id="estimatedHeart" class="text-[#00ffd5] font-semibold">--</span>
+                        </div>
+                        <div class="flex justify-between text-xs">
+                            <span class="text-[#707080]">汇率</span>
+                            <span id="mintRate" class="text-[#707080]">1 HYPE = -- Heart</span>
+                        </div>
+                    </div>
+
+                    <button id="mintBtn" onclick="mintTokens()" disabled class="w-full py-3 rounded-xl bg-gradient-to-r from-[#00ffd5] to-[#00d4ff] text-black font-bold text-sm hover:opacity-90 transition-opacity disabled:opacity-40 disabled:cursor-not-allowed">
+                        连接钱包后铸造
+                    </button>
+                    <div id="mintError" class="text-xs text-red-400 text-center hidden"></div>
+                </div>
+
                 <div class="highlight-box rounded-xl p-3 space-y-1">
                     <div class="text-xs text-[#707080]">✅ 无预留</div>
                     <div class="text-xs text-[#707080]">✅ 无团队额度</div>
                     <div class="text-xs text-[#707080]">✅ 无白名单</div>
                 </div>
-                <button class="w-full py-3 rounded-xl bg-gradient-to-r from-[#00ffd5] to-[#00d4ff] text-black font-bold text-sm hover:opacity-90 transition-opacity">
-                    参与 Mint
-                </button>
             </div>
 
             <!-- Auto Launch -->
@@ -281,5 +339,212 @@
             </div>
         </main>
     </div>
+
+    <script>
+        // Contract configuration - UPDATE THESE VALUES
+        const CONTRACT_ADDRESS = '0x0000000000000000000000000000000000000000'; // Replace with actual contract address
+        const CONTRACT_ABI = [
+            // Mint function
+            "function mint() external payable",
+            "function getMintedAmount() external view returns (uint256)",
+            "function getTotalMintTarget() external view returns (uint256)",
+            "function getUserMintAmount(address user) external view returns (uint256)",
+            "function mintRate() external view returns (uint256)",
+            // Events
+            "event Mint(address indexed user, uint256 amount, uint256 tokens)"
+        ];
+
+        let provider, signer, contract;
+        let userAddress = '';
+        let mintRate = 1000000; // 1 HYPE = 1,000,000 Heart (example)
+        let totalMinted = 0;
+        const MINT_TARGET = 1000; // 1000 HYPE target
+
+        // Connect wallet
+        async function connectWallet() {
+            try {
+                if (!window.ethereum) {
+                    alert('请安装 MetaMask 或其他钱包');
+                    return;
+                }
+
+                provider = new ethers.providers.Web3Provider(window.ethereum);
+                await provider.send("eth_requestAccounts", []);
+                signer = provider.getSigner();
+                userAddress = await signer.getAddress();
+
+                // Update UI
+                document.getElementById('connectBtn').textContent = '已连接';
+                document.getElementById('connectBtn').classList.add('bg-[#00ffd5]/20');
+                document.getElementById('walletInfo').classList.remove('hidden');
+                document.getElementById('walletAddress').textContent = 
+                    userAddress.slice(0, 6) + '...' + userAddress.slice(-4);
+
+                // Initialize contract
+                contract = new ethers.Contract(CONTRACT_ADDRESS, CONTRACT_ABI, signer);
+
+                // Load data
+                await loadUserData();
+                await loadMintProgress();
+
+                // Update mint button
+                document.getElementById('mintBtn').disabled = false;
+                document.getElementById('mintBtn').textContent = '铸造 Heart';
+
+            } catch (error) {
+                console.error('Connection error:', error);
+                showMintError('连接失败: ' + error.message);
+            }
+        }
+
+        // Load user data
+        async function loadUserData() {
+            try {
+                const balance = await provider.getBalance(userAddress);
+                const hypeBalance = ethers.utils.formatEther(balance);
+                document.getElementById('hypeBalance').textContent = parseFloat(hypeBalance).toFixed(4) + ' HYPE';
+                document.getElementById('userHypeBalance').textContent = parseFloat(hypeBalance).toFixed(4) + ' HYPE';
+            } catch (error) {
+                console.error('Load user data error:', error);
+            }
+        }
+
+        // Load mint progress
+        async function loadMintProgress() {
+            try {
+                // Simulated data - replace with actual contract calls
+                // totalMinted = await contract.getMintedAmount();
+                // const target = await contract.getTotalMintTarget();
+                
+                // Simulated for demo
+                totalMinted = 650; // 650 HYPE minted
+                const percent = (totalMinted / MINT_TARGET * 100).toFixed(1);
+                const remaining = Math.max(0, MINT_TARGET - totalMinted);
+
+                document.getElementById('mintProgressBar').style.width = percent + '%';
+                document.getElementById('mintedAmount').textContent = totalMinted.toFixed(2) + ' HYPE';
+                document.getElementById('mintPercent').textContent = percent + '%';
+                document.getElementById('mintRemaining').textContent = remaining.toFixed(2) + ' HYPE';
+
+            } catch (error) {
+                console.error('Load mint progress error:', error);
+            }
+        }
+
+        // Set mint amount
+        function setMintAmount(amount) {
+            document.getElementById('mintInput').value = amount;
+            calculateMint();
+        }
+
+        // Calculate mint output
+        function calculateMint() {
+            const input = parseFloat(document.getElementById('mintInput').value) || 0;
+            
+            if (input < 0.1) {
+                document.getElementById('estimatedHeart').textContent = '最低 0.1 HYPE';
+                document.getElementById('estimatedHeart').classList.add('text-red-400');
+                document.getElementById('estimatedHeart').classList.remove('text-[#00ffd5]');
+                return;
+            }
+            
+            if (input > 5) {
+                document.getElementById('estimatedHeart').textContent = '最高 5 HYPE';
+                document.getElementById('estimatedHeart').classList.add('text-red-400');
+                document.getElementById('estimatedHeart').classList.remove('text-[#00ffd5]');
+                return;
+            }
+
+            document.getElementById('estimatedHeart').classList.remove('text-red-400');
+            document.getElementById('estimatedHeart').classList.add('text-[#00ffd5]');
+            
+            const heartAmount = input * mintRate;
+            document.getElementById('estimatedHeart').textContent = heartAmount.toLocaleString() + ' Heart';
+            document.getElementById('mintRate').textContent = '1 HYPE = ' + mintRate.toLocaleString() + ' Heart';
+        }
+
+        // Mint tokens
+        async function mintTokens() {
+            try {
+                const input = parseFloat(document.getElementById('mintInput').value);
+                
+                if (!input || input < 0.1 || input > 5) {
+                    showMintError('请输入 0.1-5 HYPE 之间的金额');
+                    return;
+                }
+
+                const mintBtn = document.getElementById('mintBtn');
+                mintBtn.disabled = true;
+                mintBtn.textContent = '铸造中...';
+                hideMintError();
+
+                // Convert to wei
+                const amount = ethers.utils.parseEther(input.toString());
+                
+                // Call contract - REPLACE with actual contract call
+                // const tx = await contract.mint({ value: amount });
+                // await tx.wait();
+
+                // Simulated success for demo
+                await new Promise(resolve => setTimeout(resolve, 2000));
+
+                mintBtn.textContent = '铸造成功！';
+                mintBtn.classList.add('bg-green-500');
+                
+                // Reload data
+                await loadUserData();
+                await loadMintProgress();
+
+                // Reset after 3 seconds
+                setTimeout(() => {
+                    mintBtn.textContent = '铸造 Heart';
+                    mintBtn.classList.remove('bg-green-500');
+                    mintBtn.disabled = false;
+                    document.getElementById('mintInput').value = '';
+                    document.getElementById('estimatedHeart').textContent = '--';
+                }, 3000);
+
+            } catch (error) {
+                console.error('Mint error:', error);
+                showMintError('铸造失败: ' + error.message);
+                document.getElementById('mintBtn').disabled = false;
+                document.getElementById('mintBtn').textContent = '铸造 Heart';
+            }
+        }
+
+        // Show error
+        function showMintError(message) {
+            const errorDiv = document.getElementById('mintError');
+            errorDiv.textContent = message;
+            errorDiv.classList.remove('hidden');
+        }
+
+        // Hide error
+        function hideMintError() {
+            document.getElementById('mintError').classList.add('hidden');
+        }
+
+        // Initialize on load
+        document.addEventListener('DOMContentLoaded', () => {
+            loadMintProgress();
+        });
+
+        // Listen for account changes
+        if (window.ethereum) {
+            window.ethereum.on('accountsChanged', (accounts) => {
+                if (accounts.length === 0) {
+                    // Disconnected
+                    userAddress = '';
+                    document.getElementById('connectBtn').textContent = '连接钱包';
+                    document.getElementById('connectBtn').classList.remove('bg-[#00ffd5]/20');
+                    document.getElementById('walletInfo').classList.add('hidden');
+                    document.getElementById('mintBtn').disabled = true;
+                    document.getElementById('mintBtn').textContent = '连接钱包后铸造';
+                } else {
+                    connectWallet();
+                }
+            });
+        }
+    </script>
 </body>
 </html>
