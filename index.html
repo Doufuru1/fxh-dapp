@@ -49,6 +49,40 @@
         .progress-bar {
             background: linear-gradient(90deg, #00ffd5, #00d4ff);
         }
+        
+        /* Desktop Layout */
+        @media (min-width: 768px) {
+            #app {
+                max-width: 1200px !important;
+            }
+            .desktop-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 1.5rem;
+            }
+            .desktop-grid-3 {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1.5rem;
+            }
+            .desktop-hero {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 2rem;
+                align-items: center;
+            }
+            .desktop-full {
+                grid-column: 1 / -1;
+            }
+            .hero-text {
+                text-align: left !important;
+            }
+            .hero-logo {
+                width: 200px !important;
+                height: 200px !important;
+                margin: 0 !important;
+            }
+        }
     </style>
     <!-- Ethers.js for Web3 -->
     <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script>
@@ -108,8 +142,8 @@
             </div>
             
             <!-- Hero Section -->
-            <div class="text-center space-y-4">
-                <div class="heart-logo w-32 h-32 mx-auto">
+            <div class="desktop-hero">
+                <div class="heart-logo hero-logo w-32 h-32 mx-auto md:mx-0 md:w-48 md:h-48">
                     <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
                         <defs>
                             <linearGradient id="heartGradMain" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -131,14 +165,13 @@
                         <text x="50" y="50" text-anchor="middle" dominant-baseline="middle" 
                               font-family="Arial, sans-serif" font-size="36" font-weight="bold" fill="#0a0a0f">H</text>
                     </svg>
-                </div>
-                <div>
-                    <h1 class="text-2xl font-bold gradient-text">Heart</h1>
-                    <p class="text-[#707080] text-sm mt-1">基于 ALT FUN 的升级版公平 Mint 模型</p>
-                </div>
-                <div class="flex items-center justify-center gap-2 text-xs">
-                    <span class="px-3 py-1 rounded-full bg-[#00ffd5]/10 text-[#00ffd5] border border-[#00ffd5]/20">Hyperliquid</span>
-                    <span class="px-3 py-1 rounded-full bg-[#00d4ff]/10 text-[#00d4ff] border border-[#00d4ff]/20">HYPE 生态</span>
+                <div class="hero-text text-center md:text-left space-y-4">
+                    <h1 class="text-2xl md:text-4xl font-bold gradient-text">Heart</h1>
+                    <p class="text-[#707080] text-sm md:text-base mt-1">基于 ALT FUN 的升级版公平 Mint 模型</p>
+                    <div class="flex items-center justify-center md:justify-start gap-2 text-xs">
+                        <span class="px-3 py-1 rounded-full bg-[#00ffd5]/10 text-[#00ffd5] border border-[#00ffd5]/20">Hyperliquid</span>
+                        <span class="px-3 py-1 rounded-full bg-[#00d4ff]/10 text-[#00d4ff] border border-[#00d4ff]/20">HYPE 生态</span>
+                    </div>
                 </div>
             </div>
 
@@ -163,7 +196,7 @@
             </div>
 
             <!-- Core Stats -->
-            <div class="grid grid-cols-2 gap-3">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
                 <div class="stat-card rounded-2xl p-4 text-center">
                     <div class="text-2xl font-bold gradient-text">10亿</div>
                     <div class="text-xs text-[#707080] mt-1">总量</div>
@@ -182,8 +215,11 @@
                 </div>
             </div>
 
-            <!-- Mint Section -->
-            <div class="mechanism-card rounded-2xl p-5 space-y-4">
+            <!-- Desktop Grid Layout -->
+            <div class="desktop-grid">
+                
+                <!-- Mint Section -->
+                <div class="mechanism-card rounded-2xl p-5 space-y-4">
                 <div class="flex items-center gap-2">
                     <span class="text-xl">⛏️</span>
                     <h2 class="font-bold text-lg">公平 Mint</h2>
@@ -247,10 +283,9 @@
                     <div class="text-xs text-[#707080]">✅ 无团队额度</div>
                     <div class="text-xs text-[#707080]">✅ 无白名单</div>
                 </div>
-            </div>
 
-            <!-- Auto Launch -->
-            <div class="mechanism-card rounded-2xl p-5 space-y-4">
+                <!-- Auto Launch -->
+                <div class="mechanism-card rounded-2xl p-5 space-y-4">
                 <div class="flex items-center gap-2">
                     <span class="text-xl">🚀</span>
                     <h2 class="font-bold text-lg">自动发射机制</h2>
@@ -275,6 +310,7 @@
                 <div class="highlight-box rounded-xl p-3">
                     <div class="text-sm font-semibold text-[#00ffd5]">结果：更厚的初始池子 + 更低的滑点</div>
                 </div>
+            </div>
             </div>
 
             <!-- Tax Mechanism -->
@@ -314,6 +350,7 @@
                     </div>
                 </div>
             </div>
+            </div>
 
             <!-- Comparison -->
             <div class="mechanism-card rounded-2xl p-5 space-y-4">
@@ -351,6 +388,7 @@
                         </div>
                     </div>
                 </div>
+            </div>
             </div>
 
             <!-- Narrative -->
