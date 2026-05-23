@@ -59,9 +59,29 @@
         <!-- Header -->
         <header class="sticky top-0 z-50 bg-[#0a0a0f]/95 backdrop-blur-lg border-b border-white/5 px-4 py-3">
             <div class="flex items-center justify-between">
-                <div class="flex items-center gap-2">
-                    <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-[#00ffd5] to-[#00d4ff] flex items-center justify-center">
-                        <span class="text-black font-bold text-sm">M</span>
+                <div class="flex items-center gap-3">
+                    <div class="heart-logo w-10 h-10">
+                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="heartGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#00ffd5;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#00d4ff;stop-opacity:1" />
+                                </linearGradient>
+                                <filter id="glow">
+                                    <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                                    <feMerge>
+                                        <feMergeNode in="coloredBlur"/>
+                                        <feMergeNode in="SourceGraphic"/>
+                                    </feMerge>
+                                </filter>
+                            </defs>
+                            <!-- Heart shape with M negative space -->
+                            <path d="M50 85 C50 85 10 55 10 35 C10 20 25 10 35 10 C42 10 47 15 50 20 C53 15 58 10 65 10 C75 10 90 20 90 35 C90 55 50 85 50 85 Z" 
+                                  fill="url(#heartGrad)" filter="url(#glow)"/>
+                            <!-- M letter (negative space effect) -->
+                            <text x="50" y="52" text-anchor="middle" dominant-baseline="middle" 
+                                  font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#0a0a0f">M</text>
+                        </svg>
                     </div>
                     <span class="font-bold text-xl gradient-text">Heart</span>
                 </div>
@@ -89,8 +109,28 @@
             
             <!-- Hero Section -->
             <div class="text-center space-y-4">
-                <div class="heart-logo w-24 h-24 mx-auto rounded-3xl bg-gradient-to-br from-[#00ffd5] to-[#00d4ff] flex items-center justify-center shadow-lg shadow-[#00ffd5]/20">
-                    <span class="text-black font-bold text-4xl">M</span>
+                <div class="heart-logo w-32 h-32 mx-auto">
+                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="heartGradMain" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#00ffd5;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#00d4ff;stop-opacity:1" />
+                            </linearGradient>
+                            <filter id="glowMain">
+                                <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+                                <feMerge>
+                                    <feMergeNode in="coloredBlur"/>
+                                    <feMergeNode in="SourceGraphic"/>
+                                </feMerge>
+                            </filter>
+                        </defs>
+                        <!-- Heart shape with M negative space -->
+                        <path d="M50 88 C50 88 8 55 8 33 C8 18 24 8 35 8 C42 8 47 13 50 18 C53 13 58 8 65 8 C76 8 92 18 92 33 C92 55 50 88 50 88 Z" 
+                              fill="url(#heartGradMain)" filter="url(#glowMain)"/>
+                        <!-- M letter (negative space effect) -->
+                        <text x="50" y="50" text-anchor="middle" dominant-baseline="middle" 
+                              font-family="Arial, sans-serif" font-size="36" font-weight="bold" fill="#0a0a0f">M</text>
+                    </svg>
                 </div>
                 <div>
                     <h1 class="text-2xl font-bold gradient-text">Heart</h1>
@@ -316,8 +356,26 @@
             <!-- Narrative -->
             <div class="gradient-border">
                 <div class="p-5 text-center space-y-3">
-                    <div class="w-16 h-16 mx-auto rounded-2xl bg-gradient-to-br from-[#00ffd5] to-[#00d4ff] flex items-center justify-center">
-                        <span class="text-black font-bold text-2xl">M</span>
+                    <div class="w-16 h-16 mx-auto heart-logo">
+                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="heartGradFooter" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#00ffd5;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#00d4ff;stop-opacity:1" />
+                                </linearGradient>
+                                <filter id="glowFooter">
+                                    <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                                    <feMerge>
+                                        <feMergeNode in="coloredBlur"/>
+                                        <feMergeNode in="SourceGraphic"/>
+                                    </feMerge>
+                                </filter>
+                            </defs>
+                            <path d="M50 85 C50 85 10 55 10 35 C10 20 25 10 35 10 C42 10 47 15 50 20 C53 15 58 10 65 10 C75 10 90 20 90 35 C90 55 50 85 50 85 Z" 
+                                  fill="url(#heartGradFooter)" filter="url(#glowFooter)"/>
+                            <text x="50" y="52" text-anchor="middle" dominant-baseline="middle" 
+                                  font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#0a0a0f">M</text>
+                        </svg>
                     </div>
                     <h2 class="font-bold text-lg gradient-text">项目核心叙事</h2>
                     <p class="text-sm text-[#707080]">
