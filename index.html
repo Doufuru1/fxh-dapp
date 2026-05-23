@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Heart - 公平 Mint MEME</title>
+    <title>Heart - Fair Mint MEME</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="dist/style.css">
     <style>
@@ -49,11 +49,30 @@
         .progress-bar {
             background: linear-gradient(90deg, #00ffd5, #00d4ff);
         }
+        .lang-en {
+            display: none;
+        }
+        body.english .lang-zh {
+            display: none;
+        }
+        body.english .lang-en {
+            display: block;
+        }
+        body.english .lang-en-inline {
+            display: inline;
+        }
     </style>
     <!-- Ethers.js for Web3 -->
     <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script>
 </head>
 <body class="bg-[#0a0a0f] text-white font-['Inter'] antialiased">
+    <!-- Language Switcher -->
+    <div class="fixed top-16 right-4 z-50">
+        <button id="langSwitch" onclick="toggleLanguage()" class="px-3 py-1.5 rounded-lg bg-[#1a1a24] border border-[#00ffd5]/20 text-[#00ffd5] text-xs font-semibold hover:bg-[#00ffd5]/10 transition-colors">
+            EN
+        </button>
+    </div>
+
     <div id="app" class="max-w-md mx-auto min-h-screen pb-8">
         
         <!-- Header -->
@@ -75,10 +94,8 @@
                                     </feMerge>
                                 </filter>
                             </defs>
-                            <!-- Heart shape with M negative space -->
                             <path d="M50 85 C50 85 10 55 10 35 C10 20 25 10 35 10 C42 10 47 15 50 20 C53 15 58 10 65 10 C75 10 90 20 90 35 C90 55 50 85 50 85 Z" 
                                   fill="url(#heartGrad)" filter="url(#glow)"/>
-                            <!-- M letter (negative space effect) -->
                             <text x="50" y="52" text-anchor="middle" dominant-baseline="middle" 
                                   font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#0a0a0f">H</text>
                         </svg>
@@ -86,26 +103,13 @@
                     <span class="font-bold text-xl gradient-text">Heart</span>
                 </div>
                 <button id="connectBtn" onclick="connectWallet()" class="px-4 py-2 rounded-xl bg-[#1a1a24] border border-[#00ffd5]/30 text-[#00ffd5] text-xs font-semibold hover:bg-[#00ffd5]/10 transition-colors">
-                    连接钱包
+                    <span class="lang-zh">连接钱包</span>
+                    <span class="lang-en">Connect</span>
                 </button>
             </div>
         </header>
 
         <main class="px-4 pt-6 space-y-6">
-            
-            <!-- Wallet Info -->
-            <div id="walletInfo" class="hidden gradient-border">
-                <div class="p-3 flex items-center justify-between">
-                    <div class="text-sm">
-                        <div class="text-[#707080] text-xs">已连接</div>
-                        <div id="walletAddress" class="font-mono text-xs mt-1"></div>
-                    </div>
-                    <div class="text-right">
-                        <div class="text-[#707080] text-xs">HYPE 余额</div>
-                        <div id="hypeBalance" class="text-[#00ffd5] font-bold text-sm">--</div>
-                    </div>
-                </div>
-            </div>
             
             <!-- Hero Section -->
             <div class="text-center space-y-4">
@@ -124,21 +128,20 @@
                                 </feMerge>
                             </filter>
                         </defs>
-                        <!-- Heart shape with M negative space -->
                         <path d="M50 88 C50 88 8 55 8 33 C8 18 24 8 35 8 C42 8 47 13 50 18 C53 13 58 8 65 8 C76 8 92 18 92 33 C92 55 50 88 50 88 Z" 
                               fill="url(#heartGradMain)" filter="url(#glowMain)"/>
-                        <!-- M letter (negative space effect) -->
                         <text x="50" y="50" text-anchor="middle" dominant-baseline="middle" 
                               font-family="Arial, sans-serif" font-size="36" font-weight="bold" fill="#0a0a0f">H</text>
                     </svg>
                 </div>
                 <div>
                     <h1 class="text-2xl font-bold gradient-text">Heart</h1>
-                    <p class="text-[#707080] text-sm mt-1">基于 ALT FUN 的升级版公平 Mint 模型</p>
+                    <p class="text-[#707080] text-sm mt-1 lang-zh">基于 ALT FUN 的升级版公平 Mint 模型</p>
+                    <p class="text-[#707080] text-sm mt-1 lang-en">Fair Mint MEME based on ALT FUN upgrade</p>
                 </div>
                 <div class="flex items-center justify-center gap-2 text-xs">
                     <span class="px-3 py-1 rounded-full bg-[#00ffd5]/10 text-[#00ffd5] border border-[#00ffd5]/20">Hyperliquid</span>
-                    <span class="px-3 py-1 rounded-full bg-[#00d4ff]/10 text-[#00d4ff] border border-[#00d4ff]/20">HYPE 生态</span>
+                    <span class="px-3 py-1 rounded-full bg-[#00d4ff]/10 text-[#00d4ff] border border-[#00d4ff]/20">HYPE</span>
                 </div>
             </div>
 
@@ -146,18 +149,23 @@
             <div class="gradient-border">
                 <div class="p-4 space-y-3">
                     <div class="flex items-center justify-between">
-                        <span class="text-sm font-semibold">Mint 进度</span>
-                        <span class="text-xs text-[#707080]">目标: 1000 HYPE</span>
+                        <span class="text-sm font-semibold lang-zh">Mint 进度</span>
+                        <span class="text-sm font-semibold lang-en">Mint Progress</span>
+                        <span class="text-xs text-[#707080] lang-zh">目标: 1000 HYPE</span>
+                        <span class="text-xs text-[#707080] lang-en">Target: 1000 HYPE</span>
                     </div>
                     <div class="w-full h-3 bg-[#1a1a24] rounded-full overflow-hidden">
-                        <div class="progress-bar h-full rounded-full" style="width: 65%"></div>
+                        <div id="mintProgressBar" class="progress-bar h-full rounded-full transition-all duration-500" style="width: 0%"></div>
                     </div>
                     <div class="flex justify-between text-sm">
-                        <span class="text-[#00ffd5] font-bold">650 HYPE</span>
-                        <span class="text-[#707080]">65%</span>
+                        <span id="mintedAmount" class="text-[#00ffd5] font-bold">-- HYPE</span>
+                        <span id="mintPercent" class="text-[#707080]">--%</span>
                     </div>
-                    <div class="text-center text-xs text-[#707080]">
+                    <div class="text-center text-xs text-[#707080] lang-zh">
                         还差 <span class="text-[#00ffd5] font-semibold">350 HYPE</span> 自动发射
+                    </div>
+                    <div class="text-center text-xs text-[#707080] lang-en">
+                        <span class="text-[#00ffd5] font-semibold">350 HYPE</span> left to auto-launch
                     </div>
                 </div>
             </div>
@@ -166,19 +174,23 @@
             <div class="grid grid-cols-2 gap-3">
                 <div class="stat-card rounded-2xl p-4 text-center">
                     <div class="text-2xl font-bold gradient-text">10亿</div>
-                    <div class="text-xs text-[#707080] mt-1">总量</div>
+                    <div class="text-xs text-[#707080] mt-1 lang-zh">总量</div>
+                    <div class="text-xs text-[#707080] mt-1 lang-en">Total Supply</div>
                 </div>
                 <div class="stat-card rounded-2xl p-4 text-center">
                     <div class="text-2xl font-bold gradient-text">50/50</div>
-                    <div class="text-xs text-[#707080] mt-1">Mint/LP 分配</div>
+                    <div class="text-xs text-[#707080] mt-1 lang-zh">Mint/LP 分配</div>
+                    <div class="text-xs text-[#707080] mt-1 lang-en">Mint/LP Split</div>
                 </div>
                 <div class="stat-card rounded-2xl p-4 text-center">
                     <div class="text-2xl font-bold gradient-text">2.5%</div>
-                    <div class="text-xs text-[#707080] mt-1">买/卖交易税</div>
+                    <div class="text-xs text-[#707080] mt-1 lang-zh">买/卖交易税</div>
+                    <div class="text-xs text-[#707080] mt-1 lang-en">Buy/Sell Tax</div>
                 </div>
                 <div class="stat-card rounded-2xl p-4 text-center">
                     <div class="text-2xl font-bold gradient-text">0.1-5</div>
-                    <div class="text-xs text-[#707080] mt-1">HYPE Mint 范围</div>
+                    <div class="text-xs text-[#707080] mt-1 lang-zh">HYPE Mint 范围</div>
+                    <div class="text-xs text-[#707080] mt-1 lang-en">HYPE Mint Range</div>
                 </div>
             </div>
 
@@ -186,15 +198,18 @@
             <div class="mechanism-card rounded-2xl p-5 space-y-4">
                 <div class="flex items-center gap-2">
                     <span class="text-xl">⛏️</span>
-                    <h2 class="font-bold text-lg">公平 Mint</h2>
+                    <h2 class="font-bold text-lg lang-zh">公平 Mint</h2>
+                    <h2 class="font-bold text-lg lang-en">Fair Mint</h2>
                 </div>
                 
                 <!-- Mint Progress -->
                 <div class="gradient-border">
                     <div class="p-4 space-y-3">
                         <div class="flex items-center justify-between">
-                            <span class="text-sm font-semibold">Mint 进度</span>
-                            <span class="text-xs text-[#707080]">目标: 1000 HYPE</span>
+                            <span class="text-sm font-semibold lang-zh">Mint 进度</span>
+                            <span class="text-sm font-semibold lang-en">Mint Progress</span>
+                            <span class="text-xs text-[#707080] lang-zh">目标: 1000 HYPE</span>
+                            <span class="text-xs text-[#707080] lang-en">Target: 1000 HYPE</span>
                         </div>
                         <div class="w-full h-3 bg-[#1a1a24] rounded-full overflow-hidden">
                             <div id="mintProgressBar" class="progress-bar h-full rounded-full transition-all duration-500" style="width: 0%"></div>
@@ -203,8 +218,11 @@
                             <span id="mintedAmount" class="text-[#00ffd5] font-bold">-- HYPE</span>
                             <span id="mintPercent" class="text-[#707080]">--%</span>
                         </div>
-                        <div class="text-center text-xs text-[#707080]">
+                        <div class="text-center text-xs text-[#707080] lang-zh">
                             还差 <span id="mintRemaining" class="text-[#00ffd5] font-semibold">-- HYPE</span> 自动发射
+                        </div>
+                        <div class="text-center text-xs text-[#707080] lang-en">
+                            <span id="mintRemainingEn" class="text-[#00ffd5] font-semibold">-- HYPE</span> left to auto-launch
                         </div>
                     </div>
                 </div>
@@ -213,39 +231,48 @@
                 <div id="mintSection" class="space-y-3">
                     <div>
                         <div class="flex justify-between items-center mb-1">
-                            <label class="text-[#707080] text-sm">投入 HYPE</label>
-                            <span class="text-xs text-[#707080]">余额: <span id="userHypeBalance" class="text-white">--</span></span>
+                            <label class="text-[#707080] text-sm lang-zh">投入 HYPE</label>
+                            <label class="text-[#707080] text-sm lang-en">HYPE Amount</label>
+                            <span class="text-xs text-[#707080] lang-zh">余额: <span id="userHypeBalance" class="text-white">--</span></span>
+                            <span class="text-xs text-[#707080] lang-en">Balance: <span id="userHypeBalanceEn" class="text-white">--</span></span>
                         </div>
                         <input type="number" id="mintInput" class="w-full bg-[#1a1a24] border border-[#00ffd5]/20 rounded-xl px-4 py-3 text-white text-lg font-semibold focus:outline-none focus:border-[#00ffd5] transition-colors" placeholder="0.00" min="0.1" max="5" step="0.1" oninput="calculateMint()">
                         <div class="flex gap-2 mt-2">
                             <button onclick="setMintAmount(0.1)" class="flex-1 py-1.5 rounded-lg bg-[#1a1a24] text-xs text-[#707080] hover:text-[#00ffd5] hover:border-[#00ffd5]/30 border border-transparent transition-colors">0.1</button>
                             <button onclick="setMintAmount(1)" class="flex-1 py-1.5 rounded-lg bg-[#1a1a24] text-xs text-[#707080] hover:text-[#00ffd5] hover:border-[#00ffd5]/30 border border-transparent transition-colors">1</button>
                             <button onclick="setMintAmount(2.5)" class="flex-1 py-1.5 rounded-lg bg-[#1a1a24] text-xs text-[#707080] hover:text-[#00ffd5] hover:border-[#00ffd5]/30 border border-transparent transition-colors">2.5</button>
-                            <button onclick="setMintAmount(5)" class="flex-1 py-1.5 rounded-lg bg-[#1a1a24] text-xs text-[#707080] hover:text-[#00ffd5] hover:border-[#00ffd5]/30 border border-transparent transition-colors">5 (Max)</button>
+                            <button onclick="setMintAmount(5)" class="flex-1 py-1.5 rounded-lg bg-[#1a1a24] text-xs text-[#707080] hover:text-[#00ffd5] hover:border-[#00ffd5]/30 border border-transparent transition-colors lang-zh">5 (Max)</button>
+                            <button onclick="setMintAmount(5)" class="flex-1 py-1.5 rounded-lg bg-[#1a1a24] text-xs text-[#707080] hover:text-[#00ffd5] hover:border-[#00ffd5]/30 border border-transparent transition-colors lang-en">5 (Max)</button>
                         </div>
                     </div>
                     
                     <div class="bg-[#1a1a24] rounded-xl p-3 space-y-2">
                         <div class="flex justify-between text-sm">
-                            <span class="text-[#707080]">预计获得 Heart</span>
+                            <span class="text-[#707080] lang-zh">预计获得 Heart</span>
+                            <span class="text-[#707080] lang-en">Estimated Heart</span>
                             <span id="estimatedHeart" class="text-[#00ffd5] font-semibold">--</span>
                         </div>
                         <div class="flex justify-between text-xs">
-                            <span class="text-[#707080]">汇率</span>
+                            <span class="text-[#707080] lang-zh">汇率</span>
+                            <span class="text-[#707080] lang-en">Rate</span>
                             <span id="mintRate" class="text-[#707080]">1 HYPE = -- Heart</span>
                         </div>
                     </div>
 
                     <button id="mintBtn" onclick="mintTokens()" disabled class="w-full py-3 rounded-xl bg-gradient-to-r from-[#00ffd5] to-[#00d4ff] text-black font-bold text-sm hover:opacity-90 transition-opacity disabled:opacity-40 disabled:cursor-not-allowed">
-                        连接钱包后铸造
+                        <span class="lang-zh">连接钱包后铸造</span>
+                        <span class="lang-en">Connect Wallet to Mint</span>
                     </button>
                     <div id="mintError" class="text-xs text-red-400 text-center hidden"></div>
                 </div>
 
                 <div class="highlight-box rounded-xl p-3 space-y-1">
-                    <div class="text-xs text-[#707080]">✅ 无预留</div>
-                    <div class="text-xs text-[#707080]">✅ 无团队额度</div>
-                    <div class="text-xs text-[#707080]">✅ 无白名单</div>
+                    <div class="text-xs text-[#707080] lang-zh">✅ 无预留</div>
+                    <div class="text-xs text-[#707080] lang-en">✅ No Reservation</div>
+                    <div class="text-xs text-[#707080] lang-zh">✅ 无团队额度</div>
+                    <div class="text-xs text-[#707080] lang-en">✅ No Team Allocation</div>
+                    <div class="text-xs text-[#707080] lang-zh">✅ 无白名单</div>
+                    <div class="text-xs text-[#707080] lang-en">✅ No Whitelist</div>
                 </div>
             </div>
 
@@ -253,27 +280,34 @@
             <div class="mechanism-card rounded-2xl p-5 space-y-4">
                 <div class="flex items-center gap-2">
                     <span class="text-xl">🚀</span>
-                    <h2 class="font-bold text-lg">自动发射机制</h2>
+                    <h2 class="font-bold text-lg lang-zh">自动发射机制</h2>
+                    <h2 class="font-bold text-lg lang-en">Auto Launch</h2>
                 </div>
-                <p class="text-sm text-[#707080]">当 Mint 达到 1000 HYPE，系统自动：</p>
+                <p class="text-sm text-[#707080] lang-zh">当 Mint 达到 1000 HYPE，系统自动：</p>
+                <p class="text-sm text-[#707080] lang-en">When Mint reaches 1000 HYPE, system auto:</p>
                 <div class="space-y-2">
                     <div class="flex items-center gap-3 bg-[#1a1a24] rounded-xl p-3">
                         <div class="w-8 h-8 rounded-lg bg-[#00ffd5]/20 flex items-center justify-center text-sm">1</div>
                         <div class="text-sm">
-                            <div class="font-semibold">50% 代币分发</div>
-                            <div class="text-xs text-[#707080]">公平铸造给所有参与者</div>
+                            <div class="font-semibold lang-zh">50% 代币分发</div>
+                            <div class="font-semibold lang-en">50% Token Distribution</div>
+                            <div class="text-xs text-[#707080] lang-zh">公平铸造给所有参与者</div>
+                            <div class="text-xs text-[#707080] lang-en">Fair mint to all participants</div>
                         </div>
                     </div>
                     <div class="flex items-center gap-3 bg-[#1a1a24] rounded-xl p-3">
                         <div class="w-8 h-8 rounded-lg bg-[#00d4ff]/20 flex items-center justify-center text-sm">2</div>
                         <div class="text-sm">
-                            <div class="font-semibold">50% 自动加 LP</div>
-                            <div class="text-xs text-[#707080]">与募集 HYPE 配对添加流动性</div>
+                            <div class="font-semibold lang-zh">50% 自动加 LP</div>
+                            <div class="font-semibold lang-en">50% Auto Add LP</div>
+                            <div class="text-xs text-[#707080] lang-zh">与募集 HYPE 配对添加流动性</div>
+                            <div class="text-xs text-[#707080] lang-en">Pair with raised HYPE for liquidity</div>
                         </div>
                     </div>
                 </div>
                 <div class="highlight-box rounded-xl p-3">
-                    <div class="text-sm font-semibold text-[#00ffd5]">结果：更厚的初始池子 + 更低的滑点</div>
+                    <div class="text-sm font-semibold text-[#00ffd5] lang-zh">结果：更厚的初始池子 + 更低的滑点</div>
+                    <div class="text-sm font-semibold text-[#00ffd5] lang-en">Result: Thicker pool + Lower slippage</div>
                 </div>
             </div>
 
@@ -281,35 +315,49 @@
             <div class="mechanism-card rounded-2xl p-5 space-y-4">
                 <div class="flex items-center gap-2">
                     <span class="text-xl">⚙️</span>
-                    <h2 class="font-bold text-lg">交易税机制</h2>
+                    <h2 class="font-bold text-lg lang-zh">交易税机制</h2>
+                    <h2 class="font-bold text-lg lang-en">Tax Mechanism</h2>
                 </div>
                 
                 <div class="space-y-3">
                     <div class="bg-[#1a1a24] rounded-xl p-4">
                         <div class="flex items-center justify-between mb-2">
-                            <span class="text-sm font-semibold">买入税 2.5%</span>
-                            <span class="text-xs px-2 py-1 rounded-full bg-red-500/10 text-red-400">销毁</span>
+                            <span class="text-sm font-semibold lang-zh">买入税 2.5%</span>
+                            <span class="text-sm font-semibold lang-en">Buy Tax 2.5%</span>
+                            <span class="text-xs px-2 py-1 rounded-full bg-red-500/10 text-red-400 lang-zh">销毁</span>
+                            <span class="text-xs px-2 py-1 rounded-full bg-red-500/10 text-red-400 lang-en">Burn</span>
                         </div>
-                        <div class="text-xs text-[#707080]">全部用于自动销毁代币，持续通缩</div>
-                        <div class="mt-2 text-xs text-[#00ffd5]">效果：减少流通 → 提升稀缺性</div>
+                        <div class="text-xs text-[#707080] lang-zh">全部用于自动销毁代币，持续通缩</div>
+                        <div class="text-xs text-[#707080] lang-en">All used for auto-burn, continuous deflation</div>
+                        <div class="mt-2 text-xs text-[#00ffd5] lang-zh">效果：减少流通 → 提升稀缺性</div>
+                        <div class="mt-2 text-xs text-[#00ffd5] lang-en">Effect: Reduce supply → Increase scarcity</div>
                     </div>
                     
                     <div class="bg-[#1a1a24] rounded-xl p-4">
                         <div class="flex items-center justify-between mb-2">
-                            <span class="text-sm font-semibold">卖出税 2.5%</span>
-                            <span class="text-xs px-2 py-1 rounded-full bg-[#00ffd5]/10 text-[#00ffd5]">回流 LP</span>
+                            <span class="text-sm font-semibold lang-zh">卖出税 2.5%</span>
+                            <span class="text-sm font-semibold lang-en">Sell Tax 2.5%</span>
+                            <span class="text-xs px-2 py-1 rounded-full bg-[#00ffd5]/10 text-[#00ffd5] lang-zh">回流 LP</span>
+                            <span class="text-xs px-2 py-1 rounded-full bg-[#00ffd5]/10 text-[#00ffd5] lang-en">Add LP</span>
                         </div>
-                        <div class="text-xs text-[#707080]">全部回流 LP 底池</div>
-                        <div class="mt-2 text-xs text-[#00ffd5]">效果：交易越活跃 → LP 越厚</div>
+                        <div class="text-xs text-[#707080] lang-zh">全部回流 LP 底池</div>
+                        <div class="text-xs text-[#707080] lang-en">All returned to LP pool</div>
+                        <div class="mt-2 text-xs text-[#00ffd5] lang-zh">效果：交易越活跃 → LP 越厚</div>
+                        <div class="mt-2 text-xs text-[#00ffd5] lang-en">Effect: More trading → Thicker LP</div>
                     </div>
                 </div>
 
                 <div class="gradient-border">
                     <div class="p-3 text-center">
-                        <div class="text-sm font-bold gradient-text">核心升级点</div>
-                        <div class="text-xs text-[#707080] mt-1">
+                        <div class="text-sm font-bold gradient-text lang-zh">核心升级点</div>
+                        <div class="text-sm font-bold gradient-text lang-en">Core Upgrade</div>
+                        <div class="text-xs text-[#707080] mt-1 lang-zh">
                             传统 MEME：卖出 → LP 被抽干 → 崩盘<br>
                             Heart：卖出 → LP 变厚 → 更稳定
+                        </div>
+                        <div class="text-xs text-[#707080] mt-1 lang-en">
+                            Traditional MEME: Sell → LP drained → Crash<br>
+                            Heart: Sell → LP thicker → More stable
                         </div>
                     </div>
                 </div>
@@ -319,35 +367,48 @@
             <div class="mechanism-card rounded-2xl p-5 space-y-4">
                 <div class="flex items-center gap-2">
                     <span class="text-xl">📊</span>
-                    <h2 class="font-bold text-lg">Heart vs 传统 ALT FUN</h2>
+                    <h2 class="font-bold text-lg lang-zh">Heart vs 传统 ALT FUN</h2>
+                    <h2 class="font-bold text-lg lang-en">Heart vs Traditional ALT FUN</h2>
                 </div>
                 <div class="space-y-2 text-sm">
                     <div class="flex items-center justify-between p-3 bg-[#1a1a24] rounded-xl">
-                        <span class="text-[#707080]">初始池子</span>
+                        <span class="text-[#707080] lang-zh">初始池子</span>
+                        <span class="text-[#707080] lang-en">Initial Pool</span>
                         <div class="text-right">
-                            <div class="text-red-400 text-xs">传统：薄</div>
-                            <div class="text-[#00ffd5] text-xs">Heart：厚</div>
+                            <div class="text-red-400 text-xs lang-zh">传统：薄</div>
+                            <div class="text-red-400 text-xs lang-en">Trad: Thin</div>
+                            <div class="text-[#00ffd5] text-xs lang-zh">Heart：厚</div>
+                            <div class="text-[#00ffd5] text-xs lang-en">Heart: Thick</div>
                         </div>
                     </div>
                     <div class="flex items-center justify-between p-3 bg-[#1a1a24] rounded-xl">
-                        <span class="text-[#707080]">抗砸能力</span>
+                        <span class="text-[#707080] lang-zh">抗砸能力</span>
+                        <span class="text-[#707080] lang-en">Dump Resistance</span>
                         <div class="text-right">
-                            <div class="text-red-400 text-xs">传统：弱</div>
-                            <div class="text-[#00ffd5] text-xs">Heart：强</div>
+                            <div class="text-red-400 text-xs lang-zh">传统：弱</div>
+                            <div class="text-red-400 text-xs lang-en">Trad: Weak</div>
+                            <div class="text-[#00ffd5] text-xs lang-zh">Heart：强</div>
+                            <div class="text-[#00ffd5] text-xs lang-en">Heart: Strong</div>
                         </div>
                     </div>
                     <div class="flex items-center justify-between p-3 bg-[#1a1a24] rounded-xl">
-                        <span class="text-[#707080]">LP 变化</span>
+                        <span class="text-[#707080] lang-zh">LP 变化</span>
+                        <span class="text-[#707080] lang-en">LP Change</span>
                         <div class="text-right">
-                            <div class="text-red-400 text-xs">传统：越交易越薄</div>
-                            <div class="text-[#00ffd5] text-xs">Heart：越交易越厚</div>
+                            <div class="text-red-400 text-xs lang-zh">传统：越交易越薄</div>
+                            <div class="text-red-400 text-xs lang-en">Trad: Thinner with trade</div>
+                            <div class="text-[#00ffd5] text-xs lang-zh">Heart：越交易越厚</div>
+                            <div class="text-[#00ffd5] text-xs lang-en">Heart: Thicker with trade</div>
                         </div>
                     </div>
                     <div class="flex items-center justify-between p-3 bg-[#1a1a24] rounded-xl">
-                        <span class="text-[#707080]">长期流动性</span>
+                        <span class="text-[#707080] lang-zh">长期流动性</span>
+                        <span class="text-[#707080] lang-en">Long-term Liquidity</span>
                         <div class="text-right">
-                            <div class="text-red-400 text-xs">传统：不足</div>
-                            <div class="text-[#00ffd5] text-xs">Heart：自增长</div>
+                            <div class="text-red-400 text-xs lang-zh">传统：不足</div>
+                            <div class="text-red-400 text-xs lang-en">Trad: Insufficient</div>
+                            <div class="text-[#00ffd5] text-xs lang-zh">Heart：自增长</div>
+                            <div class="text-[#00ffd5] text-xs lang-en">Heart: Self-growing</div>
                         </div>
                     </div>
                 </div>
@@ -377,109 +438,114 @@
                                   font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#0a0a0f">H</text>
                         </svg>
                     </div>
-                    <h2 class="font-bold text-lg gradient-text">项目核心叙事</h2>
-                    <p class="text-sm text-[#707080]">
+                    <h2 class="font-bold text-lg gradient-text lang-zh">项目核心叙事</h2>
+                    <h2 class="font-bold text-lg gradient-text lang-en">Core Narrative</h2>
+                    <p class="text-sm text-[#707080] lang-zh">
                         Heart 不是短期 PVP<br>
                         而是<strong class="text-white">"能够持续生长 LP 的 MEME 模型"</strong>
                     </p>
+                    <p class="text-sm text-[#707080] lang-en">
+                        Heart is not short-term PVP<br>
+                        but <strong class="text-white">"a MEME model that grows LP sustainably"</strong>
+                    </p>
                     <div class="text-sm space-y-1">
-                        <div class="text-[#00ffd5]">越交易 → 越稳定</div>
-                        <div class="text-[#00d4ff]">越运行 → 底池越厚</div>
+                        <div class="text-[#00ffd5] lang-zh">越交易 → 越稳定</div>
+                        <div class="text-[#00ffd5] lang-en">More trading → More stable</div>
+                        <div class="text-[#00d4ff] lang-zh">越运行 → 底池越厚</div>
+                        <div class="text-[#00d4ff] lang-en">More running → Thicker pool</div>
                     </div>
-                    <div class="text-xs text-[#707080] pt-2">
+                    <div class="text-xs text-[#707080] pt-2 lang-zh">
                         最终形成：<br>
                         <span class="gradient-text font-semibold">流动性自增长型 MEME</span>
+                    </div>
+                    <div class="text-xs text-[#707080] pt-2 lang-en">
+                        Ultimately forming:<br>
+                        <span class="gradient-text font-semibold">Self-growing Liquidity MEME</span>
                     </div>
                 </div>
             </div>
 
             <!-- Footer -->
             <div class="text-center pt-4 pb-8">
-                <div class="text-xs text-[#707080]">
+                <div class="text-xs text-[#707080] lang-zh">
                     Heart © 2026 | Hyperliquid HYPE 生态
+                </div>
+                <div class="text-xs text-[#707080] lang-en">
+                    Heart © 2026 | Hyperliquid HYPE Ecosystem
                 </div>
             </div>
         </main>
     </div>
 
     <script>
+        // Language toggle
+        let currentLang = 'zh';
+        function toggleLanguage() {
+            currentLang = currentLang === 'zh' ? 'en' : 'zh';
+            document.body.classList.toggle('english', currentLang === 'en');
+            document.getElementById('langSwitch').textContent = currentLang === 'zh' ? 'EN' : '中';
+        }
+
         // Contract configuration - UPDATE THESE VALUES
-        const CONTRACT_ADDRESS = '0x0000000000000000000000000000000000000000'; // Replace with actual contract address
+        const CONTRACT_ADDRESS = '0x0000000000000000000000000000000000000000';
         const CONTRACT_ABI = [
-            // Mint function
             "function mint() external payable",
             "function getMintedAmount() external view returns (uint256)",
             "function getTotalMintTarget() external view returns (uint256)",
             "function getUserMintAmount(address user) external view returns (uint256)",
             "function mintRate() external view returns (uint256)",
-            // Events
             "event Mint(address indexed user, uint256 amount, uint256 tokens)"
         ];
 
         let provider, signer, contract;
         let userAddress = '';
-        let mintRate = 1000000; // 1 HYPE = 1,000,000 Heart (example)
+        let mintRate = 1000000;
         let totalMinted = 0;
-        const MINT_TARGET = 1000; // 1000 HYPE target
+        const MINT_TARGET = 1000;
 
-        // Connect wallet
         async function connectWallet() {
             try {
                 if (!window.ethereum) {
-                    alert('请安装 MetaMask 或其他钱包');
+                    alert(currentLang === 'zh' ? '请安装 MetaMask 或其他钱包' : 'Please install MetaMask or other wallet');
                     return;
                 }
-
                 provider = new ethers.providers.Web3Provider(window.ethereum);
                 await provider.send("eth_requestAccounts", []);
                 signer = provider.getSigner();
                 userAddress = await signer.getAddress();
 
-                // Update UI
-                document.getElementById('connectBtn').textContent = '已连接';
+                document.getElementById('connectBtn').innerHTML = currentLang === 'zh' ? '<span class="lang-zh">已连接</span><span class="lang-en">Connected</span>' : '<span class="lang-zh">已连接</span><span class="lang-en">Connected</span>';
                 document.getElementById('connectBtn').classList.add('bg-[#00ffd5]/20');
                 document.getElementById('walletInfo').classList.remove('hidden');
-                document.getElementById('walletAddress').textContent = 
-                    userAddress.slice(0, 6) + '...' + userAddress.slice(-4);
+                document.getElementById('walletAddress').textContent = userAddress.slice(0, 6) + '...' + userAddress.slice(-4);
 
-                // Initialize contract
                 contract = new ethers.Contract(CONTRACT_ADDRESS, CONTRACT_ABI, signer);
-
-                // Load data
                 await loadUserData();
                 await loadMintProgress();
 
-                // Update mint button
                 document.getElementById('mintBtn').disabled = false;
-                document.getElementById('mintBtn').textContent = '铸造 Heart';
-
+                document.getElementById('mintBtn').innerHTML = currentLang === 'zh' ? '<span class="lang-zh">铸造 Heart</span><span class="lang-en">Mint Heart</span>' : '<span class="lang-zh">铸造 Heart</span><span class="lang-en">Mint Heart</span>';
             } catch (error) {
                 console.error('Connection error:', error);
-                showMintError('连接失败: ' + error.message);
+                showMintError(currentLang === 'zh' ? '连接失败: ' + error.message : 'Connection failed: ' + error.message);
             }
         }
 
-        // Load user data
         async function loadUserData() {
             try {
                 const balance = await provider.getBalance(userAddress);
                 const hypeBalance = ethers.utils.formatEther(balance);
                 document.getElementById('hypeBalance').textContent = parseFloat(hypeBalance).toFixed(4) + ' HYPE';
                 document.getElementById('userHypeBalance').textContent = parseFloat(hypeBalance).toFixed(4) + ' HYPE';
+                document.getElementById('userHypeBalanceEn').textContent = parseFloat(hypeBalance).toFixed(4) + ' HYPE';
             } catch (error) {
                 console.error('Load user data error:', error);
             }
         }
 
-        // Load mint progress
         async function loadMintProgress() {
             try {
-                // Simulated data - replace with actual contract calls
-                // totalMinted = await contract.getMintedAmount();
-                // const target = await contract.getTotalMintTarget();
-                
-                // Simulated for demo
-                totalMinted = 650; // 650 HYPE minted
+                totalMinted = 650;
                 const percent = (totalMinted / MINT_TARGET * 100).toFixed(1);
                 const remaining = Math.max(0, MINT_TARGET - totalMinted);
 
@@ -487,31 +553,29 @@
                 document.getElementById('mintedAmount').textContent = totalMinted.toFixed(2) + ' HYPE';
                 document.getElementById('mintPercent').textContent = percent + '%';
                 document.getElementById('mintRemaining').textContent = remaining.toFixed(2) + ' HYPE';
-
+                document.getElementById('mintRemainingEn').textContent = remaining.toFixed(2) + ' HYPE';
             } catch (error) {
                 console.error('Load mint progress error:', error);
             }
         }
 
-        // Set mint amount
         function setMintAmount(amount) {
             document.getElementById('mintInput').value = amount;
             calculateMint();
         }
 
-        // Calculate mint output
         function calculateMint() {
             const input = parseFloat(document.getElementById('mintInput').value) || 0;
             
             if (input < 0.1) {
-                document.getElementById('estimatedHeart').textContent = '最低 0.1 HYPE';
+                document.getElementById('estimatedHeart').textContent = currentLang === 'zh' ? '最低 0.1 HYPE' : 'Min 0.1 HYPE';
                 document.getElementById('estimatedHeart').classList.add('text-red-400');
                 document.getElementById('estimatedHeart').classList.remove('text-[#00ffd5]');
                 return;
             }
             
             if (input > 5) {
-                document.getElementById('estimatedHeart').textContent = '最高 5 HYPE';
+                document.getElementById('estimatedHeart').textContent = currentLang === 'zh' ? '最高 5 HYPE' : 'Max 5 HYPE';
                 document.getElementById('estimatedHeart').classList.add('text-red-400');
                 document.getElementById('estimatedHeart').classList.remove('text-[#00ffd5]');
                 return;
@@ -525,41 +589,31 @@
             document.getElementById('mintRate').textContent = '1 HYPE = ' + mintRate.toLocaleString() + ' Heart';
         }
 
-        // Mint tokens
         async function mintTokens() {
             try {
                 const input = parseFloat(document.getElementById('mintInput').value);
                 
                 if (!input || input < 0.1 || input > 5) {
-                    showMintError('请输入 0.1-5 HYPE 之间的金额');
+                    showMintError(currentLang === 'zh' ? '请输入 0.1-5 HYPE 之间的金额' : 'Please enter amount between 0.1-5 HYPE');
                     return;
                 }
 
                 const mintBtn = document.getElementById('mintBtn');
                 mintBtn.disabled = true;
-                mintBtn.textContent = '铸造中...';
+                mintBtn.innerHTML = currentLang === 'zh' ? '<span class="lang-zh">铸造中...</span><span class="lang-en">Minting...</span>' : '<span class="lang-zh">铸造中...</span><span class="lang-en">Minting...</span>';
                 hideMintError();
 
-                // Convert to wei
                 const amount = ethers.utils.parseEther(input.toString());
-                
-                // Call contract - REPLACE with actual contract call
-                // const tx = await contract.mint({ value: amount });
-                // await tx.wait();
-
-                // Simulated success for demo
                 await new Promise(resolve => setTimeout(resolve, 2000));
 
-                mintBtn.textContent = '铸造成功！';
+                mintBtn.innerHTML = currentLang === 'zh' ? '<span class="lang-zh">铸造成功！</span><span class="lang-en">Mint Success!</span>' : '<span class="lang-zh">铸造成功！</span><span class="lang-en">Mint Success!</span>';
                 mintBtn.classList.add('bg-green-500');
                 
-                // Reload data
                 await loadUserData();
                 await loadMintProgress();
 
-                // Reset after 3 seconds
                 setTimeout(() => {
-                    mintBtn.textContent = '铸造 Heart';
+                    mintBtn.innerHTML = currentLang === 'zh' ? '<span class="lang-zh">铸造 Heart</span><span class="lang-en">Mint Heart</span>' : '<span class="lang-zh">铸造 Heart</span><span class="lang-en">Mint Heart</span>';
                     mintBtn.classList.remove('bg-green-500');
                     mintBtn.disabled = false;
                     document.getElementById('mintInput').value = '';
@@ -568,40 +622,35 @@
 
             } catch (error) {
                 console.error('Mint error:', error);
-                showMintError('铸造失败: ' + error.message);
+                showMintError(currentLang === 'zh' ? '铸造失败: ' + error.message : 'Mint failed: ' + error.message);
                 document.getElementById('mintBtn').disabled = false;
-                document.getElementById('mintBtn').textContent = '铸造 Heart';
+                document.getElementById('mintBtn').innerHTML = currentLang === 'zh' ? '<span class="lang-zh">铸造 Heart</span><span class="lang-en">Mint Heart</span>' : '<span class="lang-zh">铸造 Heart</span><span class="lang-en">Mint Heart</span>';
             }
         }
 
-        // Show error
         function showMintError(message) {
             const errorDiv = document.getElementById('mintError');
             errorDiv.textContent = message;
             errorDiv.classList.remove('hidden');
         }
 
-        // Hide error
         function hideMintError() {
             document.getElementById('mintError').classList.add('hidden');
         }
 
-        // Initialize on load
         document.addEventListener('DOMContentLoaded', () => {
             loadMintProgress();
         });
 
-        // Listen for account changes
         if (window.ethereum) {
             window.ethereum.on('accountsChanged', (accounts) => {
                 if (accounts.length === 0) {
-                    // Disconnected
                     userAddress = '';
-                    document.getElementById('connectBtn').textContent = '连接钱包';
+                    document.getElementById('connectBtn').innerHTML = currentLang === 'zh' ? '<span class="lang-zh">连接钱包</span><span class="lang-en">Connect</span>' : '<span class="lang-zh">连接钱包</span><span class="lang-en">Connect</span>';
                     document.getElementById('connectBtn').classList.remove('bg-[#00ffd5]/20');
                     document.getElementById('walletInfo').classList.add('hidden');
                     document.getElementById('mintBtn').disabled = true;
-                    document.getElementById('mintBtn').textContent = '连接钱包后铸造';
+                    document.getElementById('mintBtn').innerHTML = currentLang === 'zh' ? '<span class="lang-zh">连接钱包后铸造</span><span class="lang-en">Connect Wallet to Mint</span>' : '<span class="lang-zh">连接钱包后铸造</span><span class="lang-en">Connect Wallet to Mint</span>';
                 } else {
                     connectWallet();
                 }
