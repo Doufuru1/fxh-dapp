@@ -78,6 +78,7 @@ const wallets = [
 
 let currentWalletIndex = 0;
 let balanceHidden = false;
+let selectedToken = null;
 
 const marketData = [
   { rank: 1, name: 'Bitcoin', symbol: 'BTC', price: '$48,254.00', change: '+3.2%', up: true, cap: '$947.2B', color: '#f7931a' },
@@ -96,6 +97,13 @@ const dapps = [
   { name: 'OpenSea', desc: 'NFT 交易市场', tag: 'NFT', color: '#2081e2' },
   { name: 'PancakeSwap', desc: 'BSC 链上 DEX', tag: 'DEX', color: '#d1884f' },
   { name: 'Compound', desc: '算法货币市场', tag: 'DeFi', color: '#00d395' },
+];
+
+const mockTx = [
+  { type: 'out', symbol: 'TRX', amount: '-50.0000', time: '2026-07-18 09:23', status: '成功' },
+  { type: 'in', symbol: 'USDT', amount: '+1,200.00', time: '2026-07-17 15:42', status: '成功' },
+  { type: 'out', symbol: 'TRX', amount: '-12.5000', time: '2026-07-16 11:05', status: '成功' },
+  { type: 'in', symbol: 'TRX', amount: '+300.0000', time: '2026-07-15 08:30', status: '成功' },
 ];
 
 const tokenListEl = document.getElementById('tokenList');
@@ -118,8 +126,48 @@ const modalTitle = document.getElementById('modalTitle');
 const modalBody = document.getElementById('modalBody');
 const modalClose = document.getElementById('modalClose');
 
+const tokenDetailModal = document.getElementById('tokenDetailModal');
+const tokenDetailOverlay = document.getElementById('tokenDetailOverlay');
+const tokenDetailBack = document.getElementById('tokenDetailBack');
+const tokenDetailName = document.getElementById('tokenDetailName');
+const tokenDetailIcon = document.getElementById('tokenDetailIcon');
+const tokenDetailBalance = document.getElementById('tokenDetailBalance');
+const tokenDetailValue = document.getElementById('tokenDetailValue');
+const tokenDetailPrice = document.getElementById('tokenDetailPrice');
+const tokenDetailChange = document.getElementById('tokenDetailChange');
+const tokenDetailSend = document.getElementById('tokenDetailSend');
+const tokenDetailReceive = document.getElementById('tokenDetailReceive');
+const tokenDetailSwap = document.getElementById('tokenDetailSwap');
+const tokenTxList = document.getElementById('tokenTxList');
+
+const sendModal = document.getElementById('sendModal');
+const sendOverlay = document.getElementById('sendOverlay');
+const sendBack = document.getElementById('sendBack');
+const sendTokenSelected = document.getElementById('sendTokenSelected');
+const sendTokenIcon = document.getElementById('sendTokenIcon');
+const sendTokenName = document.getElementById('sendTokenName');
+const sendTokenBalance = document.getElementById('sendTokenBalance');
+const sendAddress = document.getElementById('sendAddress');
+const sendAmount = document.getElementById('sendAmount');
+const sendTokenUnit = document.getElementById('sendTokenUnit');
+const sendAmountValue = document.getElementById('sendAmountValue');
+const sendFee = document.getElementById('sendFee');
+const sendReceive = document.getElementById('sendReceive');
+const sendMaxBtn = document.getElementById('sendMaxBtn');
+const sendConfirmBtn = document.getElementById('sendConfirmBtn');
+const sendScanBtn = document.getElementById('sendScanBtn');
+
 function getCurrentWallet() {
   return wallets[currentWalletIndex];
+}
+
+function parseAmount(str) {
+  return parseFloat(str.replace(/,/g, '')) || 0;
+}
+
+function getTokenPrice(symbol) {
+  const priceMap = { TRX: 0.3237, USDT: 1.0, BTT: 0.0025 };
+  return priceMap[symbol] || 0;
 }
 
 function renderTokens() {
@@ -143,6 +191,10 @@ function renderTokens() {
       </div>
     </div>
   `).join('');
+  
+  document.querySelectorAll('.token-item').forEach(item => {
+    item.addEventListener('click', () => openTokenDetail(item.dataset.symbol));
+  });
 }
 
 function renderWalletUI() {
@@ -273,6 +325,97 @@ function hideModal() {
   modal.classList.remove('show');
 }
 
+function openTokenDetail(symbol) {
+  const wallet = getCurrentWallet();
+  selectedToken = wallet.tokens.find(t => t.symbol === symbol);
+  if (!selectedToken) return;
+  
+  tokenDetailName.textContent = selectedToken.name;
+  tokenDetailIcon.textContent = selectedToken.trc ? 'TRC20' : selectedToken.symbol[0];
+  tokenDetailIcon.style.fontSize = selectedToken.trc ? '10px' : '14px';
+  tokenDetailIcon.style.letterSpacing = selectedToken.trc ? '-0.5px' : '0';
+  tokenDetailIcon.style.background = selectedToken.color;
+  tokenDetailBalance.textContent = `${selectedToken.amount} ${selectedToken.symbol}`;
+  tokenDetailValue.textContent = `≈ ${selectedToken.value}`;
+  tokenDetailPrice.textContent = selectedToken.price;
+  tokenDetailChange.textContent = selectedToken.change;
+  tokenDetailChange.className = `token-detail-change ${selectedToken.up ? 'up' : 'down'}`;
+  
+  const isWatch = wallet.type === 'watch';
+  if (isWatch) {
+    tokenDetailSend.classList.add('disabled');
+  } else {
+    tokenDetailSend.classList.remove('disabled');
+  }
+  
+  tokenTxList.innerHTML = mockTx.filter(tx => tx.symbol === selectedToken.symbol).map(tx => `
+    <div class="tx-item">
+      <div class="tx-left">
+        <div class="tx-icon">${tx.type === 'in' ? '↓' : '↑'}</div>
+        <div class="tx-info">
+          <div class="tx-type">${tx.type === 'in' ? '收款' : '转账'}</div>
+          <div class="tx-time">${tx.time}</div>
+        </div>
+      </div>
+      <div class="tx-right">
+        <div class="tx-amount ${tx.type}">${tx.amount} ${tx.symbol}</div>
+        <div class="tx-status">${tx.status}</div>
+      </div>
+    </div>
+  `).join('');
+  
+  tokenDetailModal.classList.add('show');
+}
+
+function hideTokenDetail() {
+  tokenDetailModal.classList.remove('show');
+  selectedToken = null;
+}
+
+function openSendModal(tokenSymbol = null) {
+  const wallet = getCurrentWallet();
+  if (wallet.type === 'watch') {
+    showModal('观察钱包', '<p>观察钱包不支持转出操作。</p><button class="modal-btn" onclick="hideModal()">知道了</button>');
+    return;
+  }
+  
+  const symbol = tokenSymbol || wallet.tokens[0].symbol;
+  selectedToken = wallet.tokens.find(t => t.symbol === symbol) || wallet.tokens[0];
+  if (!selectedToken) return;
+  
+  sendTokenIcon.textContent = selectedToken.trc ? 'TRC20' : selectedToken.symbol[0];
+  sendTokenIcon.style.fontSize = selectedToken.trc ? '10px' : '14px';
+  sendTokenIcon.style.letterSpacing = selectedToken.trc ? '-0.5px' : '0';
+  sendTokenIcon.style.background = selectedToken.color;
+  sendTokenName.textContent = selectedToken.name;
+  sendTokenBalance.textContent = `余额 ${selectedToken.amount}`;
+  sendTokenUnit.textContent = selectedToken.symbol;
+  sendAddress.value = '';
+  sendAmount.value = '';
+  updateSendAmount();
+  
+  tokenDetailModal.classList.remove('show');
+  sendModal.classList.add('show');
+}
+
+function hideSendModal() {
+  sendModal.classList.remove('show');
+}
+
+function updateSendAmount() {
+  const amount = parseFloat(sendAmount.value) || 0;
+  const price = getTokenPrice(selectedToken ? selectedToken.symbol : 'TRX');
+  sendAmountValue.textContent = `$${(amount * price).toFixed(2)}`;
+  
+  const fee = selectedToken && selectedToken.symbol === 'TRX' ? 0.26 : 0;
+  sendFee.textContent = fee.toFixed(2);
+  
+  const receive = Math.max(0, amount - fee);
+  sendReceive.textContent = receive.toFixed(2);
+  
+  sendConfirmBtn.disabled = amount <= 0 || !sendAddress.value.trim();
+}
+
 function init() {
   renderWalletUI();
   renderMarket();
@@ -300,13 +443,38 @@ function init() {
     btn.addEventListener('click', () => {
       if (btn.classList.contains('disabled')) return;
       const action = btn.dataset.action;
-      const titles = { send: '转账', receive: '收款', resources: '资源', more: '更多工具' };
-      showModal(titles[action], `<p>这里将打开 <strong>${titles[action]}</strong> 功能页面。演示界面，仅展示交互。</p><button class="modal-btn" onclick="hideModal()">知道了</button>`);
+      if (action === 'send') {
+        openSendModal();
+      } else {
+        const titles = { receive: '收款', resources: '资源', more: '更多工具' };
+        showModal(titles[action], `<p>这里将打开 <strong>${titles[action]}</strong> 功能页面。</p><button class="modal-btn" onclick="hideModal()">知道了</button>`);
+      }
     });
   });
 
   modalClose.addEventListener('click', hideModal);
   modal.querySelector('.modal-overlay').addEventListener('click', hideModal);
+
+  tokenDetailBack.addEventListener('click', hideTokenDetail);
+  tokenDetailOverlay.addEventListener('click', hideTokenDetail);
+  tokenDetailSend.addEventListener('click', () => openSendModal(selectedToken ? selectedToken.symbol : null));
+  tokenDetailReceive.addEventListener('click', () => showModal('收款', `<p>${selectedToken ? selectedToken.name : ''} 收款地址：</p><p style="word-break:break-all;">${getCurrentWallet().address}</p><button class="modal-btn" onclick="hideModal()">复制地址</button>`));
+  tokenDetailSwap.addEventListener('click', () => showModal('兑换', `<p>这里将打开 ${selectedToken ? selectedToken.name : ''} 兑换页面。</p><button class="modal-btn" onclick="hideModal()">知道了</button>`));
+
+  sendBack.addEventListener('click', hideSendModal);
+  sendOverlay.addEventListener('click', hideSendModal);
+  sendMaxBtn.addEventListener('click', () => {
+    if (!selectedToken) return;
+    const amount = parseAmount(selectedToken.amount);
+    sendAmount.value = amount;
+    updateSendAmount();
+  });
+  sendAmount.addEventListener('input', updateSendAmount);
+  sendAddress.addEventListener('input', updateSendAmount);
+  sendScanBtn.addEventListener('click', () => showModal('扫一扫', '<p>这里将打开相机扫描二维码。</p><button class="modal-btn" onclick="hideModal()">知道了</button>'));
+  sendConfirmBtn.addEventListener('click', () => {
+    showModal('转账确认', `<p>已向 <strong>${sendAddress.value}</strong> 发起 ${sendAmount.value} ${selectedToken ? selectedToken.symbol : ''} 转账。</p><button class="modal-btn" onclick="hideSendModal();hideModal();">完成</button>`);
+  });
 
   document.querySelectorAll('.market-tab').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -343,3 +511,5 @@ init();
 
 window.hideModal = hideModal;
 window.hideWalletModal = hideWalletModal;
+window.hideTokenDetail = hideTokenDetail;
+window.hideSendModal = hideSendModal;

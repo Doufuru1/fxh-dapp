@@ -290,6 +290,113 @@
       </button>
     </nav>
 
+    <!-- Token Detail Modal -->
+    <div class="token-detail-modal" id="tokenDetailModal">
+      <div class="token-detail-overlay" id="tokenDetailOverlay"></div>
+      <div class="token-detail-content">
+        <div class="token-detail-header">
+          <button class="token-detail-back" id="tokenDetailBack">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M5 12l7 7M5 12l7-7"/></svg>
+          </button>
+          <div class="token-detail-title" id="tokenDetailName">TRX</div>
+          <button class="token-detail-more">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="6" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="12" cy="18" r="2"/></svg>
+          </button>
+        </div>
+
+        <div class="token-detail-info">
+          <div class="token-detail-icon" id="tokenDetailIcon">T</div>
+          <div class="token-detail-balance" id="tokenDetailBalance">200.882396 TRX</div>
+          <div class="token-detail-value" id="tokenDetailValue">≈ $65.04</div>
+          <div class="token-detail-price">
+            <span id="tokenDetailPrice">$0.3237</span>
+            <span class="token-detail-change up" id="tokenDetailChange">+0.29%</span>
+          </div>
+        </div>
+
+        <div class="token-detail-actions">
+          <button class="token-detail-action" id="tokenDetailSend">
+            <div class="token-detail-action-icon">↑</div>
+            <span>转出</span>
+          </button>
+          <button class="token-detail-action" id="tokenDetailReceive">
+            <div class="token-detail-action-icon">↓</div>
+            <span>收款</span>
+          </button>
+          <button class="token-detail-action" id="tokenDetailSwap">
+            <div class="token-detail-action-icon">⇄</div>
+            <span>兑换</span>
+          </button>
+        </div>
+
+        <div class="token-detail-section">
+          <div class="token-detail-section-title">交易记录</div>
+          <div class="tx-list" id="tokenTxList"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Send Modal -->
+    <div class="send-modal" id="sendModal">
+      <div class="send-overlay" id="sendOverlay"></div>
+      <div class="send-content">
+        <div class="send-header">
+          <button class="send-back" id="sendBack">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M5 12l7 7M5 12l7-7"/></svg>
+          </button>
+          <div class="send-title">转出</div>
+          <div class="send-spacer"></div>
+        </div>
+
+        <div class="send-token-row">
+          <div class="send-token-label">转出币种</div>
+          <div class="send-token-selected" id="sendTokenSelected">
+            <div class="send-token-icon" id="sendTokenIcon">T</div>
+            <div class="send-token-meta">
+              <div class="send-token-name" id="sendTokenName">TRX</div>
+              <div class="send-token-balance" id="sendTokenBalance">余额 200.882396</div>
+            </div>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+          </div>
+        </div>
+
+        <div class="send-form">
+          <div class="send-form-row">
+            <div class="send-form-label">收款地址</div>
+            <div class="send-input-wrap">
+              <input type="text" class="send-input" id="sendAddress" placeholder="请输入或粘贴收款地址">
+              <button class="send-input-action" id="sendScanBtn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="send-form-row">
+            <div class="send-form-label">数量</div>
+            <div class="send-input-wrap">
+              <input type="text" class="send-input send-amount-input" id="sendAmount" placeholder="0.00">
+              <div class="send-token-unit" id="sendTokenUnit">TRX</div>
+              <button class="send-max-btn" id="sendMaxBtn">全部</button>
+            </div>
+            <div class="send-input-note">≈ <span id="sendAmountValue">$0.00</span></div>
+          </div>
+        </div>
+
+        <div class="send-fee">
+          <div class="send-fee-row">
+            <span>矿工费</span>
+            <span><span id="sendFee">0.26</span> TRX</span>
+          </div>
+          <div class="send-fee-row">
+            <span>预计到账</span>
+            <span><span id="sendReceive">0.00</span> TRX</span>
+          </div>
+        </div>
+
+        <button class="send-confirm" id="sendConfirmBtn">确认转出</button>
+      </div>
+    </div>
+
     <!-- Wallet Selector Modal -->
     <div class="wallet-modal" id="walletModal">
       <div class="wallet-modal-overlay" id="walletModalOverlay"></div>
