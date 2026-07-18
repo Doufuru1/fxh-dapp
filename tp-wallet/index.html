@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>TP Wallet</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <!-- Header -->
+    <header class="header">
+      <div class="header-left">
+        <div class="avatar">W</div>
+        <div class="wallet-info">
+          <div class="wallet-name">钱包 1</div>
+          <div class="wallet-address">0x7a8b...c9d2</div>
+        </div>
+        <button class="icon-btn dropdown"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button>
+      </div>
+      <div class="header-right">
+        <button class="icon-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg></button>
+        <button class="icon-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg></button>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main" id="main">
+      <!-- Wallet Tab -->
+      <section class="tab-page active" id="tab-wallet">
+        <div class="balance-card">
+          <div class="balance-header">
+            <span class="balance-label">总资产估值</span>
+            <button class="icon-btn eye-btn" id="eyeBtn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
+          </div>
+          <div class="balance-value" id="balanceValue">$12,438.92</div>
+          <div class="balance-change">+ $846.32 (7.3%)</div>
+          <div class="balance-actions">
+            <button class="action-btn" data-action="send"><div class="action-icon">↑</div><span>发送</span></button>
+            <button class="action-btn" data-action="receive"><div class="action-icon">↓</div><span>接收</span></button>
+            <button class="action-btn" data-action="buy"><div class="action-icon">$</div><span>购买</span></button>
+            <button class="action-btn" data-action="swap"><div class="action-icon">⇄</div><span>兑换</span></button>
+            <button class="action-btn" data-action="earn"><div class="action-icon">%</div><span>理财</span></button>
+          </div>
+        </div>
+
+        <div class="banner-slider">
+          <div class="banner active" style="background: linear-gradient(135deg, #2979ff, #00b0ff);">
+            <div class="banner-title">DeFi 理财</div>
+            <div class="banner-sub">年化收益高达 12%</div>
+          </div>
+          <div class="banner" style="background: linear-gradient(135deg, #7c4dff, #ff4081);">
+            <div class="banner-title">NFT 市场</div>
+            <div class="banner-sub">发现热门藏品</div>
+          </div>
+        </div>
+
+        <div class="tokens-header">
+          <span class="tokens-title">代币</span>
+          <div class="tokens-filter">
+            <button class="filter-btn active">全部</button>
+            <button class="filter-btn">链上</button>
+            <button class="filter-btn">DeFi</button>
+          </div>
+        </div>
+
+        <div class="token-list" id="tokenList"></div>
+      </section>
+
+      <!-- Market Tab -->
+      <section class="tab-page" id="tab-market">
+        <div class="market-header">
+          <h2>市场</h2>
+          <div class="market-search"><input type="text" placeholder="搜索币种"></div>
+        </div>
+        <div class="market-tabs">
+          <button class="market-tab active">热门</button>
+          <button class="market-tab">涨幅榜</button>
+          <button class="market-tab">跌幅榜</button>
+          <button class="market-tab">新币</button>
+        </div>
+        <div class="market-list" id="marketList"></div>
+      </section>
+
+      <!-- Discover Tab -->
+      <section class="tab-page" id="tab-discover">
+        <div class="discover-header">
+          <h2>发现</h2>
+        </div>
+        <div class="discover-grid">
+          <div class="discover-card">
+            <div class="discover-icon" style="background: linear-gradient(135deg, #ff6b6b, #ee5a6f);">🎮</div>
+            <span>GameFi</span>
+          </div>
+          <div class="discover-card">
+            <div class="discover-icon" style="background: linear-gradient(135deg, #4facfe, #00f2fe);">🎨</div>
+            <span>NFT</span>
+          </div>
+          <div class="discover-card">
+            <div class="discover-icon" style="background: linear-gradient(135deg, #43e97b, #38f9d7);">💰</div>
+            <span>DeFi</span>
+          </div>
+          <div class="discover-card">
+            <div class="discover-icon" style="background: linear-gradient(135deg, #fa709a, #fee140);">🏆</div>
+            <span>空投</span>
+          </div>
+          <div class="discover-card">
+            <div class="discover-icon" style="background: linear-gradient(135deg, #a18cd1, #fbc2eb);">🗳️</div>
+            <span>DAO</span>
+          </div>
+          <div class="discover-card">
+            <div class="discover-icon" style="background: linear-gradient(135deg, #ff9a9e, #fecfef);">🎁</div>
+            <span>活动</span>
+          </div>
+        </div>
+        <div class="dapps-section">
+          <div class="section-title">热门 DApp</div>
+          <div class="dapp-list" id="dappList"></div>
+        </div>
+      </section>
+
+      <!-- Me Tab -->
+      <section class="tab-page" id="tab-me">
+        <div class="me-header">
+          <div class="avatar large">W</div>
+          <div class="me-name">钱包 1</div>
+          <div class="me-address">0x7a8b...c9d2</div>
+        </div>
+        <div class="menu-list">
+          <div class="menu-item"><span class="menu-icon">🔒</span> 安全中心</div>
+          <div class="menu-item"><span class="menu-icon">⛓️</span> 网络管理</div>
+          <div class="menu-item"><span class="menu-icon">🔔</span> 消息通知</div>
+          <div class="menu-item"><span class="menu-icon">🌐</span> 语言</div>
+          <div class="menu-item"><span class="menu-icon">❓</span> 帮助与反馈</div>
+          <div class="menu-item"><span class="menu-icon">⚙️</span> 设置</div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+      <button class="nav-item active" data-tab="wallet">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 12V8h-6M20 8l-6 6M4 12v4h6M4 16l6-6"/></svg>
+        <span>钱包</span>
+      </button>
+      <button class="nav-item" data-tab="market">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18M18.7 8l-5.1 5.2-2.8-2.7L4 15.3"/></svg>
+        <span>市场</span>
+      </button>
+      <button class="nav-item" data-tab="discover">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/></svg>
+        <span>发现</span>
+      </button>
+      <button class="nav-item" data-tab="me">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        <span>我的</span>
+      </button>
+    </nav>
+
+    <!-- Modal -->
+    <div class="modal" id="modal">
+      <div class="modal-overlay"></div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 id="modalTitle">提示</h3>
+          <button class="modal-close" id="modalClose">×</button>
+        </div>
+        <div class="modal-body" id="modalBody"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
