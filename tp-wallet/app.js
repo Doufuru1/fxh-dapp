@@ -1,27 +1,83 @@
-const tokens = [
+const wallets = [
   {
-    name: 'TRX',
-    symbol: 'TRX',
-    amount: '200.882396',
-    value: '$65.04',
-    price: '$0.3237',
-    change: '+0.29%',
-    up: true,
-    color: '#ff0a2b',
-    trc: false
+    id: 'trx-1',
+    name: 'TRX-1',
+    address: 'TKcK...z9qA',
+    type: 'watch',
+    typeLabel: '观察钱包',
+    balance: '$511,887.43',
+    tokens: [
+      {
+        name: 'TRX',
+        symbol: 'TRX',
+        amount: '200.882396',
+        value: '$65.04',
+        price: '$0.3237',
+        change: '+0.29%',
+        up: true,
+        color: '#ff0a2b',
+        trc: false
+      },
+      {
+        name: 'USDT',
+        symbol: 'USDT',
+        amount: '511,822.389946',
+        value: '$511,822.38',
+        price: '$1.0000',
+        change: '0%',
+        up: true,
+        color: '#26a17b',
+        trc: true
+      }
+    ]
   },
   {
-    name: 'USDT',
-    symbol: 'USDT',
-    amount: '511,822.389946',
-    value: '$511,822.38',
-    price: '$1.0000',
-    change: '0%',
-    up: true,
-    color: '#26a17b',
-    trc: true
+    id: 'trx-2',
+    name: 'TRX-2',
+    address: 'TKxQ...m7rP',
+    type: 'main',
+    typeLabel: '主钱包',
+    balance: '$2,450.00',
+    tokens: [
+      {
+        name: 'TRX',
+        symbol: 'TRX',
+        amount: '5,000.000000',
+        value: '$1,618.50',
+        price: '$0.3237',
+        change: '+0.29%',
+        up: true,
+        color: '#ff0a2b',
+        trc: false
+      },
+      {
+        name: 'USDT',
+        symbol: 'USDT',
+        amount: '800.000000',
+        value: '$800.00',
+        price: '$1.0000',
+        change: '0%',
+        up: true,
+        color: '#26a17b',
+        trc: true
+      },
+      {
+        name: 'BTT',
+        symbol: 'BTT',
+        amount: '12,500.000000',
+        value: '$31.50',
+        price: '$0.0025',
+        change: '-1.2%',
+        up: false,
+        color: '#000000',
+        trc: false
+      }
+    ]
   }
 ];
+
+let currentWalletIndex = 0;
+let balanceHidden = false;
 
 const marketData = [
   { rank: 1, name: 'Bitcoin', symbol: 'BTC', price: '$48,254.00', change: '+3.2%', up: true, cap: '$947.2B', color: '#f7931a' },
@@ -48,19 +104,32 @@ const marketListEl = document.getElementById('marketList');
 const dappListEl = document.getElementById('dappList');
 const balanceValueEl = document.getElementById('balanceValue');
 const eyeBtn = document.getElementById('eyeBtn');
+const walletNameEl = document.getElementById('walletName');
+const walletLockEl = document.getElementById('walletLock');
+const watchTagEl = document.getElementById('watchTag');
+const walletLabelEl = document.getElementById('walletLabel');
+const walletModal = document.getElementById('walletModal');
+const walletModalClose = document.getElementById('walletModalClose');
+const walletModalOverlay = document.getElementById('walletModalOverlay');
+const walletListEl = document.getElementById('walletList');
+const addWalletBtn = document.getElementById('addWalletBtn');
 const modal = document.getElementById('modal');
 const modalTitle = document.getElementById('modalTitle');
 const modalBody = document.getElementById('modalBody');
 const modalClose = document.getElementById('modalClose');
 
-let balanceHidden = false;
-const realBalance = '$511,887.43';
+function getCurrentWallet() {
+  return wallets[currentWalletIndex];
+}
 
 function renderTokens() {
-  tokenListEl.innerHTML = tokens.map(t => `
+  const wallet = getCurrentWallet();
+  tokenListEl.innerHTML = wallet.tokens.map(t => `
     <div class="token-item" data-symbol="${t.symbol}">
       <div class="token-left">
-        <div class="token-icon" style="background: ${t.color}; box-shadow: 0 4px 12px ${t.color}40; font-size: ${t.trc ? '10px' : '14px'}; letter-spacing: ${t.trc ? '-0.5px' : '0'};">${t.trc ? 'TRC20' : t.symbol[0]}</div>
+        <div class="token-icon" style="background: ${t.color}; box-shadow: 0 4px 12px ${t.color}40; font-size: ${t.trc ? '10px' : '14px'}; letter-spacing: ${t.trc ? '-0.5px' : '0'};">
+          ${t.trc ? 'TRC20' : t.symbol[0]}
+        </div>
         <div class="token-meta">
           <div class="token-name">${t.name}</div>
           <div class="token-symbol">
@@ -74,6 +143,62 @@ function renderTokens() {
       </div>
     </div>
   `).join('');
+}
+
+function renderWalletUI() {
+  const wallet = getCurrentWallet();
+  walletNameEl.textContent = wallet.name;
+  balanceValueEl.textContent = balanceHidden ? '****' : wallet.balance;
+  watchTagEl.textContent = wallet.typeLabel;
+  watchTagEl.className = `watch-tag ${wallet.type === 'watch' ? 'watch' : 'main'}`;
+  watchTagEl.style.display = 'inline-block';
+  walletLockEl.style.display = wallet.type === 'watch' ? 'inline-block' : 'none';
+  
+  document.querySelectorAll('.me-name').forEach(el => el.textContent = wallet.name);
+  document.querySelectorAll('.me-address').forEach(el => el.textContent = wallet.address);
+  
+  const sendBtn = document.querySelector('[data-action="send"]');
+  if (wallet.type === 'watch') {
+    sendBtn.classList.add('disabled');
+  } else {
+    sendBtn.classList.remove('disabled');
+  }
+  
+  renderTokens();
+  renderWalletSelector();
+}
+
+function renderWalletSelector() {
+  walletListEl.innerHTML = wallets.map((w, index) => `
+    <div class="wallet-option ${index === currentWalletIndex ? 'active' : ''}" data-index="${index}">
+      <div class="wallet-option-avatar">${w.name[0]}</div>
+      <div class="wallet-option-info">
+        <div class="wallet-option-name">
+          ${w.name}
+          <span class="wallet-tag ${w.type === 'watch' ? 'watch' : 'main'}">${w.typeLabel}</span>
+        </div>
+        <div class="wallet-option-type">${w.address} · ${w.tokens.length} 种代币</div>
+      </div>
+      <div class="wallet-option-check">✓</div>
+    </div>
+  `).join('');
+  
+  document.querySelectorAll('.wallet-option').forEach(opt => {
+    opt.addEventListener('click', () => {
+      currentWalletIndex = parseInt(opt.dataset.index);
+      renderWalletUI();
+      hideWalletModal();
+    });
+  });
+}
+
+function showWalletModal() {
+  walletModal.classList.add('show');
+  renderWalletSelector();
+}
+
+function hideWalletModal() {
+  walletModal.classList.remove('show');
 }
 
 function renderMarket() {
@@ -110,7 +235,7 @@ function renderDapps() {
 
 function toggleBalance() {
   balanceHidden = !balanceHidden;
-  balanceValueEl.textContent = balanceHidden ? '****' : realBalance;
+  balanceValueEl.textContent = balanceHidden ? '****' : getCurrentWallet().balance;
   renderTokens();
   eyeBtn.innerHTML = balanceHidden
     ? '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.93 9.93 0 0 1 12 4c7 0 11 8 11 8a18.45 18.45 0 0 1-2.1 2.57M1 1l22 22"/></svg>'
@@ -149,9 +274,17 @@ function hideModal() {
 }
 
 function init() {
-  renderTokens();
+  renderWalletUI();
   renderMarket();
   renderDapps();
+
+  walletLabelEl.addEventListener('click', showWalletModal);
+  walletModalClose.addEventListener('click', hideWalletModal);
+  walletModalOverlay.addEventListener('click', hideWalletModal);
+  
+  addWalletBtn.addEventListener('click', () => {
+    showModal('添加钱包', '<p>这里将打开创建/导入钱包页面。</p><button class="modal-btn" onclick="hideModal()">知道了</button>');
+  });
 
   eyeBtn.addEventListener('click', toggleBalance);
 
@@ -165,6 +298,7 @@ function init() {
 
   document.querySelectorAll('.action-btn').forEach(btn => {
     btn.addEventListener('click', () => {
+      if (btn.classList.contains('disabled')) return;
       const action = btn.dataset.action;
       const titles = { send: '转账', receive: '收款', resources: '资源', more: '更多工具' };
       showModal(titles[action], `<p>这里将打开 <strong>${titles[action]}</strong> 功能页面。演示界面，仅展示交互。</p><button class="modal-btn" onclick="hideModal()">知道了</button>`);
@@ -208,3 +342,4 @@ function init() {
 init();
 
 window.hideModal = hideModal;
+window.hideWalletModal = hideWalletModal;
