@@ -36,7 +36,15 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
     
-    // 立即參與按鈕
+    // 链接钱包按钮
+    const walletBtn = document.getElementById('walletBtn');
+    if (walletBtn) {
+        walletBtn.addEventListener('click', () => {
+            showToast('钱包功能即将推出');
+        });
+    }
+    
+    // 立即参与按钮
     const joinBtn = document.getElementById('joinBtn');
     if (joinBtn) {
         joinBtn.addEventListener('click', () => {
@@ -87,7 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
         copyBtn.addEventListener('click', async () => {
             try {
                 await navigator.clipboard.writeText(inviteLink.textContent.trim());
-                showToast('鏈接已複製');
+                showToast('链接已复制');
             } catch (err) {
                 // 降级方案
                 const textArea = document.createElement('textarea');
@@ -96,7 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 textArea.select();
                 document.execCommand('copy');
                 document.body.removeChild(textArea);
-                showToast('鏈接已複製');
+                showToast('链接已复制');
             }
             
             if (navigator.vibrate) {
@@ -109,7 +117,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const claimBtn = document.getElementById('claimBtn');
     if (claimBtn) {
         claimBtn.addEventListener('click', () => {
-            showToast('暫無可領取獎勵');
+            showToast('暂无可领取奖励');
         });
     }
     
@@ -270,7 +278,7 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.addEventListener('click', () => {
             btn.style.transform = 'scale(0.9)';
             setTimeout(() => btn.style.transform = '', 150);
-            showToast('即將推出');
+            showToast('即将推出');
         });
     });
     
@@ -279,7 +287,7 @@ document.addEventListener('DOMContentLoaded', () => {
     menuItems.forEach(item => {
         item.addEventListener('click', () => {
             const label = item.querySelector('.menu-label')?.textContent || '';
-            showToast(`${label} 即將推出`);
+            showToast(`${label} 即将推出`);
         });
     });
     
