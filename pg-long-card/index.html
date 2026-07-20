@@ -65,73 +65,7 @@
                                 <div class="stat-value">$0.023268</div>
                             </div>
 
-                            <!-- 红色巨龙环绕 PGL -->
-                            <div class="dragon-wrapper" aria-hidden="true">
-                                <div class="dragon-orbit">
-                                    <svg class="dragon-svg" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-                                        <defs>
-                                            <linearGradient id="dragonGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                                <stop offset="0%" stop-color="#ff0000" />
-                                                <stop offset="50%" stop-color="#ff3366" />
-                                                <stop offset="100%" stop-color="#ff0000" />
-                                            </linearGradient>
-                                            <filter id="dragonGlow" x="-50%" y="-50%" width="200%" height="200%">
-                                                <feGaussianBlur stdDeviation="2.5" result="blur" />
-                                                <feMerge>
-                                                    <feMergeNode in="blur" />
-                                                    <feMergeNode in="SourceGraphic" />
-                                                </feMerge>
-                                            </filter>
-                                        </defs>
-                                        <!-- 龙身 -->
-                                        <path class="dragon-body" 
-                                              d="M 60 25 
-                                                 C 78 25, 92 38, 92 55 
-                                                 C 92 72, 80 85, 65 88 
-                                                 C 55 90, 45 85, 38 75 
-                                                 C 30 65, 32 52, 42 44 
-                                                 C 50 38, 62 38, 70 45 
-                                                 C 76 50, 78 60, 73 68 
-                                                 C 68 76, 58 78, 50 73 
-                                                 C 43 68, 42 58, 48 52 
-                                                 C 52 48, 60 48, 64 52" 
-                                              fill="none" 
-                                              stroke="url(#dragonGradient)" 
-                                              stroke-width="7" 
-                                              stroke-linecap="round" 
-                                              stroke-linejoin="round" 
-                                              filter="url(#dragonGlow)" />
-                                        <!-- 龙尾 -->
-                                        <path d="M 64 52 Q 72 48 78 42 L 75 46 L 82 45 L 76 50" 
-                                              fill="#ff0000" 
-                                              filter="url(#dragonGlow)" />
-                                        <!-- 龙头 -->
-                                        <g transform="translate(60, 18)">
-                                            <ellipse cx="0" cy="0" rx="12" ry="9" fill="#ff0000" filter="url(#dragonGlow)" />
-                                            <!-- 龙嘴 -->
-                                            <path d="M -8 2 Q 0 8 8 2 L 6 5 Q 0 10 -6 5 Z" fill="#ff0000" />
-                                            <!-- 龙眼 -->
-                                            <circle cx="-4" cy="-2" r="2.5" fill="#ffffff" />
-                                            <circle cx="4" cy="-2" r="2.5" fill="#ffffff" />
-                                            <circle cx="-4" cy="-2" r="1" fill="#000000" />
-                                            <circle cx="4" cy="-2" r="1" fill="#000000" />
-                                            <!-- 龙角 -->
-                                            <path d="M -6 -6 L -10 -16 L -3 -8 Z" fill="#ff0000" />
-                                            <path d="M 6 -6 L 10 -16 L 3 -8 Z" fill="#ff0000" />
-                                            <!-- 龙须 -->
-                                            <path d="M -8 4 Q -14 10 -12 16" fill="none" stroke="#ff3366" stroke-width="1" />
-                                            <path d="M 8 4 Q 14 10 12 16" fill="none" stroke="#ff3366" stroke-width="1" />
-                                        </g>
-                                        <!-- 龙鳞 -->
-                                        <circle cx="82" cy="38" r="2.5" fill="#ff0000" opacity="0.8" />
-                                        <circle cx="88" cy="52" r="2.5" fill="#ff0000" opacity="0.8" />
-                                        <circle cx="82" cy="66" r="2.5" fill="#ff0000" opacity="0.8" />
-                                        <circle cx="68" cy="80" r="2.5" fill="#ff0000" opacity="0.8" />
-                                    </svg>
-                                </div>
-                                <div class="dragon-flame" aria-hidden="true"></div>
-                            </div>
-
+                            <!-- 中心星球 -->
                             <div class="planet" aria-hidden="true">
                                 <div class="planet-core">
                                     <div class="logo-pg">PGL</div>
