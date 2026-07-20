@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>PG LONG - 卡牌游戏生态平台</title>
+    <meta name="description" content="PG LONG - 面向 Web3 全场景的卡牌游戏生态平台">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app">
+        <!-- 星空背景 -->
+        <div class="stars" aria-hidden="true"></div>
+        <div class="nebula nebula-1" aria-hidden="true"></div>
+        <div class="nebula nebula-2" aria-hidden="true"></div>
+
+        <!-- 顶部导航 -->
+        <header class="header">
+            <div class="header-left">
+                <button class="icon-btn" aria-label="关闭">✕</button>
+                <button class="icon-btn" aria-label="最小化">—</button>
+            </div>
+            <div class="header-title">PG LONG</div>
+            <div class="header-right">
+                <div class="avatar">B</div>
+            </div>
+        </header>
+
+        <main class="main">
+            <!-- Hero / 数据仪表盘 -->
+            <section class="hero">
+                <div class="orbital-wrapper">
+                    <!-- 外部环形轨道 -->
+                    <div class="ring ring-outer" aria-hidden="true"></div>
+                    <div class="ring ring-mid" aria-hidden="true"></div>
+                    <div class="ring ring-inner" aria-hidden="true"></div>
+                    
+                    <!-- 四个数据卡 -->
+                    <div class="stat-card stat-tvl">
+                        <div class="stat-label">TVL</div>
+                        <div class="stat-value">$1,169,861</div>
+                    </div>
+                    <div class="stat-card stat-mcap">
+                        <div class="stat-label">總市值</div>
+                        <div class="stat-value">$23,268,997</div>
+                    </div>
+                    <div class="stat-card stat-pool">
+                        <div class="stat-label">貢獻池 PGL</div>
+                        <div class="stat-value">814,624,268</div>
+                    </div>
+                    <div class="stat-card stat-price">
+                        <div class="stat-label">PGL 價格</div>
+                        <div class="stat-value">$0.023268</div>
+                    </div>
+
+                    <!-- 中心星球 -->
+                    <div class="planet" aria-hidden="true">
+                        <div class="planet-core">
+                            <div class="logo-pg">PGL</div>
+                        </div>
+                        <div class="planet-glow"></div>
+                        <div class="planet-ring"></div>
+                    </div>
+                </div>
+
+                <h1 class="brand-title">
+                    <span class="brand-pg">PG</span><span class="brand-long">LONG</span>
+                </h1>
+                <p class="brand-subtitle">面向 Web3 全場景的卡牌遊戲生態平台</p>
+            </section>
+
+            <!-- 行动条 -->
+            <section class="action-bar">
+                <div class="action-features">
+                    <div class="feature">
+                        <div class="feature-icon">🎴</div>
+                        <div class="feature-text">
+                            <span class="feature-main">60天</span>
+                            <span class="feature-sub">釋放</span>
+                        </div>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">⚔️</div>
+                        <div class="feature-text">
+                            <span class="feature-main">1.7×</span>
+                            <span class="feature-sub">收益</span>
+                        </div>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">⛓️</div>
+                        <div class="feature-text">
+                            <span class="feature-main">全鏈上</span>
+                            <span class="feature-sub">執行</span>
+                        </div>
+                    </div>
+                </div>
+                <button class="cta-btn" id="joinBtn">立即參與</button>
+            </section>
+
+            <!-- 卡牌展示 -->
+            <section class="section cards-section">
+                <div class="section-header">
+                    <h2 class="section-title">卡牌圖鑑</h2>
+                    <a href="#" class="section-link">查看全部 ›</a>
+                </div>
+                <div class="cards-scroll">
+                    <div class="card-item rarity-legendary">
+                        <div class="card-glow"></div>
+                        <div class="card-frame">
+                            <div class="card-image">🐉</div>
+                            <div class="card-info">
+                                <div class="card-name">龍魂守衛</div>
+                                <div class="card-type">傳說 · 護甲</div>
+                                <div class="card-stats">
+                                    <span>ATK 92</span>
+                                    <span>HP 188</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-item rarity-epic">
+                        <div class="card-glow"></div>
+                        <div class="card-frame">
+                            <div class="card-image">🧙‍♂️</div>
+                            <div class="card-info">
+                                <div class="card-name">星界法師</div>
+                                <div class="card-type">史詩 · 法術</div>
+                                <div class="card-stats">
+                                    <span>ATK 78</span>
+                                    <span>HP 120</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-item rarity-rare">
+                        <div class="card-glow"></div>
+                        <div class="card-frame">
+                            <div class="card-image">🗡️</div>
+                            <div class="card-info">
+                                <div class="card-name">暗影刺客</div>
+                                <div class="card-type">稀有 · 敏捷</div>
+                                <div class="card-stats">
+                                    <span>ATK 85</span>
+                                    <span>HP 95</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-item rarity-common">
+                        <div class="card-glow"></div>
+                        <div class="card-frame">
+                            <div class="card-image">🛡️</div>
+                            <div class="card-info">
+                                <div class="card-name">鋼鐵騎士</div>
+                                <div class="card-type">普通 · 防禦</div>
+                                <div class="card-stats">
+                                    <span>ATK 55</span>
+                                    <span>HP 160</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 遊戲特色 -->
+            <section class="section features-section">
+                <h2 class="section-title gradient">遊戲特色</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-card-icon">♠️</div>
+                        <h3>策略對戰</h3>
+                        <p>組建專屬卡組，與全球玩家實時競技</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-card-icon">💎</div>
+                        <h3>資產確權</h3>
+                        <p>每張卡牌都是鏈上 NFT，真正歸你所有</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-card-icon">🏆</div>
+                        <h3>邊玩邊賺</h3>
+                        <p>參與賽季排名，贏取 PGL 代幣獎勵</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-card-icon">🌌</div>
+                        <h3>宇宙擴展</h3>
+                        <p>多個種族與陣營，持續推出新卡牌</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 個人儀表盤 -->
+            <section class="section dashboard-section">
+                <h2 class="section-title">個人儀表盤</h2>
+                <div class="dashboard-card">
+                    <div class="dashboard-row">
+                        <span class="dashboard-label">持有卡牌</span>
+                        <span class="dashboard-value">24</span>
+                    </div>
+                    <div class="dashboard-row">
+                        <span class="dashboard-label">PGL 餘額</span>
+                        <span class="dashboard-value">128,450.32</span>
+                    </div>
+                    <div class="dashboard-row">
+                        <span class="dashboard-label">當前段位</span>
+                        <span class="dashboard-value">星耀 III</span>
+                    </div>
+                    <div class="dashboard-row">
+                        <span class="dashboard-label">累計收益</span>
+                        <span class="dashboard-value">$4,289.50</span>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p>© 2026 PG LONG. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="#">白皮書</a>
+                <a href="#">合約地址</a>
+                <a href="#">社區</a>
+            </div>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
