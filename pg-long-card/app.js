@@ -46,6 +46,31 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // 立即参与按钮
     const joinBtn = document.getElementById('joinBtn');
+    const participatePanel = document.getElementById('participatePanel');
+    const participateBackdrop = document.getElementById('participateBackdrop');
+    const participateClose = document.getElementById('participateClose');
+    const cancelBtn = document.getElementById('cancelBtn');
+    const confirmBtn = document.getElementById('confirmBtn');
+    const participateAmount = document.getElementById('participateAmount');
+    const minBtn = document.getElementById('minBtn');
+    const maxBtn = document.getElementById('maxBtn');
+    const bnbBalance = document.getElementById('bnbBalance');
+    
+    const openPanel = () => {
+        if (participatePanel) {
+            participatePanel.classList.add('active');
+            if (participateAmount) participateAmount.value = '';
+            if (participateAmount) participateAmount.focus();
+            if (confirmBtn) confirmBtn.disabled = true;
+        }
+    };
+    
+    const closePanel = () => {
+        if (participatePanel) {
+            participatePanel.classList.remove('active');
+        }
+    };
+    
     if (joinBtn) {
         joinBtn.addEventListener('click', () => {
             // 创建脉冲效果
@@ -57,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 width: 20px;
                 height: 20px;
                 border-radius: 50%;
-                background: radial-gradient(circle, rgba(176,38,255,0.8), transparent);
+                background: radial-gradient(circle, rgba(255,107,53,0.8), transparent);
                 transform: translate(-50%, -50%);
                 pointer-events: none;
                 z-index: 9999;
@@ -72,10 +97,49 @@ document.addEventListener('DOMContentLoaded', () => {
                 easing: 'ease-out'
             }).onfinish = () => pulse.remove();
             
-            // 切换到卡牌页
+            // 打开参与面板
             setTimeout(() => {
-                switchTab('cards');
+                openPanel();
             }, 300);
+        });
+    }
+    
+    if (participateBackdrop) participateBackdrop.addEventListener('click', closePanel);
+    if (participateClose) participateClose.addEventListener('click', closePanel);
+    if (cancelBtn) cancelBtn.addEventListener('click', closePanel);
+    
+    if (participateAmount) {
+        participateAmount.addEventListener('input', () => {
+            const val = parseFloat(participateAmount.value);
+            if (confirmBtn) {
+                confirmBtn.disabled = !(val >= 0.05 && val <= 3);
+            }
+        });
+    }
+    
+    if (minBtn) {
+        minBtn.addEventListener('click', () => {
+            if (participateAmount) participateAmount.value = '0.05';
+            if (confirmBtn) confirmBtn.disabled = false;
+        });
+    }
+    
+    if (maxBtn) {
+        maxBtn.addEventListener('click', () => {
+            if (participateAmount) {
+                const balance = parseFloat(bnbBalance?.textContent || '0');
+                const max = Math.min(balance, 3);
+                participateAmount.value = max.toFixed(6).replace(/\.?0+$/, '');
+            }
+            if (confirmBtn) confirmBtn.disabled = false;
+        });
+    }
+    
+    if (confirmBtn) {
+        confirmBtn.addEventListener('click', () => {
+            if (confirmBtn.disabled) return;
+            showToast(`参与 ${participateAmount.value} BNB 成功`);
+            closePanel();
         });
     }
     
@@ -186,59 +250,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 500 + index * 200);
         }
     });
-    
-    // 卡牌 3D 倾斜效果
-    const cards = document.querySelectorAll('.card-item');
-    cards.forEach(card => {
-        card.addEventListener('mousemove', (e) => {
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
-            const rotateX = (y - centerY) / 10;
-            const rotateY = (centerX - x) / 10;
-            
-            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
-        });
-        
-        card.addEventListener('mouseleave', () => {
-            card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale(1)';
-        });
-    });
-    
-    // 卡片滑动惯性增强
-    const cardsScroll = document.querySelector('.cards-scroll');
-    if (cardsScroll) {
-        let isDown = false;
-        let startX;
-        let scrollLeft;
-        
-        cardsScroll.addEventListener('mousedown', (e) => {
-            isDown = true;
-            cardsScroll.style.cursor = 'grabbing';
-            startX = e.pageX - cardsScroll.offsetLeft;
-            scrollLeft = cardsScroll.scrollLeft;
-        });
-        
-        cardsScroll.addEventListener('mouseleave', () => {
-            isDown = false;
-            cardsScroll.style.cursor = 'grab';
-        });
-        
-        cardsScroll.addEventListener('mouseup', () => {
-            isDown = false;
-            cardsScroll.style.cursor = 'grab';
-        });
-        
-        cardsScroll.addEventListener('mousemove', (e) => {
-            if (!isDown) return;
-            e.preventDefault();
-            const x = e.pageX - cardsScroll.offsetLeft;
-            const walk = (x - startX) * 2;
-            cardsScroll.scrollLeft = scrollLeft - walk;
-        });
-    }
     
     // 动态生成星空闪烁
     const stars = document.querySelector('.stars');

@@ -108,6 +108,47 @@
                         <button class="cta-btn" id="joinBtn">立即参与</button>
                     </section>
 
+                    <!-- 参与面板 -->
+                    <div class="participate-panel" id="participatePanel">
+                        <div class="participate-backdrop" id="participateBackdrop"></div>
+                        <div class="participate-card">
+                            <div class="participate-header">
+                                <div class="participate-title">立即参与</div>
+                                <div class="participate-subtitle">请输入本次参与的 BNB 数量</div>
+                                <button class="participate-close" id="participateClose">✕</button>
+                            </div>
+                            
+                            <div class="participate-balance">
+                                <div class="participate-balance-label">BNB 余额</div>
+                                <div class="participate-balance-value" id="bnbBalance">0.122826</div>
+                            </div>
+                            
+                            <div class="participate-input-group">
+                                <div class="participate-input-label">
+                                    <span>参与金额</span>
+                                    <span class="participate-range">范围 0.05 - 3 BNB</span>
+                                </div>
+                                <div class="participate-input-wrap">
+                                    <input type="number" class="participate-input" id="participateAmount" placeholder="0.00" min="0.05" max="3" step="0.01">
+                                    <span class="participate-unit">BNB</span>
+                                </div>
+                                <div class="participate-chips">
+                                    <button class="participate-chip" id="minBtn">最低</button>
+                                    <button class="participate-chip" id="maxBtn">全部</button>
+                                </div>
+                            </div>
+                            
+                            <div class="participate-disclaimer">
+                                实际参与规则以链上配置为准
+                            </div>
+                            
+                            <div class="participate-actions">
+                                <button class="participate-btn participate-btn-cancel" id="cancelBtn">取消</button>
+                                <button class="participate-btn participate-btn-confirm" id="confirmBtn">确认参与</button>
+                            </div>
+                        </div>
+                    </div>
+
                     <section class="section features-section">
                         <h2 class="section-title gradient">🚀 PGLONG 项目核心特点</h2>
                         <div class="features-grid">
@@ -282,78 +323,6 @@
                 </div>
             </div>
 
-            <!-- 卡牌 -->
-            <div class="page page-cards" data-tab="cards">
-                <div class="page-scroll">
-                    <section class="section cards-section">
-                        <div class="section-header">
-                            <h2 class="section-title"><span class="gradient-text">卡牌</span>图鉴</h2>
-                            <a href="#" class="section-link">查看全部 ›</a>
-                        </div>
-                        <div class="cards-scroll">
-                            <div class="card-item rarity-legendary">
-                                <div class="card-glow"></div>
-                                <div class="card-frame">
-                                    <div class="card-image">🐉</div>
-                                    <div class="card-info">
-                                        <div class="card-name">龙魂守卫</div>
-                                        <div class="card-type">传说 · 护甲</div>
-                                        <div class="card-stats">
-                                            <span>ATK 92</span>
-                                            <span>HP 188</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-item rarity-epic">
-                                <div class="card-glow"></div>
-                                <div class="card-frame">
-                                    <div class="card-image">🧙‍♂️</div>
-                                    <div class="card-info">
-                                        <div class="card-name">星界法师</div>
-                                        <div class="card-type">史诗 · 法术</div>
-                                        <div class="card-stats">
-                                            <span>ATK 78</span>
-                                            <span>HP 120</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-item rarity-rare">
-                                <div class="card-glow"></div>
-                                <div class="card-frame">
-                                    <div class="card-image">🗡️</div>
-                                    <div class="card-info">
-                                        <div class="card-name">暗影刺客</div>
-                                        <div class="card-type">稀有 · 敏捷</div>
-                                        <div class="card-stats">
-                                            <span>ATK 85</span>
-                                            <span>HP 95</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-item rarity-common">
-                                <div class="card-glow"></div>
-                                <div class="card-frame">
-                                    <div class="card-image">🛡️</div>
-                                    <div class="card-info">
-                                        <div class="card-name">钢铁骑士</div>
-                                        <div class="card-type">普通 · 防御</div>
-                                        <div class="card-stats">
-                                            <span>ATK 55</span>
-                                            <span>HP 160</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-
-                    <div class="page-bottom-space"></div>
-                </div>
-            </div>
-
             <!-- 我的 -->
             <div class="page page-profile" data-tab="profile">
                 <div class="page-scroll">
@@ -409,10 +378,6 @@
             <button class="tab-item" data-tab="dashboard">
                 <span class="tab-icon">📊</span>
                 <span class="tab-label">仪表盘</span>
-            </button>
-            <button class="tab-item" data-tab="cards">
-                <span class="tab-icon">🎴</span>
-                <span class="tab-label">卡牌</span>
             </button>
             <button class="tab-item" data-tab="profile">
                 <span class="tab-icon">👤</span>
