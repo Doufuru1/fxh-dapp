@@ -134,14 +134,7 @@ body {
     width: 34px;
     height: 34px;
     border-radius: 10px;
-    background: linear-gradient(135deg, var(--primary), var(--accent));
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Orbitron', sans-serif;
-    font-size: 12px;
-    font-weight: 900;
-    color: #fff;
+    object-fit: cover;
     box-shadow: 0 0 15px var(--glow);
 }
 
@@ -487,12 +480,13 @@ body {
 }
 
 .logo-pg {
-    font-family: 'Orbitron', sans-serif;
-    font-size: 36px;
-    font-weight: 900;
-    color: #fff;
-    text-shadow: 0 0 20px rgba(255,255,255,0.6), 0 0 40px var(--accent);
-    letter-spacing: -1px;
+    width: 84px;
+    height: 84px;
+    border-radius: 50%;
+    object-fit: cover;
+    position: relative;
+    z-index: 3;
+    box-shadow: 0 0 20px rgba(255, 107, 53, 0.5);
 }
 
 .planet-glow {
@@ -1181,7 +1175,7 @@ body {
     
     .stat-card { width: 150px; }
     .planet-core { width: 140px; height: 140px; }
-    .logo-pg { font-size: 44px; }
+    .logo-pg { width: 100px; height: 100px; }
     .planet-glow { width: 190px; height: 190px; }
     .planet-ring { width: 200px; height: 60px; }
 }
