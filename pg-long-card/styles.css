@@ -945,6 +945,62 @@ body {
     margin-bottom: 0;
 }
 
+/* === 好友列表 === */
+.friends-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.friend-item {
+    padding: 16px;
+    border-radius: 16px;
+    background: var(--card-bg);
+    border: 1px solid rgba(255,255,255,0.08);
+    transition: all 0.25s ease;
+}
+
+.friend-item:hover {
+    border-color: var(--border);
+    box-shadow: 0 0 20px rgba(255, 107, 53, 0.1);
+}
+
+.friend-main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.friend-address {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 0.5px;
+}
+
+.friend-status {
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--success);
+    background: rgba(0, 240, 160, 0.1);
+    border: 1px solid rgba(0, 240, 160, 0.25);
+}
+
+.friend-flow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.friend-flow-item {
+    font-size: 12px;
+    color: var(--text-secondary);
+}
+
 /* === 我的页面 === */
 .profile-section {
     padding-top: 16px;
@@ -1195,6 +1251,7 @@ body {
 .page.active .dashboard-section { animation-delay: 0.2s; }
 .page.active .team-dashboard-section { animation-delay: 0.3s; }
 .page.active .invite-section { animation-delay: 0.4s; }
+.page.active .friends-section { animation-delay: 0.45s; }
 .page.active .profile-section { animation-delay: 0.2s; }
 
 @keyframes fadeInUp {
