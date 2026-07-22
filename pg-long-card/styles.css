@@ -3,15 +3,15 @@
     --surface: #0a0a0f;
     --surface-2: #12121a;
     --surface-3: #1a1a24;
-    --primary: #b026ff;
-    --primary-2: #7c00ff;
-    --accent: #ff00cc;
-    --accent-2: #ff4da6;
+    --primary: #ff6b35;
+    --primary-2: #c73e1d;
+    --accent: #ff9e00;
+    --accent-2: #ffb703;
     --text: #ffffff;
     --text-secondary: #a0a0b8;
     --text-muted: #6b6b80;
-    --border: rgba(176, 38, 255, 0.25);
-    --glow: rgba(176, 38, 255, 0.4);
+    --border: rgba(255, 107, 53, 0.25);
+    --glow: rgba(255, 107, 53, 0.4);
     --success: #00f0a0;
     --card-bg: rgba(255, 255, 255, 0.03);
 }
@@ -42,11 +42,11 @@ body {
     max-width: 480px;
     height: 100vh;
     margin: 0 auto;
-    background: radial-gradient(ellipse at 50% 0%, #1a0b2e 0%, #000000 60%);
+    background: radial-gradient(ellipse at 50% 0%, #2a1208 0%, #000000 60%);
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    box-shadow: 0 0 60px rgba(176, 38, 255, 0.15);
+    box-shadow: 0 0 60px rgba(255, 107, 53, 0.15);
 }
 
 /* === 星空背景 === */
@@ -162,7 +162,7 @@ body {
 }
 
 .icon-btn:hover {
-    background: rgba(176, 38, 255, 0.2);
+    background: rgba(255, 107, 53, 0.2);
     border-color: var(--primary);
 }
 
@@ -189,8 +189,8 @@ body {
 .wallet-btn {
     padding: 8px 16px;
     border-radius: 20px;
-    border: 1px solid rgba(176, 38, 255, 0.4);
-    background: linear-gradient(135deg, rgba(176, 38, 255, 0.2), rgba(255, 0, 204, 0.1));
+    border: 1px solid rgba(255, 107, 53, 0.4);
+    background: linear-gradient(135deg, rgba(255, 107, 53, 0.2), rgba(255, 158, 0, 0.1));
     color: #fff;
     font-size: 13px;
     font-weight: 600;
@@ -199,13 +199,13 @@ body {
     align-items: center;
     gap: 6px;
     transition: all 0.25s ease;
-    box-shadow: 0 0 15px rgba(176, 38, 255, 0.15);
+    box-shadow: 0 0 15px rgba(255, 107, 53, 0.15);
 }
 
 .wallet-btn:hover {
-    background: linear-gradient(135deg, rgba(176, 38, 255, 0.35), rgba(255, 0, 204, 0.2));
+    background: linear-gradient(135deg, rgba(255, 107, 53, 0.35), rgba(255, 158, 0, 0.2));
     border-color: var(--primary);
-    box-shadow: 0 0 20px rgba(176, 38, 255, 0.3);
+    box-shadow: 0 0 20px rgba(255, 107, 53, 0.3);
 }
 
 .wallet-btn:active {
@@ -367,7 +367,7 @@ body {
     width: 220px;
     height: 220px;
     border-width: 2px;
-    border-color: rgba(176, 38, 255, 0.3);
+    border-color: rgba(255, 107, 53, 0.3);
     animation: spin-reverse 15s linear infinite;
 }
 
@@ -375,7 +375,7 @@ body {
     width: 180px;
     height: 180px;
     border-width: 1px;
-    border-color: rgba(255, 0, 204, 0.2);
+    border-color: rgba(255, 158, 0, 0.2);
     animation: spin 10s linear infinite;
 }
 
@@ -394,7 +394,7 @@ body {
     width: 128px;
     padding: 14px 16px;
     border-radius: 16px;
-    background: linear-gradient(180deg, rgba(255,255,255,0.08) 0%, rgba(176, 38, 255, 0.15) 100%);
+    background: linear-gradient(180deg, rgba(255,255,255,0.08) 0%, rgba(255, 107, 53, 0.15) 100%);
     border: 1px solid rgba(255,255,255,0.12);
     box-shadow: 0 4px 20px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.1);
     text-align: left;
@@ -461,11 +461,11 @@ body {
     width: 120px;
     height: 120px;
     border-radius: 50%;
-    background: radial-gradient(circle at 35% 30%, rgba(255,255,255,0.15), rgba(176, 38, 255, 0.6) 40%, rgba(124, 0, 255, 0.9) 100%);
+    background: radial-gradient(circle at 35% 30%, rgba(255,255,255,0.15), rgba(255, 107, 53, 0.6) 40%, rgba(199, 62, 29, 0.9) 100%);
     box-shadow:
         inset -10px -10px 30px rgba(0,0,0,0.5),
         0 0 40px var(--glow),
-        0 0 80px rgba(176, 38, 255, 0.3);
+        0 0 80px rgba(255, 107, 53, 0.3);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -494,7 +494,7 @@ body {
     width: 160px;
     height: 160px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(176, 38, 255, 0.35) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(255, 107, 53, 0.35) 0%, transparent 70%);
     filter: blur(8px);
     z-index: 1;
     animation: pulse-glow 4s ease-in-out infinite;
@@ -505,10 +505,10 @@ body {
     width: 170px;
     height: 50px;
     border-radius: 50%;
-    border: 2px solid rgba(255, 0, 204, 0.4);
+    border: 2px solid rgba(255, 158, 0, 0.4);
     transform: rotateX(75deg);
     z-index: 3;
-    box-shadow: 0 0 15px rgba(255, 0, 204, 0.3);
+    box-shadow: 0 0 15px rgba(255, 158, 0, 0.3);
     animation: ring-tilt 10s ease-in-out infinite;
 }
 
@@ -581,8 +581,8 @@ body {
     width: 36px;
     height: 36px;
     border-radius: 10px;
-    background: rgba(176, 38, 255, 0.12);
-    border: 1px solid rgba(176, 38, 255, 0.25);
+    background: rgba(255, 107, 53, 0.12);
+    border: 1px solid rgba(255, 107, 53, 0.25);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -616,7 +616,7 @@ body {
     cursor: pointer;
     background: linear-gradient(90deg, var(--primary-2), var(--primary), var(--accent));
     background-size: 200% auto;
-    box-shadow: 0 0 25px rgba(176, 38, 255, 0.4), inset 0 1px 0 rgba(255,255,255,0.25);
+    box-shadow: 0 0 25px rgba(255, 107, 53, 0.4), inset 0 1px 0 rgba(255,255,255,0.25);
     transition: all 0.3s ease;
     animation: shimmer 3s linear infinite;
     position: relative;
@@ -674,7 +674,7 @@ body {
 }
 
 .rarity-legendary .card-glow { background: linear-gradient(135deg, #ffd700, #ff8c00); }
-.rarity-epic .card-glow { background: linear-gradient(135deg, #b026ff, #ff00cc); }
+.rarity-epic .card-glow { background: linear-gradient(135deg, #ff6b35, #ff9e00); }
 .rarity-rare .card-glow { background: linear-gradient(135deg, #00bfff, #0080ff); }
 .rarity-common .card-glow { background: linear-gradient(135deg, #a0a0b8, #6b6b80); }
 
@@ -705,7 +705,7 @@ body {
     width: 100%;
     height: 120px;
     border-radius: 10px;
-    background: linear-gradient(135deg, rgba(176, 38, 255, 0.2), rgba(0,0,0,0.4));
+    background: linear-gradient(135deg, rgba(255, 107, 53, 0.2), rgba(0,0,0,0.4));
     display: flex;
     align-items: center;
     justify-content: center;
@@ -756,7 +756,7 @@ body {
 .feature-card:hover {
     transform: translateY(-4px);
     border-color: var(--border);
-    box-shadow: 0 8px 24px rgba(176, 38, 255, 0.15);
+    box-shadow: 0 8px 24px rgba(255, 107, 53, 0.15);
 }
 
 .feature-card-icon {
@@ -796,7 +796,7 @@ body {
 
 .dashboard-stat-card:hover {
     border-color: var(--border);
-    box-shadow: 0 0 20px rgba(176, 38, 255, 0.1);
+    box-shadow: 0 0 20px rgba(255, 107, 53, 0.1);
 }
 
 .dashboard-stat-value {
@@ -859,7 +859,7 @@ body {
     font-size: 14px;
     font-weight: 700;
     cursor: pointer;
-    box-shadow: 0 0 15px rgba(176, 38, 255, 0.3);
+    box-shadow: 0 0 15px rgba(255, 107, 53, 0.3);
     margin-bottom: 10px;
     transition: all 0.2s ease;
 }
@@ -931,7 +931,7 @@ body {
     padding: 14px 16px;
     border-radius: 12px;
     background: rgba(0, 0, 0, 0.4);
-    border: 1px solid rgba(176, 38, 255, 0.3);
+    border: 1px solid rgba(255, 107, 53, 0.3);
     color: var(--text);
     font-size: 13px;
     word-break: break-all;
@@ -956,7 +956,7 @@ body {
     gap: 16px;
     padding: 20px 16px;
     border-radius: 16px;
-    background: linear-gradient(135deg, rgba(176, 38, 255, 0.15), rgba(255, 0, 204, 0.08));
+    background: linear-gradient(135deg, rgba(255, 107, 53, 0.15), rgba(255, 158, 0, 0.08));
     border: 1px solid rgba(255,255,255,0.1);
     margin-bottom: 24px;
 }
@@ -1015,8 +1015,8 @@ body {
     width: 36px;
     height: 36px;
     border-radius: 10px;
-    background: rgba(176, 38, 255, 0.12);
-    border: 1px solid rgba(176, 38, 255, 0.25);
+    background: rgba(255, 107, 53, 0.12);
+    border: 1px solid rgba(255, 107, 53, 0.25);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1112,14 +1112,14 @@ body {
     padding: 12px 24px;
     border-radius: 12px;
     background: rgba(18, 18, 26, 0.95);
-    border: 1px solid rgba(176, 38, 255, 0.3);
+    border: 1px solid rgba(255, 107, 53, 0.3);
     color: #fff;
     font-size: 14px;
     opacity: 0;
     pointer-events: none;
     transition: all 0.3s ease;
     z-index: 200;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.4), 0 0 20px rgba(176, 38, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.4), 0 0 20px rgba(255, 107, 53, 0.2);
 }
 
 .toast.show {
@@ -1161,7 +1161,7 @@ body {
 @media (min-width: 481px) {
     .app {
         max-width: 480px;
-        box-shadow: 0 0 60px rgba(176, 38, 255, 0.15);
+        box-shadow: 0 0 60px rgba(255, 107, 53, 0.15);
     }
     
     .orbital-wrapper {
