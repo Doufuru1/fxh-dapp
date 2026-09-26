@@ -86,7 +86,7 @@ body {
 .brand-name { font-family: var(--disp); font-weight: 700; font-size: 18px; letter-spacing: 2px; }
 .nav-links { display: flex; gap: 26px; margin-left: auto; }
 .nav-links a {
-  color: #a7afc7; text-decoration: none; font-size: 14px;
+  color: #c3cadd; text-decoration: none; font-size: 14px;
   transition: color .2s;
 }
 .nav-links a:hover { color: var(--gold); }
@@ -165,7 +165,7 @@ body {
 }
 .hero-scroll {
   display: inline-flex; align-items: center; gap: 8px;
-  font-family: var(--mono); font-size: 11px; letter-spacing: 2px; color: var(--dim);
+  font-family: var(--mono); font-size: 12px; letter-spacing: 2px; color: #aab3cc;
   animation: bob 2.2s ease-in-out infinite;
 }
 @keyframes bob { 0%,100% { transform: translateY(0);} 50% { transform: translateY(6px);} }
