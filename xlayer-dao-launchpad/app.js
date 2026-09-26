@@ -33,18 +33,45 @@
     reveals.forEach(function (el) { el.classList.add("in"); });
   }
 
+  // ===== Donut 动画（90%）=====
+  var arc = document.getElementById("donutArc");
+  if (arc) {
+    var r = 80;
+    var c = 2 * Math.PI * r;
+    arc.style.strokeDasharray = c;
+    arc.style.strokeDashoffset = c;
+    var showArc = function () {
+      arc.style.strokeDashoffset = c * 0.10; // 90%
+    };
+    if ("IntersectionObserver" in window) {
+      var dio = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+          if (!en.isIntersecting) return;
+          showArc();
+          dio.disconnect();
+        });
+      }, { threshold: 0.35 });
+      dio.observe(arc.closest(".donut-card") || arc);
+    } else {
+      showArc();
+    }
+  }
+
   // ===== 10X 收益进度条 =====
   var capFill = document.getElementById("capFill");
-  if (capFill && "IntersectionObserver" in window) {
-    var pio = new IntersectionObserver(function (entries) {
-      entries.forEach(function (en) {
-        if (!en.isIntersecting) return;
-        capFill.style.width = "100%";
-        pio.disconnect();
-      });
-    }, { threshold: 0.4 });
-    pio.observe(capFill);
-  } else if (capFill) {
-    capFill.style.width = "100%";
+  if (capFill) {
+    var showCap = function () { capFill.style.width = "100%"; };
+    if ("IntersectionObserver" in window) {
+      var pio = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+          if (!en.isIntersecting) return;
+          showCap();
+          pio.disconnect();
+        });
+      }, { threshold: 0.4 });
+      pio.observe(capFill);
+    } else {
+      showCap();
+    }
   }
 })();
