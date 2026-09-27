@@ -85,6 +85,16 @@ body {
   letter-spacing: 1px; color: #ffffff; white-space: nowrap;
 }
 .brand-accent { color: #7bf500; }
+.lang-toggle {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--card-border);
+  color: var(--dim);
+  font-family: var(--mono); font-size: 12px; letter-spacing: 1px;
+  padding: 6px 13px; border-radius: 999px; cursor: pointer;
+  transition: color .2s, border-color .2s;
+  white-space: nowrap;
+}
+.lang-toggle:hover { color: var(--gold); border-color: rgba(240, 178, 60, 0.5); }
 .nav-links { display: flex; gap: 26px; margin-left: auto; }
 .nav-links a {
   color: #c3cadd; text-decoration: none; font-size: 14px;
@@ -530,4 +540,8 @@ body {
   .flow-line { width: 2px; height: 30px; }
   .era-timeline { flex-direction: column; }
   .era-line { width: 2px; height: 30px; }
+}
+@media (max-width: 480px) {
+  /* 小屏隐藏导航 CTA，保留语言切换与菜单按钮 */
+  .nav .btn { display: none; }
 }

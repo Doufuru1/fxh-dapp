@@ -74,4 +74,35 @@
       showCap();
     }
   }
+
+  // ===== 中英双语切换（默认英语）=====
+  var LANG_KEY = "okmeme-lang";
+  function applyLang(lang) {
+    var nodes = document.querySelectorAll("[data-zh]");
+    for (var i = 0; i < nodes.length; i++) {
+      nodes[i].textContent = lang === "zh"
+        ? nodes[i].getAttribute("data-zh")
+        : nodes[i].getAttribute("data-en");
+    }
+    document.documentElement.lang = lang === "zh" ? "zh-CN" : "en";
+    var t = document.querySelector("title[data-en]");
+    if (t) document.title = lang === "zh" ? t.getAttribute("data-zh") : t.getAttribute("data-en");
+    var lt = document.getElementById("langToggle");
+    if (lt) lt.textContent = lang === "zh" ? "EN" : "中文";
+    try { localStorage.setItem(LANG_KEY, lang); } catch (e) {}
+  }
+  var savedLang = "en";
+  try { savedLang = localStorage.getItem(LANG_KEY) || "en"; } catch (e) {}
+  // URL 参数优先，便于测试与分享：?lang=zh / ?lang=en
+  var langMatch = /[?&]lang=(zh|en)/.exec(location.search);
+  if (langMatch) savedLang = langMatch[1];
+  applyLang(savedLang);
+  var langToggle = document.getElementById("langToggle");
+  if (langToggle) {
+    langToggle.addEventListener("click", function () {
+      var cur = document.documentElement.lang === "zh-CN" ? "zh" : "en";
+      applyLang(cur === "en" ? "zh" : "en");
+      if (links) links.classList.remove("open");
+    });
+  }
 })();
