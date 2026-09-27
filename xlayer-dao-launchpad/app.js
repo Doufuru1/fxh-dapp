@@ -2,6 +2,8 @@
 (function () {
   "use strict";
 
+  var canHover = window.matchMedia && window.matchMedia("(hover: hover)").matches;
+
   // ===== 移动端菜单 =====
   var burger = document.getElementById("burger");
   var links = document.querySelector(".nav-links");
@@ -29,6 +31,13 @@
       });
     }, { threshold: 0.1 });
     reveals.forEach(function (el) { io.observe(el); });
+    // 兜底：首屏元素 1.5s 后若仍未触发则强制显示（防止 JS 异常导致空白页）
+    setTimeout(function () {
+      document.querySelectorAll(".reveal:not(.in)").forEach(function (el) {
+        var r = el.getBoundingClientRect();
+        if (r.top < window.innerHeight && r.bottom > 0) el.classList.add("in");
+      });
+    }, 1500);
   } else {
     reveals.forEach(function (el) { el.classList.add("in"); });
   }
@@ -73,6 +82,49 @@
     } else {
       showCap();
     }
+  }
+
+  // ===== NFT 卡 3D 倾斜 + 眩光 =====
+  var tiltWrap = document.querySelector(".nft-tilt");
+  var nftCard = document.querySelector(".nft-card3d");
+  if (tiltWrap && nftCard && canHover) {
+    var glare = nftCard.querySelector(".nft-glare");
+    tiltWrap.addEventListener("mousemove", function (e) {
+      var rect = tiltWrap.getBoundingClientRect();
+      var px = (e.clientX - rect.left) / rect.width - 0.5;
+      var py = (e.clientY - rect.top) / rect.height - 0.5;
+      nftCard.style.transform = "rotateY(" + (px * 15).toFixed(2) + "deg) rotateX(" + (-py * 13).toFixed(2) + "deg)";
+      if (glare) {
+        glare.style.setProperty("--gx", ((px + 0.5) * 100).toFixed(1) + "%");
+        glare.style.setProperty("--gy", ((py + 0.5) * 100).toFixed(1) + "%");
+        glare.style.opacity = "1";
+      }
+    });
+    tiltWrap.addEventListener("mouseleave", function () {
+      nftCard.style.transform = "";
+      if (glare) glare.style.opacity = "0";
+    });
+  }
+
+  // ===== 卡片聚光跟随 =====
+  if (canHover) {
+    document.querySelectorAll(".glass-card, .feature-card, .stat-card, .flow-card, .loop-item p, .donut-card, .perk").forEach(function (card) {
+      card.addEventListener("mousemove", function (e) {
+        var rect = card.getBoundingClientRect();
+        card.style.setProperty("--mx", (e.clientX - rect.left).toFixed(0) + "px");
+        card.style.setProperty("--my", (e.clientY - rect.top).toFixed(0) + "px");
+      });
+    });
+  }
+
+  // ===== 导航滚动状态 =====
+  var nav = document.getElementById("nav");
+  if (nav) {
+    var onScroll = function () {
+      nav.classList.toggle("scrolled", window.scrollY > 30);
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
   }
 
   // ===== 中英双语切换（默认英语）=====
