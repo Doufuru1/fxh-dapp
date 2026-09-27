@@ -1,4 +1,4 @@
-// XPAD - X Layer DAO Launchpad
+// OK.MEME - X Layer DAO Launchpad
 (function () {
   "use strict";
 

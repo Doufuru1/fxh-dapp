@@ -1,4 +1,4 @@
-/* XPAD — X Layer DAO Launchpad
+/* OK.MEME — X Layer DAO Launchpad
    Premium dark glassmorphism style, gold accents */
 
 :root {
@@ -76,14 +76,15 @@ body {
   height: 66px; display: flex; align-items: center; gap: 28px;
 }
 .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--text); }
-.brand-mark {
-  width: 34px; height: 34px; border-radius: 10px;
-  background: linear-gradient(135deg, #f5c96b, #e8930c);
-  color: #1a1206; font-family: var(--disp); font-weight: 700; font-size: 18px;
-  display: grid; place-items: center;
-  box-shadow: 0 4px 14px rgba(240, 178, 60, 0.4);
+.brand-hand {
+  width: 38px; height: auto; display: block;
+  filter: drop-shadow(0 3px 10px rgba(255, 158, 44, 0.35));
 }
-.brand-name { font-family: var(--disp); font-weight: 700; font-size: 18px; letter-spacing: 2px; }
+.brand-word {
+  font-family: var(--disp); font-weight: 700; font-size: 20px;
+  letter-spacing: 1px; color: #ffffff; white-space: nowrap;
+}
+.brand-accent { color: #7bf500; }
 .nav-links { display: flex; gap: 26px; margin-left: auto; }
 .nav-links a {
   color: #c3cadd; text-decoration: none; font-size: 14px;
@@ -259,13 +260,15 @@ body {
 }
 .nft-face-center {
   align-self: center;
-  width: 110px; height: 110px; border-radius: 28px;
-  background: linear-gradient(135deg, #f5c96b, #e8930c);
-  color: #1a1206;
-  font-family: var(--disp); font-weight: 700; font-size: 52px;
+  width: 120px; height: 120px; border-radius: 30px;
+  background: radial-gradient(circle at 35% 30%, #1a2138, #0b0f1d 70%);
+  border: 1px solid rgba(240, 178, 60, 0.35);
   display: grid; place-items: center;
-  box-shadow: 0 12px 34px rgba(240, 178, 60, 0.45);
+  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.45);
 }
+.nft-face-center img { width: 78%; height: auto; display: block; }
+.nft-brand { font-family: var(--disp); font-weight: 700; font-size: 12px; letter-spacing: 1px; color: #ffffff; }
+.nft-brand-accent { color: #7bf500; }
 .nft-info { display: grid; gap: 14px; }
 .info-row {
   display: flex; justify-content: space-between; align-items: center;
