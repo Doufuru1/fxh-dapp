@@ -89,3 +89,31 @@ if (heroArt && finePointer && !reducedMotion) {
   });
   heroArt.addEventListener('pointerleave', resetParallax);
 }
+
+const SOFT_CAP = 200;
+const progressInput = document.querySelector('#progress-input');
+const progressFill = document.querySelector('#progress-fill');
+const progressTrack = document.querySelector('#progress-track');
+const progressPercent = document.querySelector('#progress-percent');
+const progressAmount = document.querySelector('#progress-amount');
+const progressStatus = document.querySelector('#progress-status');
+
+function updateProgress() {
+  const amount = Math.max(Number(progressInput.value) || 0, 0);
+  const percent = amount / SOFT_CAP * 100;
+  const displayedPercent = Number.isInteger(percent) ? percent : Number(percent.toFixed(1));
+  const isOver = percent > 100;
+  const isReached = percent === 100;
+
+  progressFill.style.width = `${Math.min(percent, 100)}%`;
+  progressTrack.classList.toggle('is-over', isOver);
+  progressPercent.textContent = `${displayedPercent}%`;
+  progressPercent.style.color = isOver ? 'var(--orange)' : 'var(--lime)';
+  progressAmount.textContent = Number.isInteger(amount) ? amount : amount.toFixed(1);
+  progressStatus.textContent = isOver ? 'OVER SOFT CAP' : isReached ? 'SOFT CAP REACHED' : 'IN PROGRESS';
+  progressStatus.classList.toggle('is-over', isOver);
+  progressTrack.setAttribute('aria-valuenow', String(amount));
+}
+
+progressInput.addEventListener('input', updateProgress);
+updateProgress();

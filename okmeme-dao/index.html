@@ -101,6 +101,12 @@
       <div class="participate-grid">
         <div class="donation-card reveal" id="donation-calculator">
           <div class="card-top"><span>DONATION CALCULATOR</span><span class="pending">COMING SOON</span></div>
+          <div class="soft-cap-panel">
+            <div class="soft-cap-title"><div><span>SOFT CAP PROGRESS</span><small>SOFT CAP / 200 OKB</small></div><strong id="progress-percent" aria-live="polite">100%</strong></div>
+            <div class="progress-track" id="progress-track" role="progressbar" aria-label="捐赠软顶进度" aria-valuemin="0" aria-valuemax="200" aria-valuenow="200"><div class="progress-fill" id="progress-fill"></div></div>
+            <div class="soft-cap-meta"><span><b id="progress-amount">200</b> / 200 OKB</span><span id="progress-status">SOFT CAP REACHED</span></div>
+            <label class="progress-input-row"><span>模拟累计捐赠</span><span class="progress-input"><input id="progress-input" type="number" min="0" step="1" value="200" aria-label="模拟累计捐赠 OKB 数量" /><em>OKB</em></span></label>
+          </div>
           <div class="field-label"><span>模拟有效捐赠</span><span>OKB</span></div>
           <div class="amount-field"><input id="amount" type="number" min="0.2" max="20" step="0.1" value="1" aria-label="模拟捐赠 OKB 数量" /><span>OKB</span></div>
           <div class="presets" role="group" aria-label="快捷金额"><button type="button" data-amount="0.2">0.2</button><button type="button" data-amount="1">1</button><button type="button" data-amount="5">5</button><button type="button" data-amount="10">10</button><button type="button" data-amount="20">20</button></div>
