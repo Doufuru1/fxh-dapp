@@ -4,7 +4,6 @@ const presetButtons = document.querySelectorAll('[data-amount]');
 const modal = document.querySelector('#connect-modal');
 const menuToggle = document.querySelector('.menu-toggle');
 const nav = document.querySelector('.desktop-nav');
-const COMMUNITY_TOTAL = 10000;
 const COMMUNITY_ALLOCATION = 800000000;
 
 function formatNumber(value) {
@@ -14,8 +13,12 @@ function formatNumber(value) {
 function updateEstimate() {
   const raw = Number(amountInput.value) || 0;
   const bounded = Math.min(Math.max(raw, 0), 20);
-  const result = bounded / COMMUNITY_TOTAL * COMMUNITY_ALLOCATION;
+  const totalInput = document.querySelector('#progress-input');
+  const totalLabel = document.querySelector('#community-total');
+  const communityTotal = Math.max(Number(totalInput?.value) || 0, bounded, 0.000001);
+  const result = bounded / communityTotal * COMMUNITY_ALLOCATION;
   estimate.textContent = formatNumber(result);
+  if (totalLabel) totalLabel.textContent = Number.isInteger(communityTotal) ? communityTotal : communityTotal.toFixed(1);
   presetButtons.forEach((button) => {
     button.classList.toggle('selected', Number(button.dataset.amount) === bounded);
   });
@@ -113,6 +116,7 @@ function updateProgress() {
   progressStatus.textContent = isOver ? 'OVER SOFT CAP' : isReached ? 'SOFT CAP REACHED' : 'IN PROGRESS';
   progressStatus.classList.toggle('is-over', isOver);
   progressTrack.setAttribute('aria-valuenow', String(amount));
+  updateEstimate();
 }
 
 progressInput.addEventListener('input', updateProgress);
