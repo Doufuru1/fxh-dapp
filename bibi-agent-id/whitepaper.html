@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#0d0e0b" />
   <link rel="icon" href="assets/bibi.jpg" type="image/jpeg" />
-  <title>BIBIAI Fair Mint · Whitepaper</title>
+  <title>UAGENT Fair Mint · Whitepaper</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -17,19 +17,19 @@
   </style>
 </head>
 <body>
-  <header class="topbar"><div class="container topbar-inner"><a class="brand" href="index.html"><div class="brand-mark"><img src="assets/bibi.jpg" alt="BIBI" /></div><div>BIBI<small>AGENT ID MINT / BNB</small></div></a><nav class="nav"><a href="index.html">Mint</a><a href="index.html#mechanics">Mechanics</a><a href="index.html#tiers">Tiers</a><a class="active" href="whitepaper.html">Whitepaper</a><a href="index.html#faq">FAQ</a></nav><button class="lang" id="langBtn" type="button">EN</button><a class="back" href="index.html">← Back to Mint</a></div></header>
+  <header class="topbar"><div class="container topbar-inner"><a class="brand" href="index.html"><div class="brand-mark"><img src="assets/bibi.jpg" alt="BIBI" /></div><div>UAGENT<small>FAIR MINT / BNB</small></div></a><nav class="nav"><a href="index.html">Mint</a><a href="index.html#mechanics">Mechanics</a><a href="index.html#tiers">Tiers</a><a class="active" href="whitepaper.html">Whitepaper</a><a href="index.html#faq">FAQ</a></nav><button class="lang" id="langBtn" type="button">EN</button><a class="back" href="index.html">← Back to Mint</a></div></header>
   <main>
-    <section class="hero container"><div><div class="eyebrow">BIBIAI WHITEPAPER / V0.1</div><h1>Rules in the<br /><em>open.</em></h1></div><div><p>This page contains the new BIBIAI fair mint logic: 353 tiers, 7 days, 80% UUSD liquidity, and 20% multi-signature treasury allocation.</p><div class="stamp"><b>DOCUMENT STATUS</b><span>Product preview · contract parameters to be verified on-chain</span></div></div></section>
+    <section class="hero container"><div><div class="eyebrow">UAGENT WHITEPAPER / V0.1</div><h1>Rules in the<br /><em>open.</em></h1></div><div><p>This page contains the new UAGENT fair mint logic for BIBIAI: 353 tiers, 7 days, 80% UUSD liquidity, and 20% multi-signature treasury allocation.</p><div class="stamp"><b>DOCUMENT STATUS</b><span>Product preview · contract parameters to be verified on-chain</span></div></div></section>
     <section class="container paper-grid">
-      <article class="paper-card"><h3>01 / 项目定位</h3><h2>Agent ID 是访问层，BIBIAI 是资产层。</h2><p>BIBIAI 是一个基于 Binance Agent ID 的限时公平铸造项目。持有并验证 Agent ID 的地址进入铸造流程，BIBI 头像与品牌负责建立社区识别度，资金去向与市场规则由最终智能合约公开约束。</p></article>
+      <article class="paper-card"><h3>01 / 项目定位</h3><h2>UAGENT 是项目层，BIBIAI 是代币层。</h2><p>UAGENT 是一个基于 Binance Agent ID 的限时公平铸造项目。持有并验证 Agent ID 的地址进入铸造流程，UAGENT 品牌负责建立社区识别度，资金去向与市场规则由最终智能合约公开约束。</p></article>
       <article class="paper-card"><h3>02 / 核心参数</h3><ul><li><span>基础铸造价格</span><b>0.002 BNB / share</b></li><li><span>流动性注入</span><b>80%</b></li><li><span>多签钱包</span><b>20%</b></li><li><span>交易底池</span><b>UUSD</b></li><li><span>铸造周期</span><b>7 days</b></li><li><span>单地址上限</span><b>10 shares</b></li><li><span>最大参与金额</span><b>0.02 BNB</b></li><li><span>访问方式</span><b>Verified Agent ID</b></li></ul></article>
       <article class="paper-card wide"><h3>03 / 资金流向</h3><p>每笔铸造支付通过合约进行拆分。80% 进入 UUSD 流动性池，用于后续市场深度；20% 发送至项目多签钱包，由多签成员共同管理。前端页面不持有私人密钥，也不替代区块浏览器中的链上验证。</p><div class="flow"><div class="flow-item"><b>PAYMENT</b><strong>Mint payment</strong><span>用户按当前铸造档位支付 BNB。</span></div><div class="flow-item"><b>LIQUIDITY</b><strong>80% → UUSD LP</strong><span>80% 为 UUSD 流动性池预留。</span></div><div class="flow-item"><b>MULTISIG</b><strong>20% → Treasury</strong><span>20% 进入多签钱包。</span></div></div></article>
-      <article class="paper-card wide"><h3>04 / BIBIAI 分级算法</h3><p>BIBIAI 共生成 353 级，基础换算为 1U = 0.002 BNB。第 1 级覆盖 0–10,000 份；第 2–11 级每级增加 1,000 份，价格从 1.1U 递增至 2U；第 12–181 级每级增加 1,000 份，价格按 0.02U 递增；第 182–353 级每级增加 20,000 份，价格按 0.015U 递增，最高 8.07U = 0.01614 BNB。</p><div class="tiers"><div class="tier current"><small>TIER 01 / LIVE</small><strong>0.002 BNB</strong><p>0–10,000 份 · 1U</p></div><div class="tier"><small>TIER 02—11</small><strong>0.0022—0.004 BNB</strong><p>每级 +1,000 份 · 1.1—2U</p></div><div class="tier"><small>TIER 12—181</small><strong>0.0042—0.01096 BNB</strong><p>每级 +1,000 份 · 2.1—5.48U</p></div><div class="tier"><small>TIER 182—353</small><strong>0.011—0.01614 BNB</strong><p>每级 +20,000 份 · 5.5—8.07U</p></div></div></article>
+      <article class="paper-card wide"><h3>04 / UAGENT 分级算法</h3><p>UAGENT 共生成 353 级，基础换算为 1U = 0.002 BNB。第 1 级覆盖 0–10,000 份；第 2–11 级每级增加 1,000 份，价格从 1.1U 递增至 2U；第 12–181 级每级增加 1,000 份，价格按 0.02U 递增；第 182–353 级每级增加 20,000 份，价格按 0.015U 递增，最高 8.07U = 0.01614 BNB。</p><div class="tiers"><div class="tier current"><small>TIER 01 / LIVE</small><strong>0.002 BNB</strong><p>0–10,000 份 · 1U</p></div><div class="tier"><small>TIER 02—11</small><strong>0.0022—0.004 BNB</strong><p>每级 +1,000 份 · 1.1—2U</p></div><div class="tier"><small>TIER 12—181</small><strong>0.0042—0.01096 BNB</strong><p>每级 +1,000 份 · 2.1—5.48U</p></div><div class="tier"><small>TIER 182—353</small><strong>0.011—0.01614 BNB</strong><p>每级 +20,000 份 · 5.5—8.07U</p></div></div></article>
       <article class="paper-card"><h3>05 / 四阶段启动</h3><p>第一阶段限时公平铸造；第二阶段注入 80% UUSD 流动性；第三阶段开放链上交易；第四阶段永久关闭铸造。所有参数和多签地址应在正式部署后公开。</p></article>
       <article class="paper-card"><h3>06 / 风险提示</h3><p>参与前请自行核验合约地址、网络、权限、税费、流动性状态和多签成员。交易开启后铸造永久关闭，不要仅凭页面信息做出资产决策。</p></article>
     </section>
   </main>
-  <footer class="footer"><div class="container footer-row"><span>© 2026 BIBI Agent ID · Whitepaper preview</span><span><a href="index.html">Back to Mint ↑</a> · BNB Smart Chain</span></div></footer>
+  <footer class="footer"><div class="container footer-row"><span>© 2026 UAGENT · BIBIAI Whitepaper</span><span><a href="index.html">Back to Mint ↑</a> · BNB Smart Chain</span></div></footer>
   <script src="i18n.js"></script>
   <script>window.initBibiLanguage();</script>
 </body>

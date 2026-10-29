@@ -1,6 +1,6 @@
-# BIBI Agent ID Mint
+# UAGENT Fair Mint / BIBIAI
 
-Static front-end for the BIBI × Binance Agent ID launch page.
+Static front-end for the UAGENT × Binance Agent ID fair mint page.
 
 ## Current product parameters
 
