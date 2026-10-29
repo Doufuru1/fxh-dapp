@@ -4,8 +4,41 @@ const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
 let connected = false;
 let currentLang = 'zh';
 const BASE_PRICE = 0.002;
-const INITIAL_SHARES = 4420;
-const MAX_SHARES = 10000;
+
+function formatBnb(value) {
+  return value.toFixed(6).replace(/0+$/, '').replace(/\.$/, '');
+}
+
+function tierPriceU(tier) {
+  if (tier === 1) return 1;
+  if (tier <= 11) return 1 + (tier - 1) * 0.1;
+  if (tier <= 181) return 2.1 + (tier - 12) * 0.02;
+  return Math.round((5.5 + (tier - 182) * 0.015) * 100) / 100;
+}
+
+function tierRange(tier) {
+  if (tier === 1) return [0, 10000];
+  if (tier <= 181) {
+    const start = 10001 + (tier - 2) * 1000;
+    return [start, start + 999];
+  }
+  const start = 1000001 + (tier - 182) * 20000;
+  return [start, start + 19999];
+}
+
+function buildTierTable() {
+  const table = $('#tierTable');
+  if (!table) return;
+  const fragment = document.createDocumentFragment();
+  for (let tier = 1; tier <= 353; tier += 1) {
+    const [start, end] = tierRange(tier);
+    const row = document.createElement('div');
+    row.className = `tier-row${tier === 1 ? ' active' : ''}`;
+    row.innerHTML = `<b>${tier}</b><strong>${start.toLocaleString()} — ${end.toLocaleString()}</strong><span>${formatBnb(tierPriceU(tier) * BASE_PRICE)} BNB</span><span class="${tier === 1 ? 'tag' : ''}">${tier === 1 ? 'CURRENT' : `T${tier}`}</span>`;
+    fragment.appendChild(row);
+  }
+  table.appendChild(fragment);
+}
 
 function showToast(message) {
   const toast = $('#toast');
@@ -15,6 +48,14 @@ function showToast(message) {
   window.__toastTimer = setTimeout(() => toast.classList.remove('show'), 2800);
 }
 
+function syncLabels() {
+  const english = currentLang === 'en';
+  if (!connected) $('#connectBtn').textContent = english ? 'Connect wallet' : '连接钱包';
+  $('#mintBtn').textContent = connected
+    ? (english ? 'Mint BIBI shares ↗' : '铸造 BIBI 份额 ↗')
+    : (english ? 'Connect to mint BIBI ↗' : '连接钱包铸造 BIBI ↗');
+}
+
 function updateMintCost() {
   const input = $('#shareInput');
   const shares = Math.max(1, Math.min(10, Number(input.value || 1)));
@@ -22,52 +63,16 @@ function updateMintCost() {
   $('#costValue').textContent = (shares * BASE_PRICE).toFixed(3).replace(/0$/, '') + ' BNB';
 }
 
-function openWalletModal() {
-  $('#modal').classList.add('show');
-}
-
-function closeWalletModal() {
-  $('#modal').classList.remove('show');
-}
+function openWalletModal() { $('#modal').classList.add('show'); }
+function closeWalletModal() { $('#modal').classList.remove('show'); }
 
 function setConnected() {
   connected = true;
   $('#connectBtn').textContent = '0xA2…7F91';
   $('#connectBtn').classList.add('connected');
-  $('#mintBtn').textContent = 'Mint BIBI shares ↗';
+  syncLabels();
   closeWalletModal();
-  showToast('Agent ID 已验证，BIBI 铸造权限已解锁 ✓');
-}
-
-function renderLanguage() {
-  const english = currentLang === 'en';
-  document.documentElement.lang = english ? 'en' : 'zh-CN';
-  $('#langBtn').textContent = english ? '中' : 'EN';
-  document.title = english ? 'BIBI Agent ID · $BIBI Mint' : 'BIBI Agent ID · $BIBI 铸造';
-
-  const translations = {
-    'Mint': english ? 'Mint' : '铸造',
-    'Mechanics': english ? 'Mechanics' : '机制',
-    'Tiers': english ? 'Tiers' : '分级',
-    'Whitepaper': english ? 'Whitepaper' : '白皮书',
-    'FAQ': english ? 'FAQ' : '常见问题',
-    'Connect wallet': english ? 'Connect wallet' : '连接钱包',
-    'Start minting ↗': english ? 'Start minting ↗' : '开始铸造 ↗',
-    'How it works': english ? 'How it works' : '运作方式',
-    'Current mint progress': english ? 'Current mint progress' : '当前铸造进度',
-    'Mint shares': english ? 'Mint shares' : '铸造份数',
-    'Estimated cost': english ? 'Estimated cost' : '预计支付',
-    'Connect to mint BIBI ↗': english ? 'Connect to mint BIBI ↗' : '连接钱包铸造 BIBI ↗',
-    'Mint BIBI shares ↗': english ? 'Mint BIBI shares ↗' : '铸造 BIBI 份额 ↗',
-    'BIBI Agent ID Tiers': english ? 'BIBI Agent ID Tiers' : 'BIBI Agent ID 分级',
-    'Whitepaper': english ? 'Whitepaper' : '白皮书',
-  };
-  $$('[data-i18n]').forEach((node) => {
-    const key = node.dataset.i18n;
-    if (translations[key]) node.textContent = translations[key];
-  });
-  if (!connected) $('#connectBtn').textContent = translations['Connect wallet'];
-  if (!connected) $('#mintBtn').textContent = translations['Connect to mint BIBI ↗'];
+  showToast(currentLang === 'en' ? 'Agent ID verified. BIBI mint access unlocked ✓' : 'Agent ID 已验证，BIBI 铸造权限已解锁 ✓');
 }
 
 $('#shareInput').addEventListener('input', updateMintCost);
@@ -77,9 +82,8 @@ $('#connectBtn').addEventListener('click', () => {
   if (connected) {
     connected = false;
     $('#connectBtn').classList.remove('connected');
-    $('#connectBtn').textContent = currentLang === 'en' ? 'Connect wallet' : '连接钱包';
-    $('#mintBtn').textContent = currentLang === 'en' ? 'Connect to mint BIBI ↗' : '连接钱包铸造 BIBI ↗';
-    showToast('Demo wallet disconnected');
+    syncLabels();
+    showToast(currentLang === 'en' ? 'Demo wallet disconnected' : '演示钱包已断开');
     return;
   }
   openWalletModal();
@@ -88,18 +92,21 @@ $('#connectBtn').addEventListener('click', () => {
 $('#mintBtn').addEventListener('click', () => {
   if (!connected) return openWalletModal();
   const shares = Number($('#shareInput').value || 1);
-  showToast(`铸造订单已生成：${shares} 份 · ${ (shares * BASE_PRICE).toFixed(3).replace(/0$/, '') } BNB`);
+  const cost = (shares * BASE_PRICE).toFixed(3).replace(/0$/, '');
+  showToast(currentLang === 'en' ? `Mint order created: ${shares} share(s) · ${cost} BNB` : `铸造订单已生成：${shares} 份 · ${cost} BNB`);
 });
 
 $$('.wallet-choice').forEach((button) => button.addEventListener('click', setConnected));
 $('#closeModal').addEventListener('click', closeWalletModal);
-$('#modal').addEventListener('click', (event) => {
-  if (event.target === $('#modal')) closeWalletModal();
-});
+$('#modal').addEventListener('click', (event) => { if (event.target === $('#modal')) closeWalletModal(); });
 
-$('#langBtn').addEventListener('click', () => {
-  currentLang = currentLang === 'zh' ? 'en' : 'zh';
-  renderLanguage();
+buildTierTable();
+
+window.languageController = window.initBibiLanguage({
+  onChange: (lang) => {
+    currentLang = lang;
+    syncLabels();
+  }
 });
 
 $('#menuBtn').addEventListener('click', () => {
@@ -126,4 +133,3 @@ $$('a[href^="#"]').forEach((link) => link.addEventListener('click', () => {
 }));
 
 updateMintCost();
-renderLanguage();
