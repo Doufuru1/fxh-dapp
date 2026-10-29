@@ -33,8 +33,8 @@
     return firstIsChinese && !secondIsChinese ? { en: second, zh: first } : { en: first, zh: second };
   });
 
-  window.initBibiLanguage = function initBibiLanguage({ onChange } = {}) {
-    let lang = localStorage.getItem('bibi-lang') || 'zh';
+  window.initUagentLanguage = function initUagentLanguage({ onChange } = {}) {
+    let lang = localStorage.getItem('uanent-lang') || 'zh';
     const nodes = [];
     const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
     let node;
@@ -48,7 +48,7 @@
     };
     const apply = (next) => {
       lang = next;
-      localStorage.setItem('bibi-lang', lang);
+      localStorage.setItem('uanent-lang', lang);
       document.documentElement.lang = lang === 'en' ? 'en' : 'zh-CN';
       nodes.forEach(({ node: textNode, base }) => {
         const key = base.trim();
