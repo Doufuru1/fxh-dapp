@@ -52,8 +52,8 @@ function syncLabels() {
   const english = currentLang === 'en';
   if (!connected) $('#connectBtn').textContent = english ? 'Connect wallet' : '连接钱包';
   $('#mintBtn').textContent = connected
-    ? (english ? 'Mint BIBI shares ↗' : '铸造 BIBI 份额 ↗')
-    : (english ? 'Connect to mint BIBI ↗' : '连接钱包铸造 BIBI ↗');
+    ? (english ? 'Mint BIBIAI shares ↗' : '铸造 BIBIAI 份额 ↗')
+    : (english ? 'Connect to mint BIBIAI ↗' : '连接钱包铸造 BIBIAI ↗');
 }
 
 function updateMintCost() {
@@ -72,7 +72,7 @@ function setConnected() {
   $('#connectBtn').classList.add('connected');
   syncLabels();
   closeWalletModal();
-  showToast(currentLang === 'en' ? 'Agent ID verified. BIBI mint access unlocked ✓' : 'Agent ID 已验证，BIBI 铸造权限已解锁 ✓');
+  showToast(currentLang === 'en' ? 'Agent ID verified. BIBIAI mint access unlocked ✓' : 'Agent ID 已验证，BIBIAI 铸造权限已解锁 ✓');
 }
 
 $('#shareInput').addEventListener('input', updateMintCost);
