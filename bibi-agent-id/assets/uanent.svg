@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-labelledby="title desc">
+  <title>UANENT</title>
+  <desc>Orange geometric UANENT mark on a dark background</desc>
+  <rect width="400" height="400" rx="88" fill="#11120f"/>
+  <path d="M88 94h62v126c0 31 17 48 50 48s50-17 50-48V94h62v132c0 68-43 105-112 105S88 294 88 226V94Z" fill="#ff5a1f"/>
+  <path d="M84 310h232v24H84z" fill="#f8f7ed" opacity=".9"/>
+  <circle cx="313" cy="74" r="20" fill="#ff8a5b"/>
+</svg>

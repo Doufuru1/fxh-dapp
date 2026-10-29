@@ -1,4 +1,4 @@
-# UAGENT Fair Mint / BIBIAI
+# UAGENT Fair Mint / UANENT
 
 Static front-end for the UAGENT × Binance Agent ID fair mint page.
 
