@@ -7,6 +7,7 @@
   <meta name="description" content="币安人｜独立社区驱动的新项目。买入税 2%，卖出税 2%，铸造资金 80% 进入流动性池。" />
   <title>币安人 — 独立新项目</title>
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="mint.css" />
 </head>
 <body>
   <div class="noise" aria-hidden="true"></div>
@@ -17,11 +18,12 @@
     </a>
     <nav class="nav" aria-label="主导航">
       <a href="#about">项目理念</a>
+      <a href="#mint">铸造</a>
       <a href="#tokenomics">代币模型</a>
       <a href="#roadmap">路线图</a>
       <a href="#faq">FAQ</a>
     </nav>
-    <a class="header-cta" href="#tokenomics">查看模型 <span>↗</span></a>
+    <a class="header-cta" href="#mint">开始铸造 <span>↗</span></a>
   </header>
 
   <main id="top">
@@ -31,7 +33,7 @@
         <h1>让每一次<br /><em>加入</em> 都更有趣。</h1>
         <p class="hero-text">币安人是一个轻松、透明、由社区共同推动的新项目。简单的税费模型，清晰的资金分配，把注意力放回社区本身。</p>
         <div class="hero-actions">
-          <a class="button button-primary" href="#tokenomics">了解代币模型 <span>↓</span></a>
+          <a class="button button-primary" href="#mint">查看铸造机制 <span>↓</span></a>
           <a class="button button-ghost" href="#about">认识币安人 <span>→</span></a>
         </div>
         <div class="hero-note"><span class="check">✓</span> 买入税 2% · 卖出税 2% · 80% 铸造资金进入流动性池</div>
@@ -64,8 +66,29 @@
       </div>
     </section>
 
+    <section id="mint" class="section-shell mint-section">
+      <div class="section-heading centered"><p class="eyebrow">02 / FAIR MINT</p><h2>公开的规则，<br /><span>公平的起点。</span></h2><p>限时 7 天的公平铸造窗口，353 级价格分段，规则在页面上公开展示。</p></div>
+      <div class="mint-board">
+        <div class="mint-panel">
+          <div class="mint-panel-head"><div><span class="mint-kicker">BINANCIAN / FAIR MINT</span><h3>现在就加入铸造。</h3></div><span class="mint-network"><i></i> BNB CHAIN · DEMO</span></div>
+          <div class="mint-status-row"><span><i class="mint-live-dot"></i> 铸造窗口开放</span><strong id="mintCountdown">7D 00:00:00</strong></div>
+          <div class="mint-progress"><div class="mint-progress-track"><span id="mintProgressBar"></span></div><div class="mint-progress-foot"><span>当前档位进度</span><span id="mintProgressText">4,420 / 10,000 份</span></div></div>
+          <div class="mint-stats"><div><span>基础铸造价格</span><strong>0.002 BNB</strong><small>/ 份</small></div><div><span>单地址上限</span><strong>10 份</strong><small>每个地址</small></div><div><span>公平铸造分级</span><strong>353</strong><small>级价格表</small></div></div>
+          <div class="mint-control-label">选择铸造份数 <span id="mintTierLabel">当前第 1 级 · 1U = 0.002 BNB</span></div>
+          <div class="mint-input-row"><button type="button" class="mint-step" data-step="-1" aria-label="减少份数">−</button><input id="shareInput" type="number" min="1" max="10" value="1" inputmode="numeric" aria-label="铸造份数" /><span>SHARES</span><button type="button" class="mint-step" data-step="1" aria-label="增加份数">+</button></div>
+          <div class="mint-cost-row"><span>预计支付</span><strong id="mintCost">0.002 BNB</strong></div>
+          <button id="mintButton" class="button button-primary mint-button" type="button">连接钱包并铸造 <span>↗</span></button>
+          <p class="mint-demo-note">前端演示：尚未连接真实合约，不会发起链上交易。正式部署后以合约、区块浏览器和官方公告为准。</p>
+        </div>
+        <div class="mint-side">
+          <div class="mint-side-card"><span class="mint-kicker">353 TIERS / PRICE SCHEDULE</span><h3>分级公开，价格不藏在角落。</h3><div class="tier-mini-list"><div><b>01</b><span>0 — 10,000 份</span><strong>0.002 BNB</strong></div><div><b>02—11</b><span>每级 +1,000 份</span><strong>0.0022—0.004 BNB</strong></div><div><b>12—181</b><span>每级 +1,000 份</span><strong>0.0042—0.01096 BNB</strong></div><div><b>182—353</b><span>每级 +20,000 份</span><strong>0.011—0.01614 BNB</strong></div></div></div>
+          <div class="mint-side-card mint-split-card"><div><span>铸造资金去向</span><strong>80% <small>→ 流动性池</small></strong></div><div><span>项目运营与社区</span><strong>20% <small>→ 多签金库</small></strong></div></div>
+        </div>
+      </div>
+    </section>
+
     <section id="tokenomics" class="section-shell token-section">
-      <div class="section-heading centered"><p class="eyebrow">02 / TOKENOMICS</p><h2>简单，才方便<br /><span>一起验证。</span></h2><p>以下为项目当前规划参数，最终以部署合约和链上数据为准。</p></div>
+      <div class="section-heading centered"><p class="eyebrow">03 / TOKENOMICS</p><h2>简单，才方便<br /><span>一起验证。</span></h2><p>以下为项目当前规划参数，最终以部署合约和链上数据为准。</p></div>
       <div class="token-layout">
         <div class="token-card token-tax-card"><div class="card-icon">↗</div><div class="metric-label">买入税</div><div class="metric-value">2<span>%</span></div><div class="metric-line"><span></span></div><p>保持参与门槛清晰</p></div>
         <div class="token-card token-tax-card"><div class="card-icon rotate">↘</div><div class="metric-label">卖出税</div><div class="metric-value">2<span>%</span></div><div class="metric-line"><span></span></div><p>规则对称，简单易懂</p></div>
@@ -74,7 +97,7 @@
     </section>
 
     <section id="roadmap" class="section-shell roadmap-section">
-      <div class="section-heading"><p class="eyebrow">03 / ROADMAP</p><h2>从一个 Logo<br /><span>开始生长。</span></h2></div>
+      <div class="section-heading"><p class="eyebrow">04 / ROADMAP</p><h2>从一个 Logo<br /><span>开始生长。</span></h2></div>
       <div class="roadmap-list">
         <article class="roadmap-item active"><span class="roadmap-index">01</span><div><span class="phase">NOW · 当前</span><h3>项目准备</h3><p>确定视觉、官网、社区入口与核心参数，准备公开沟通。</p></div><span class="roadmap-mark">●</span></article>
         <article class="roadmap-item"><span class="roadmap-index">02</span><div><span class="phase">NEXT · 下一步</span><h3>公开部署</h3><p>完成合约部署，公开合约地址、链上记录与流动性信息。</p></div><span class="roadmap-mark">○</span></article>
@@ -83,7 +106,7 @@
     </section>
 
     <section id="faq" class="section-shell faq-section">
-      <div class="section-heading centered"><p class="eyebrow">04 / FAQ</p><h2>先把问题<br /><span>问明白。</span></h2></div>
+      <div class="section-heading centered"><p class="eyebrow">05 / FAQ</p><h2>先把问题<br /><span>问明白。</span></h2></div>
       <div class="faq-list">
         <details open><summary>这个项目和 Binance / 币安有关联吗？<span>+</span></summary><p>没有。币安人是独立的新项目，具体信息以公开的链上数据为准。</p></details>
         <details><summary>合约地址在哪里？<span>+</span></summary><p>目前尚未填写。项目正式部署后，我们会在这里更新可验证的链、合约地址与区块浏览器链接。</p></details>
