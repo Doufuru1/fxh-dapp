@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0b0c0f" />
+  <meta name="description" content="BSTOCK — 首个股票底池 MEME。BNB 公平铸造，BNCB 底池，买入税 2% 持币分红，卖出税 2% 用于营销与销毁。" />
+  <meta property="og:title" content="BSTOCK — The First Stock Pool Meme" />
+  <meta property="og:description" content="Fair mint with BNB · BNCB liquidity pool · transparent token mechanics" />
+  <title>BSTOCK — The First Stock Pool Meme</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="cursor-glow" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="BSTOCK 首页">
+      <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><b></b></span>
+      <span class="brand-copy"><strong>BSTOCK</strong><small>THE FIRST STOCK POOL MEME</small></span>
+    </a>
+    <nav class="nav" aria-label="主导航">
+      <a href="#thesis">理念</a>
+      <a href="#mint">公平铸造</a>
+      <a href="#mechanics">机制</a>
+      <a href="#roadmap">路线图</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <button class="wallet-button js-connect" type="button">连接钱包 <span>↗</span></button>
+    <button class="menu-button" type="button" aria-label="打开菜单" aria-expanded="false"><span></span><span></span></button>
+  </header>
+
+  <main id="top">
+    <section class="hero page-shell">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="pulse"></span> FAIR MINT / BNB CHAIN <span class="eyebrow-tag">$BSTOCK</span></p>
+        <h1>把流动性<br /><em>做成一张股票。</em></h1>
+        <p class="hero-lede">BSTOCK 是首个股票底池 MEME：用 BNB 公平铸造，用 BNCB 连接底池，把一套能被看懂、被验证的规则，放在社区面前。</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#mint">用 BNB 铸造 <span>↗</span></a>
+          <a class="button button-quiet" href="#mechanics">查看机制 <span>↓</span></a>
+        </div>
+        <div class="hero-proof"><span class="check">✓</span><span>公平铸造</span><i></i><span>买税 2% 分红</span><i></i><span>卖税 2% 营销 + 销毁</span></div>
+      </div>
+
+      <div class="hero-market" aria-label="BSTOCK 市场卡片">
+        <div class="market-noise"></div>
+        <div class="market-top"><span>BSTOCK / BNB</span><span class="live"><i></i> FAIR MINT LIVE</span></div>
+        <div class="market-symbol"><span class="symbol-ring">B</span><span class="symbol-copy"><strong>BSTOCK</strong><small>THE FIRST STOCK POOL MEME</small></span></div>
+        <div class="chart-wrap">
+          <div class="chart-label"><span>POOL SIGNAL</span><span>BNCB</span></div>
+          <svg class="chart" viewBox="0 0 520 220" role="img" aria-label="上升的概念性走势图">
+            <defs>
+              <linearGradient id="chartFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e8ff47" stop-opacity=".42"/><stop offset="1" stop-color="#e8ff47" stop-opacity="0"/></linearGradient>
+              <filter id="chartGlow"><feGaussianBlur stdDeviation="5" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+            </defs>
+            <path class="chart-grid" d="M0 30H520M0 85H520M0 140H520M0 195H520" />
+            <path class="chart-fill" d="M0 180 C30 174 35 136 70 150 S95 128 120 150 S150 120 177 132 S195 165 218 132 S250 103 275 121 S298 81 325 99 S350 92 372 85 S400 101 420 70 S445 94 466 48 S490 45 520 18 V220 H0Z" />
+            <path class="chart-line" filter="url(#chartGlow)" d="M0 180 C30 174 35 136 70 150 S95 128 120 150 S150 120 177 132 S195 165 218 132 S250 103 275 121 S298 81 325 99 S350 92 372 85 S400 101 420 70 S445 94 466 48 S490 45 520 18" />
+            <circle class="chart-dot" cx="520" cy="18" r="6" />
+          </svg>
+        </div>
+        <div class="market-bottom"><div><span>POOL</span><strong>BNCB</strong></div><div><span>MINT ASSET</span><strong>BNB</strong></div><div><span>TAX MODEL</span><strong>2 / 2</strong></div></div>
+        <span class="floating-stamp">B</span>
+      </div>
+    </section>
+
+    <section class="ticker" aria-label="项目关键词"><div class="ticker-track"><span>BUILD THE POOL</span><b>✦</b><span>FAIR BY DESIGN</span><b>✦</b><span>BNB IN / BSTOCK OUT</span><b>✦</b><span>HOLDERS FIRST</span><b>✦</b><span>BUILD THE POOL</span><b>✦</b><span>FAIR BY DESIGN</span><b>✦</b></div></section>
+
+    <section id="thesis" class="page-shell thesis section-block">
+      <div class="section-head"><p class="eyebrow">01 / THESIS</p><h2>不是又一个<br /><span>复杂的故事。</span></h2></div>
+      <div class="thesis-intro"><p class="display-copy">股票代表共识，MEME 代表传播。BSTOCK 想做的是两者之间更直接的连接：一个有清晰底池、有公开规则、也有足够幽默感的社区资产。</p><p class="muted-copy">我们不承诺价格，也不把分红写成收益保证。你看到的，是一套准备被合约和链上数据验证的设计。</p></div>
+      <div class="principles">
+        <article><span class="card-index">01</span><div class="principle-icon icon-mint">↗</div><h3>BNB 公平铸造</h3><p>用 BNB 参与 BSTOCK 铸造，不做复杂的预售叙事。铸造价格、数量与窗口以最终合约为准。</p><span class="card-foot">BNB → BSTOCK</span></article>
+        <article><span class="card-index">02</span><div class="principle-icon icon-pool">◒</div><h3>BNCB 底池</h3><p>BNCB 是项目的底池锚点。公开底池方向，让流动性成为社区可以共同关注的核心数据。</p><span class="card-foot">BSTOCK / BNCB</span></article>
+        <article><span class="card-index">03</span><div class="principle-icon icon-holder">✦</div><h3>持币用户优先</h3><p>买入税按设计用于持币用户分红；卖出税按设计用于营销与销毁，具体执行以合约为准。</p><span class="card-foot">2% BUY · 2% SELL</span></article>
+      </div>
+    </section>
+
+    <section id="mint" class="page-shell mint-section section-block">
+      <div class="mint-heading"><div><p class="eyebrow">02 / FAIR MINT</p><h2>用 BNB，铸造<br /><span>你的第一份。</span></h2></div><div class="mint-heading-note"><span class="mint-dot"></span><strong>公平铸造模式</strong><small>参数将在合约部署后同步</small></div></div>
+      <div class="mint-board">
+        <div class="mint-main">
+          <div class="mint-main-top"><div><span class="mini-label">BSTOCK / MINT TERMINAL</span><h3>加入底池之前，<br />先把规则看清楚。</h3></div><span class="terminal-state"><i></i> DEMO MODE</span></div>
+          <div class="mint-input-label"><span>选择铸造份数</span><span class="rate-note">单地址上限：10 份</span></div>
+          <div class="amount-control"><button type="button" class="amount-step" data-step="-1" aria-label="减少铸造份数">−</button><input id="shareAmount" type="number" min="1" max="10" step="1" value="1" aria-label="铸造份数" /><span>SHARES</span><button type="button" class="amount-step" data-step="1" aria-label="增加铸造份数">+</button></div>
+          <div class="mint-stats-row"><div><span>基础价格</span><strong>0.002 BNB</strong></div><div><span>铸造窗口</span><strong>7 DAYS</strong></div><div><span>价格级别</span><strong>353</strong></div></div>
+          <div class="mint-output"><div><span>本次预计支付</span><strong id="mintCost">0.002 BNB</strong></div><span class="output-arrow">↗</span></div>
+          <div class="mint-meter"><div class="meter-top"><span>公平铸造窗口</span><strong>7D / DEMO</strong></div><div class="meter-line"><span></span></div><div class="meter-bottom"><span>窗口结束后自动关闭</span><span>规则公开展示</span></div></div>
+          <button class="button button-primary mint-action js-mint" type="button">连接钱包并铸造 <span>↗</span></button>
+          <p class="terminal-note">演示版不会发起链上交易。正式上线后，请只通过官方合约和区块浏览器核验。价格分段与最终供应量以合约为准。</p>
+        </div>
+        <aside class="mint-side">
+          <div class="side-top"><span class="mini-label">MINT CHECKLIST</span><span class="side-number">01—04</span></div>
+          <ol class="checklist"><li><span>01</span><div><strong>准备 BNB</strong><small>使用 BNB 参与公平铸造</small></div><b>↗</b></li><li><span>02</span><div><strong>确认合约参数</strong><small>价格、上限、时间公开可查</small></div><b>↗</b></li><li><span>03</span><div><strong>铸造 BSTOCK</strong><small>交易由钱包自主确认</small></div><b>↗</b></li><li><span>04</span><div><strong>关注 BNCB 底池</strong><small>以链上数据验证流动性</small></div><b>↗</b></li></ol>
+          <div class="mint-safe"><span>⌁</span><p>没有白名单捷径。<br /><strong>规则对所有人公开。</strong></p></div>
+          <div class="fund-split"><div><span>铸造资金</span><strong>80% <small>→ BNCB 底池</small></strong></div><div><span>项目金库</span><strong>20% <small>→ 多签</small></strong></div></div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="mechanics" class="page-shell mechanics section-block">
+      <div class="section-head centered"><p class="eyebrow">03 / MECHANICS</p><h2>一眼能读懂的<br /><span>税费模型。</span></h2><p>买入与卖出各 2%。方向不同，记录清楚。</p></div>
+      <div class="mechanics-layout">
+        <div class="tax-flow buy-flow"><div class="flow-top"><span class="flow-badge">BUY TAX</span><strong>2<span>%</span></strong></div><div class="flow-line"><span class="flow-dot"></span><span class="flow-arrow">→</span><span class="flow-dot end"></span></div><div class="flow-bottom"><div><span>去向</span><strong>持币用户</strong></div><div><span>用途</span><strong>分红</strong></div></div><p>买入税按设计用于持币用户分红；是否执行及具体方式，以正式合约和链上记录为准。</p></div>
+        <div class="center-token"><span class="center-mark">B</span><span>BSTOCK<br /><small>FLOW OF VALUE</small></span></div>
+        <div class="tax-flow sell-flow"><div class="flow-top"><span class="flow-badge">SELL TAX</span><strong>2<span>%</span></strong></div><div class="flow-line"><span class="flow-dot"></span><span class="flow-arrow">→</span><span class="flow-dot end"></span></div><div class="flow-bottom"><div><span>去向</span><strong>营销 + 销毁</strong></div><div><span>目标</span><strong>持续建设</strong></div></div><p>卖出税按设计用于营销与销毁；具体拆分比例不在此虚构，以最终合约为准。</p></div>
+      </div>
+      <div class="pool-banner"><div class="pool-emblem">◒</div><div><span class="mini-label">LIQUIDITY ANCHOR</span><h3>BNCB 是底池，不是装饰。</h3></div><p>BSTOCK 的流动性叙事围绕 BNCB 展开。正式部署后，在此公开池地址、锁仓信息与链上入口。</p><a href="#faq" class="text-link">查看说明 ↗</a></div>
+    </section>
+
+    <section id="roadmap" class="page-shell roadmap section-block">
+      <div class="section-head"><p class="eyebrow">04 / ROADMAP</p><h2>从公平铸造，<br /><span>走到公开市场。</span></h2></div>
+      <div class="roadmap-grid">
+        <article class="roadmap-card active"><span class="phase">01 / NOW</span><span class="phase-dot"></span><h3>品牌与铸造</h3><p>官网、视觉、社区入口与公平铸造前端准备完成。</p><strong>当前阶段</strong></article>
+        <article class="roadmap-card"><span class="phase">02 / NEXT</span><span class="phase-dot"></span><h3>合约部署</h3><p>发布合约地址、审计/核验信息、铸造参数与 BNCB 底池入口。</p><strong>公开可查</strong></article>
+        <article class="roadmap-card"><span class="phase">03 / LATER</span><span class="phase-dot"></span><h3>社区扩散</h3><p>围绕股票底池梗、持币分红与社区内容，持续建设可验证的活动。</p><strong>一起生长</strong></article>
+      </div>
+    </section>
+
+    <section id="faq" class="page-shell faq section-block">
+      <div class="section-head centered"><p class="eyebrow">05 / FAQ</p><h2>先问清楚，<br /><span>再按下确认。</span></h2></div>
+      <div class="faq-list">
+        <details open><summary>BSTOCK 用什么铸造？<span>+</span></summary><p>规划为使用 BNB 参与 BSTOCK 公平铸造。当前页面是前端演示，真实铸造必须以正式合约、ABI 和链上交易为准。</p></details>
+        <details><summary>BNCB 在项目里是什么？<span>+</span></summary><p>BNCB 是 BSTOCK 规划中的底池锚点。部署后应在官网补充可验证的池地址、交易入口与流动性信息。</p></details>
+        <details><summary>买税和卖税怎么处理？<span>+</span></summary><p>当前设计为买入税 2%，用于持币用户分红；卖出税 2%，用于营销与销毁。这里是机制说明，不是收益承诺，最终以合约代码和链上数据为准。</p></details>
+        <details><summary>公平铸造的参数是什么？<span>+</span></summary><p>当前页面沿用 7 天窗口、353 级价格、每个地址最多 10 份、每份起始 0.002 BNB 的前端机制；铸造资金规划为 80% 进入 BNCB 底池、20% 进入多签金库。最终以合约为准。</p></details>
+        <details><summary>现在可以真实铸造吗？<span>+</span></summary><p>还不可以。本版本不会连接真实合约，也不会发起交易。部署前不要向任何未核验地址转账。</p></details>
+      </div>
+    </section>
+
+    <section class="page-shell final-cta"><div><p class="eyebrow">THE POOL IS THE STORY</p><h2>把第一张<br /><span>股票做出来。</span></h2></div><a class="button button-primary" href="#mint">开始了解 <span>↑</span></a></section>
+  </main>
+
+  <footer class="site-footer page-shell"><div class="footer-brand"><span class="brand-mark small" aria-hidden="true"><i></i><i></i><i></i><b></b></span><strong>BSTOCK</strong></div><div class="footer-links"><a href="#thesis">理念</a><a href="#mint">铸造</a><a href="#mechanics">机制</a><a href="#faq">FAQ</a></div><p>THE FIRST STOCK POOL MEME · BNB CHAIN</p><small>本页面仅用于项目介绍与前端演示，不构成投资建议、收益承诺或交易邀请。加密资产具有高风险，请自行研究并谨慎决策。税费、分红、销毁、底池和铸造规则以最终合约及链上数据为准。</small><span>© 2026 BSTOCK</span></footer>
+
+  <div class="toast" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>
