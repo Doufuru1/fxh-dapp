@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="BSTOCK token logo">
+  <defs>
+    <linearGradient id="lime" x1="86" y1="54" x2="420" y2="458" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F6FF8A"/>
+      <stop offset=".52" stop-color="#E8FF47"/>
+      <stop offset="1" stop-color="#A8C900"/>
+    </linearGradient>
+    <linearGradient id="dark" x1="70" y1="55" x2="450" y2="460" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#252B2A"/>
+      <stop offset="1" stop-color="#080A0D"/>
+    </linearGradient>
+    <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="9" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <circle cx="256" cy="256" r="218" fill="url(#dark)" stroke="#E8FF47" stroke-width="8"/>
+  <circle cx="256" cy="256" r="190" fill="none" stroke="#E8FF47" stroke-opacity=".18" stroke-width="2"/>
+  <path d="M155 118h112c72 0 114 34 114 87 0 31-17 57-46 71 37 13 58 39 58 78 0 58-47 96-128 96H155V118Zm66 53v82h42c34 0 51-14 51-41 0-27-17-41-51-41h-42Zm0 133v93h56c38 0 58-16 58-46 0-31-20-47-58-47h-56Z" fill="url(#lime)" fill-rule="evenodd"/>
+  <g stroke="#FF8B52" stroke-width="12" stroke-linecap="round" filter="url(#glow)">
+    <path d="M356 129v66"/><path d="M389 105v90"/><path d="M422 78v117"/>
+  </g>
+  <g fill="#FF8B52">
+    <circle cx="356" cy="129" r="10"/><circle cx="389" cy="105" r="10"/><circle cx="422" cy="78" r="10"/>
+  </g>
+  <path d="M123 407h266" stroke="#E8FF47" stroke-opacity=".28" stroke-width="3" stroke-linecap="round"/>
+</svg>
